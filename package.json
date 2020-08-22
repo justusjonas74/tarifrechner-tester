@@ -18,7 +18,10 @@
     "bootstrap": "^4.5.1",
     "dvbjs": "^6.0.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "gh-pages": "^3.1.0",
+=======
+>>>>>>> parent of 51d2aae... Updates
 =======
 >>>>>>> parent of 51d2aae... Updates
     "moment": "^2.27.0",
@@ -33,7 +36,12 @@
     "save-file": "^2.3.1",
     "typescript": "^3.7.5",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "vvo-testcases": "file:../vvo-testcases"
+=======
+    "vvo-testcases": "file:../vvo-testcases",
+    "vvotestcases": "file:../vvo-testcases"
+>>>>>>> parent of 51d2aae... Updates
 =======
     "vvo-testcases": "file:../vvo-testcases",
     "vvotestcases": "file:../vvo-testcases"
@@ -44,9 +52,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build"
+=======
+    "eject": "react-scripts eject"
+>>>>>>> parent of 51d2aae... Updates
 =======
     "eject": "react-scripts eject"
 >>>>>>> parent of 51d2aae... Updates
@@ -70,8 +82,12 @@
     "@types/file-saver": "^2.0.1",
     "@types/tmp": "^0.2.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
   },
   "homepage": "https://tarifrechner.francisdoege.com/"
+=======
+  }
+>>>>>>> parent of 51d2aae... Updates
 =======
   }
 >>>>>>> parent of 51d2aae... Updates
