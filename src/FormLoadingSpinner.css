@@ -1,0 +1,6 @@
+#loadingSpinner {
+    position: absolute;
+    margin-left: -40px;
+    z-index: 99999;
+    line-height: 2.3rem;
+}

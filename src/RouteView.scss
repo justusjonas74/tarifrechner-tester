@@ -1,0 +1,39 @@
+.trip-card:hover {
+    background-color: #eeeeee; 
+}
+
+.nodeItemImage {
+    height: 75%;
+    margin: 1%;
+}
+
+table.routeViewTable {
+    width: 100%;
+}
+
+th.bhf {
+    width: 29%
+}
+th.zeit {
+    width: 12%
+}
+th.dauer {
+    width: 7%
+}
+th.umst {
+    width: 10%
+}
+th.prod {
+    width: 32%
+}
+th.select {
+    width: 10%
+}
+.card {
+    margin: 5px;
+}
+
+div.LoadingSpinner {
+    width: 100%;
+    padding: 3rem;
+}
