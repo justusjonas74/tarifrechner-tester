@@ -45,9 +45,23 @@ class Tarifangebot extends React.Component<IProps> {
                <div className="card col-sm-12 shadow-sm mb-2 rounded">
                   <div className="card-body">
                     <h2 className="card-title">SOLL-Tarifangebot</h2>
-                
-                    <b>Reisender 1</b>
-                    <Select options={options} isMulti onChange={(selectedOption: ValueType<ITicketItems>, e: ActionMeta<ITicketItems>) => this.handleNewSelectedProducts((selectedOption as ITicketItems[]), e)}/>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th style={{width: "15%"}}>
+                                    Reisende
+                                </th>
+                                <th style={{width: "85%"}}>
+                                    Tarifangebot
+                                </th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Reisender 1</td>
+                            <td><Select options={options} isMulti onChange={(selectedOption: ValueType<ITicketItems>, e: ActionMeta<ITicketItems>) => this.handleNewSelectedProducts((selectedOption as ITicketItems[]), e)}/></td>
+                        </tr> 
+
+                    </table>
                   </div>
                   
                </div>
