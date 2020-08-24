@@ -1,6 +1,6 @@
 import React from 'react';
 // import {SearchStopField} from './SearchStopField'
-import { IPoint, ITrip } from 'dvbjs';
+import { IPoint, ITrip, POI_TYPE } from 'dvbjs';
 // import StopField from './StopField'
 import StopBox from './StopBox';
 import Routes from './Routes';
@@ -62,18 +62,18 @@ class App extends React.Component<{}, IState> {
     super(props);
 
     // DEBUG
-    // const start:IPoint = {city: "Radebeul", coords: [13.6741369627676, 51.10381758791261], name: "Schildenstraße", id: "33004218", type: POI_TYPE.Stop}
-    // const ziel: IPoint = {
-    //   city: "Bad Schandau",
-    //   coords: [14.149447444887771, 50.91775830470602],
-    //   id: "33003621",
-    //   name: "Elbkai",
-    //   type: POI_TYPE.Stop
-    // }
+    const start:IPoint = {city: "Radebeul", coords: [13.6741369627676, 51.10381758791261], name: "Schildenstraße", id: "33004218", type: POI_TYPE.Stop}
+    const ziel: IPoint = {
+      city: "Bad Schandau",
+      coords: [14.149447444887771, 50.91775830470602],
+      id: "33003621",
+      name: "Elbkai",
+      type: POI_TYPE.Stop
+    }
     // END DEBUG
     this.state = {
-        fromStop: null,
-        toStop: null,
+        fromStop: start,
+        toStop: ziel,
         selectedTrip: null,
         tripDateTime: new Date(),
         angebote: [],
@@ -149,7 +149,7 @@ class App extends React.Component<{}, IState> {
         
         return (      
         <div className="container">
-        <h1>Testfallgenerator
+          <h1>Testfallgenerator
         <small className="text-muted"> für VVO-Tarifrechner</small> </h1>
         <h2>1. Wähle eine Verbindung:</h2>
         { !isTripSelected &&
@@ -190,6 +190,7 @@ class App extends React.Component<{}, IState> {
             dateTime={this.state.tripDateTime}
             handleSelectedTrip={this.handleSelectedTrip}
             handleEditTrip={this.handleEditTrip}/>
+      
       {isTripSelected && 
       <Reisende/>}
       {isTripSelected &&

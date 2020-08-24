@@ -1,14 +1,16 @@
 import React, { FunctionComponent } from 'react'
-import { ITrip, IStopLocation, INode } from 'dvbjs'
+import { ITrip, IStopLocation, INode, IStop, IMode } from 'dvbjs'
 import moment from 'moment';
 import './RouteView.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faPen, faChevronDown, faChevronUp, faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 
 moment.locale('de');
 
-// interface IState{
-// }
+interface IState{
+    showDetails: boolean
+}
+
 interface IProps{
     trip: ITrip,
     handleSelectedTrip: (trip:ITrip) => void,
@@ -19,14 +21,130 @@ interface IProps{
 //     node: INode
 // }
 
-const NodeItem : FunctionComponent<{node:INode}> = ({node}) => {
+interface INodeTableRowsItemsProps {
+    stop: IStopLocation | IStop | undefined
+    stopType: "DEPARTURE" | "ARRIVAL" | "STOPS",
+    mode?: IMode,
+    line: string,
+    direction?: string,
+
+} 
+
+const NodeTableRowsItems = ({stop,stopType, mode, line, direction} : INodeTableRowsItemsProps) => {
+    if (!stop) {
+        return (<></>)
+    } else {
+        const stopName = `${stop!.city} - ${stop!.name}`
+        let abfahrt: string = ""
+        // if ('time' in stop) {
+        //     abfahrt = stop.time.toLocaleTimeString()
+        // }
+        if (('time' in stop) && (stopType === "ARRIVAL")){
+            abfahrt = RouteView.formatDate(stop.time) 
+        }
+        if (('time' in stop) && (stopType === "DEPARTURE")){
+            abfahrt = RouteView.formatDate(stop.time) 
+        }
+        if (('departure' in stop) && (stopType === "STOPS")){
+            abfahrt = RouteView.formatDate(stop.departure)
+        }
+        
+        const gleis = stop.platform && stopType !== "STOPS" ? stop.platform!.name : "-"
+
+        const richtung = direction ? direction! : ""
+        const linie = <NodeItem mode={mode} line={line}/>
+
+        return (
+            <tr>
+               
+                <td>
+                    {(stopType === "STOPS") ? abfahrt : <b>{abfahrt}</b> }
+                </td>
+                <td>
+                    {(stopType === "STOPS") ? stopName : <b>{stopName}</b> }
+                </td>
+                <td>
+                    {gleis}
+                </td>
+                <td>
+                    {(stopType === "DEPARTURE") ? linie : ""}
+                </td>
+                <td>
+                    {(stopType === "DEPARTURE") && richtung}
+                </td>
+            </tr>
+        )
+    }
+
+    
+}
+
+interface INodeTableRowsProps {
+    node: INode
+}
+
+const NodeTableRows = ({node}:INodeTableRowsProps) => {
+    const departureRow = <NodeTableRowsItems stop={node.departure} stopType="DEPARTURE" line={node.line} mode={node.mode} direction={node.direction}/>
+    const arrivalRow =  <NodeTableRowsItems stop={node.arrival} line={node.line} stopType="ARRIVAL"/>
+    const stopRows = node.stops.map((stop,index) => {
+        if ((index !== 0) && (index !== node.stops.length - 1)) {
+        return <NodeTableRowsItems line={node.line} stop={stop} stopType="STOPS"/>
+        } else {
+            return <></>
+        }
+        
+    })  
+    const rows = [departureRow, stopRows, arrivalRow]
+    return (
+        <>
+        {rows}
+        </>
+    )
+}
+
+interface IRouteDetailsProps {
+    RouteNodes: INode[]
+}
+class RouteDetails extends React.Component<IRouteDetailsProps> {
+
+    render(){
+        const nodeViews = this.props.RouteNodes.map((node, index) => {
+            return <NodeTableRows node={node} key={index}/>
+        })
+        return (
+           <div className="table-responsive">
+ <table className="table table-sm">
+               
+               <thead>
+               <tr>
+                   <th>Zeit</th>
+                   <th>Haltestelle</th>
+                   <th>Gleis</th>
+                   <th>Linie</th>
+                   <th>Richtung</th>
+                   
+                   </tr>  
+               </thead>
+          
+           <tbody>{nodeViews}</tbody>
+           
+       </table>
+   
+           </div>
+           )
+
+    }
+
+}
+
+const NodeItem : FunctionComponent<{mode?: IMode, line: string }> = ({mode,line}) => {
     let modeImage : JSX.Element
-    if (node.mode && node.mode!.iconUrl) {
-       modeImage = <img src ={node.mode!.iconUrl} alt={node.mode.title} className="nodeItemImage"/>
+    if (mode && mode!.iconUrl) {
+       modeImage = <img src ={mode!.iconUrl} alt={mode.title} className="nodeItemImage"/>
     }  else {
         modeImage = <></>;
     }
-    const lineName = node.line
+    const lineName = line
     return (
         <span>
             {modeImage}{lineName}
@@ -42,7 +160,7 @@ const LineItems : FunctionComponent<{trip:ITrip}> = ({trip}) => {
             (node.mode!.name !== "StairsUp") &&
             (node.mode!.name !== "StairsDown")
             ) {
-            lines.push(<NodeItem node={node} key={index} />)
+            lines.push(<NodeItem mode={node.mode} line={node.line} key={index} />)
             if (index < trip.nodes.length - 1 ) {
                 lines.push(<span> &#10095; </span>)
             }
@@ -65,25 +183,32 @@ const StopItem : FunctionComponent<{stopLocation: IStopLocation|undefined}> = ({
 } 
 
 
-class RouteView extends React.Component<IProps> {
+class RouteView extends React.Component<IProps, IState> {
     // constructor(props:IProps){
     //     super(props)
     // }
     constructor(props:IProps){
         super(props)
+        this.state = {
+            showDetails: false
+        }
         this.handleSelectRoute = this.handleSelectRoute.bind(this)
         this.handleEditTrip = this.handleEditTrip.bind(this)
+        this.toggleShowDetails = this.toggleShowDetails.bind(this)
     }
     
-    formatDate(stopLocation?: IStopLocation) : string {
-        if (stopLocation) {
+    static formatDate(date: Date) : string {
+        // if (stopLocation) {
             const format = "HH:mm"
-            const dateString = moment(stopLocation!.time).format(format)
+            const dateString = moment(date).format(format)
             return dateString
-        } else {
-            return "Keine Zeitangabe"
-        }
+        // } else {
+        //     return "Keine Zeitangabe"
+        // }
     } 
+    toggleShowDetails(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        this.setState({showDetails: !this.state.showDetails})
+    }
     
 
     handleSelectRoute(event: React.FormEvent<HTMLButtonElement>) :void {
@@ -95,9 +220,11 @@ class RouteView extends React.Component<IProps> {
     
 
     render(){
+        const showDetails = this.state.showDetails
         const trip = this.props.trip
-        const departure = this.formatDate(trip.departure)
-        const arrival = this.formatDate(trip.arrival)
+
+        const departure = trip.departure ? RouteView.formatDate(trip.departure!.time) : "Keine Zeitangabe"
+        const arrival = trip.arrival ? RouteView.formatDate(trip.arrival!.time) : "Keine Zeitangabe"
         const dauer =  moment(new Date(0,0,0,0,trip.duration)).format("HH:mm")
         const umstiege = trip.interchanges 
         const isSelectable = this.props.selectable
@@ -124,7 +251,7 @@ class RouteView extends React.Component<IProps> {
                           <tr>
                                <td>
                                <StopItem stopLocation={trip.departure}/><br/>
-                               <StopItem stopLocation={trip.arrival}/>
+                               <StopItem stopLocation={trip.arrival}/><br/>
                                </td>
                                <td>
                                    {departure}<br/>
@@ -143,16 +270,23 @@ class RouteView extends React.Component<IProps> {
                                    <LineItems trip={trip} />
                                </td>
                                <td> 
-                                   {/* Preis */}
+                                   {/* Buttons */}
+                                   
                                    { isSelectable 
-                                   ? <button type="button" className="stretched-link btn btn-primary" value="" onClick={this.handleSelectRoute}> auswählen</button> : 
-                                   <button type="button" className="btn btn-secondary btn-sm" value="" onClick={this.handleEditTrip}> <FontAwesomeIcon icon={faPen}  /> Ändern </button> }
+                                   ? <button type="button" className="m-1 btn btn-primary" value="" onClick={this.handleSelectRoute}> <FontAwesomeIcon icon={faCheckSquare} /> auswählen</button> : 
+                                   <button type="button" className="m-1 btn btn-secondary btn-sm" value="" onClick={this.handleEditTrip}> <FontAwesomeIcon icon={faPen}  /> Ändern </button> }
+                                   <button type="button" className="m-1 btn btn-sm btn-secondary" onClick={this.toggleShowDetails}>
+                                   <FontAwesomeIcon  icon={showDetails ? faChevronUp : faChevronDown }  />
+                                    Zwischenhalte
+                                   </button>
 
                                </td>
                            </tr>
                           </tbody>
                          
                        </table>
+                        {showDetails && 
+                        <RouteDetails RouteNodes={trip.nodes} />}
                     </div>
                 </div>
                
