@@ -17,7 +17,7 @@ import Tarifangebot from './Tarifangebot';
 import { Ticket, Fahrgast, ITestArguments } from 'vvo-testcases';
 import {savetoFile} from './saveToFile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileDownload, faPaperPlane, faWrench} from '@fortawesome/free-solid-svg-icons'
+import { faFileDownload, faPaperPlane, faChevronUp, faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
  interface IState {
   fromStop: IPoint | null,
@@ -38,22 +38,26 @@ function RoutingOptions({content}: RoutingOptionsProps) {
   // const content = props.content
   return (
     <>
+    <Collapse in={isOpen} timeout={50} >
+        <div id="example-collapse-text" className="row">
+              {content}  
+        </div>
+      </Collapse>
       <Button
         onClick={() => setIsOpen( !isOpen)}
         aria-controls="example-collapse-text"
         aria-expanded={isOpen}
         size="sm"
+        className="m-1"
         variant="light"
         block
       >
-        <FontAwesomeIcon icon={faWrench} fixedWidth/>
+        {/* <FontAwesomeIcon icon={faWrench} fixedWidth/> */}
+        <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown } fixedWidth/>
         Erweiterte Verbindungseinstellungen
+      
       </Button>
-      <Collapse in={isOpen} timeout={50} >
-        <div id="example-collapse-text" className="row">
-              {content}  
-        </div>
-      </Collapse>
+      
     </>
   );
 }
