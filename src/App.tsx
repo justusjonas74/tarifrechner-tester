@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse'
 // import {SearchStopField} from './SearchStopField'
 import { IPoint, ITrip } from 'dvbjs';
 // import StopField from './StopField'
@@ -14,16 +17,48 @@ import Tarifangebot from './Tarifangebot';
 import { Ticket, Fahrgast, ITestArguments } from 'vvo-testcases';
 import {savetoFile} from './saveToFile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileDownload, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faFileDownload, faPaperPlane, faWrench} from '@fortawesome/free-solid-svg-icons'
 
  interface IState {
   fromStop: IPoint | null,
   toStop:  IPoint | null,
+  viaStop: IPoint | null,
   selectedTrip: ITrip | null,
   tripDateTime : Date,
   angebote : Ticket[][], 
   fahrgaeste: Fahrgast[],
 }
+interface RoutingOptionsProps {
+  content: React.ReactNode
+}
+
+function RoutingOptions({content}: RoutingOptionsProps) {
+  // const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  // const content = props.content
+  return (
+    <>
+      <Button
+        onClick={() => setIsOpen( !isOpen)}
+        aria-controls="example-collapse-text"
+        aria-expanded={isOpen}
+        size="sm"
+        variant="light"
+        block
+      >
+        <FontAwesomeIcon icon={faWrench} fixedWidth/>
+        Erweiterte Verbindungseinstellungen
+      </Button>
+      <Collapse in={isOpen} timeout={50} >
+        <div id="example-collapse-text" className="row">
+              {content}  
+        </div>
+      </Collapse>
+    </>
+  );
+}
+
+
 
 // type stateKeys = "fromStop" | "toStop"
 interface UseTestCaseComponentProps {
@@ -74,6 +109,7 @@ class App extends React.Component<{}, IState> {
     this.state = {
         fromStop: null,
         toStop: null,
+        viaStop: null,
         selectedTrip: null,
         tripDateTime: new Date(),
         angebote: [],
@@ -83,6 +119,8 @@ class App extends React.Component<{}, IState> {
     this.handleResetClickForFromStop = this.handleResetClickForFromStop.bind(this)
     this.handleNewSelectedToStop = this.handleNewSelectedToStop.bind(this)
     this.handleResetClickForToStop = this.handleResetClickForToStop.bind(this)
+    this.handleNewSelectedViaStop = this.handleNewSelectedViaStop.bind(this)
+    this.handleResetClickForViaStop = this.handleResetClickForViaStop.bind(this)
     this.handelNewDate = this.handelNewDate.bind(this)
     this.handleSelectedTrip = this.handleSelectedTrip.bind(this)
     this.handleEditTrip = this.handleEditTrip.bind(this)
@@ -102,14 +140,13 @@ class App extends React.Component<{}, IState> {
   }
 
   handleNewSelectedFromStop(stop_id:IPoint) {
-    // let obj :{ [key: string]: IPoint } = {};
-    // obj[stateProperty] = stop_id;
-    // this.setState(obj)
     this.setState({fromStop: stop_id})
   } 
   handleNewSelectedToStop(stop_id:IPoint) {
     this.setState({toStop: stop_id})
-    console.log(stop_id)
+  } 
+  handleNewSelectedViaStop(stop_id:IPoint) {
+    this.setState({viaStop: stop_id})
   } 
 
   handleResetClickForToStop(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -117,6 +154,9 @@ class App extends React.Component<{}, IState> {
   }
   handleResetClickForFromStop(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     this.setState({fromStop: null})
+  }
+  handleResetClickForViaStop(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    this.setState({toStop: null})
   }
   handelNewDate(value :string|moment.Moment){
     if (moment.isMoment(value)){
@@ -183,9 +223,21 @@ class App extends React.Component<{}, IState> {
                 </div>
           </div>
         </div>}
+        { !isTripSelected &&
+        <RoutingOptions content={
+          <div className="col-sm-4">
+          <StopBox 
+          handleNewSelectedStop={this.handleNewSelectedViaStop}
+          handleResetClick={this.handleResetClickForViaStop}
+          title="Via"
+          placeholder="Zwischenstop"
+          stop={this.state.viaStop} />
+        </div>
+        }/>}
           < Routes 
             fromStop={this.state.fromStop}
             toStop={this.state.toStop}
+            viaStop={this.state.viaStop}
             selectedTrip={this.state.selectedTrip}
             dateTime={this.state.tripDateTime}
             handleSelectedTrip={this.handleSelectedTrip}

@@ -16,6 +16,7 @@ interface IState {
 interface IProps {
     fromStop: IPoint | null,
     toStop: IPoint| null,
+    viaStop: IPoint| null,
     selectedTrip: ITrip | null
     dateTime: Date
     handleSelectedTrip: (trip:ITrip) => void
@@ -31,10 +32,15 @@ class Routes extends React.Component<IProps, IState> {
         }
     }
     fetchRoutes(){
-        
+         
         const from = this.props.fromStop
         const to = this.props.toStop 
+        const via = this.props.viaStop ? this.props.viaStop!.id : undefined
         const date = this.props.dateTime
+        //DEBUG
+        console.log(this.props.viaStop)
+        // console.log(via)
+        //END DEBUG
         // const timezoneOffset = datetimeLocale.getTimezoneOffset()
         // const isoDate = moment(datetimeLocale).add(-timezoneOffset, 'm').toDate()
         // const isoDate = datetimeLocale
@@ -42,17 +48,21 @@ class Routes extends React.Component<IProps, IState> {
         // console.log(date.toISOString())
         if (from && to) {    
             this.setState({isLoading: true})        
-            route(from!.id,to!.id, date, false)
+            route(from!.id,to!.id, date, false, undefined , via)
             .then(route => {
                 this.setState({fetchedRoutes: route,
                 isLoading:false})
-                console.log(route)
+                // console.log(route)
             })
             .catch(err=>console.log)
         }        
     }
     componentDidUpdate(prevProps:IProps){
-        if (this.props.toStop !== prevProps.toStop || this.props.fromStop !== prevProps.fromStop || this.props.dateTime !== prevProps.dateTime) {
+        if (
+            this.props.toStop !== prevProps.toStop || 
+            this.props.fromStop !== prevProps.fromStop || 
+            this.props.dateTime !== prevProps.dateTime ||
+            this.props.viaStop !== prevProps.viaStop) {
             this.fetchRoutes()
         }
     }
