@@ -3,33 +3,18 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.53",
-    "@types/react": "^16.9.44",
-    "@types/react-autosuggest": "^9.3.14",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-select": "^3.0.16",
     "bootstrap": "^4.5.1",
-    "dvbjs": "file:../dvbjs/packages/dvbjs",
-    "gh-pages": "^3.1.0",
+    "dvbjs": "offenesdresden/dvbjs",
     "moment": "^2.27.0",
-    "node-sass": "^4.14.1",
-    "react": "^16.13.1",
     "react-autosuggest": "^10.0.2",
     "react-bootstrap": "^1.3.0",
     "react-datetime": "^2.16.3",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "react-select": "^3.1.0",
+    "react-select": "^5.8.0",
     "save-file": "^2.3.1",
-    "typescript": "^3.7.5",
-    "vvo-testcases": "file:../vvo-testcases"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,7 +26,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -56,8 +44,18 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@types/node": "^16.18.64",
+    "@types/react-dom": "^18.2.17",
     "@types/file-saver": "^2.0.1",
-    "@types/tmp": "^0.2.0"
+    "@types/tmp": "^0.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/react": "^18.2.38",
+    "@types/react-autosuggest": "^9.3.14",
+    "typescript": "^4.9.5",
+    "gh-pages": "^3.1.0"
   },
   "homepage": "https://tarifrechner.francisdoege.com/"
 }

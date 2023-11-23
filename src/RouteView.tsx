@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { ITrip, IStopLocation, INode, IStop, IMode } from 'dvbjs'
 import moment from 'moment';
-import './RouteView.scss';
+import './RouteView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faChevronDown, faChevronUp, faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 
