@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { ITrip, IStopLocation, INode, IStop, IMode } from 'dvbjs'
+import { ITrip, IStopLocation, INode, IStop, IMode } from 'dvbjs';
 import moment from 'moment';
 import './RouteView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Collapse from 'react-bootstrap/Collapse'
 // import {SearchStopField} from './SearchStopField'
-import { IPoint, ITrip } from 'dvbjs';
+import { IPoint, ITrip } from 'dvbjs'
+
 // import StopField from './StopField'
 import StopBox from './StopBox';
 import Routes from './Routes';
@@ -12,12 +13,13 @@ import Datetime from 'react-datetime';
 import './App.css';
 import './DateTimePicker.css'
 import * as moment from 'moment';
-import Reisende from './Reisende';
-import Tarifangebot from './Tarifangebot';
-import { Ticket, Fahrgast, ITestArguments } from 'vvo-testcases';
-import {savetoFile} from './saveToFile'
+// import Reisende from './Reisende';
+// import Tarifangebot from './Tarifangebot';
+// import { Ticket, Fahrgast, ITestArguments } from 'vvo-testcases';
+// import {savetoFile} from './saveToFile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileDownload, faPaperPlane, faChevronUp, faChevronDown} from '@fortawesome/free-solid-svg-icons'
+// import { faFileDownload, faPaperPlane, faChevronUp, faChevronDown} from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp, faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
  interface IState {
   fromStop: IPoint | null,
@@ -25,8 +27,8 @@ import { faFileDownload, faPaperPlane, faChevronUp, faChevronDown} from '@fortaw
   viaStop: IPoint | null,
   selectedTrip: ITrip | null,
   tripDateTime : Date,
-  angebote : Ticket[][], 
-  fahrgaeste: Fahrgast[],
+  // angebote : Ticket[][], 
+  // fahrgaeste: Fahrgast[],
 }
 interface RoutingOptionsProps {
   content: React.ReactNode
@@ -50,7 +52,7 @@ function RoutingOptions({content}: RoutingOptionsProps) {
         size="sm"
         className="m-1"
         variant="light"
-        block
+        // block
       >
         {/* <FontAwesomeIcon icon={faWrench} fixedWidth/> */}
         <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown } fixedWidth/>
@@ -65,35 +67,35 @@ function RoutingOptions({content}: RoutingOptionsProps) {
 
 
 // type stateKeys = "fromStop" | "toStop"
-interface UseTestCaseComponentProps {
-  handleExportToFile: (event: React.FormEvent<HTMLButtonElement>) => void
-}
+// interface UseTestCaseComponentProps {
+//   handleExportToFile: (event: React.FormEvent<HTMLButtonElement>) => void
+// }
 
-const UseTestCaseComponent = ({handleExportToFile}: UseTestCaseComponentProps) => (
-  <div className="row">
-    <div className="card col-sm-12 shadow-sm mb-2 rounded">
-      <div className="card-body">
-        <h2 className="card-title">Verwende Testfall</h2>
-        <div className="row">
-         <div className="col-sm-6 text-center">
-              <button className="btn btn-lg btn-primary m-4" onClick={handleExportToFile}>
-                  <FontAwesomeIcon icon={faFileDownload} size="lg"/><br/> 
-                  Exportiere Testfall<br/>
-                  <small>IVI-Format (*.xlsx)</small> 
-              </button>
-          </div>
-          <div className="col-sm-6 text-center">
-            <button className="btn btn-lg btn-info m-4" disabled>
-              <FontAwesomeIcon icon={faPaperPlane} size="lg"/> <br/>
-              Frage Tarifrechner an<br/>
-              <small>(JSON-Request)</small>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
+// const UseTestCaseComponent = ({handleExportToFile}: UseTestCaseComponentProps) => (
+//   <div className="row">
+//     <div className="card col-sm-12 shadow-sm mb-2 rounded">
+//       <div className="card-body">
+//         <h2 className="card-title">Verwende Testfall</h2>
+//         <div className="row">
+//          <div className="col-sm-6 text-center">
+//               <button className="btn btn-lg btn-primary m-4" onClick={handleExportToFile}>
+//                   <FontAwesomeIcon icon={faFileDownload} size="lg"/><br/> 
+//                   Exportiere Testfall<br/>
+//                   <small>IVI-Format (*.xlsx)</small> 
+//               </button>
+//           </div>
+//           <div className="col-sm-6 text-center">
+//             <button className="btn btn-lg btn-info m-4" disabled>
+//               <FontAwesomeIcon icon={faPaperPlane} size="lg"/> <br/>
+//               Frage Tarifrechner an<br/>
+//               <small>(JSON-Request)</small>
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// )
 
 
 class App extends React.Component<{}, IState> {
@@ -116,8 +118,8 @@ class App extends React.Component<{}, IState> {
         viaStop: null,
         selectedTrip: null,
         tripDateTime: new Date(),
-        angebote: [],
-        fahrgaeste: [new Fahrgast(33, {nr: 1, name: "Erwachsener/Vollzahler/jedermann"})]
+        // angebote: [],
+        // fahrgaeste: [new Fahrgast(33, {nr: 1, name: "Erwachsener/Vollzahler/jedermann"})]
     };
     this.handleNewSelectedFromStop = this.handleNewSelectedFromStop.bind(this)
     this.handleResetClickForFromStop = this.handleResetClickForFromStop.bind(this)
@@ -128,20 +130,20 @@ class App extends React.Component<{}, IState> {
     this.handelNewDate = this.handelNewDate.bind(this)
     this.handleSelectedTrip = this.handleSelectedTrip.bind(this)
     this.handleEditTrip = this.handleEditTrip.bind(this)
-    this.handleProductsChange = this.handleProductsChange.bind(this)
-    this.handleExportToFile = this.handleExportToFile.bind(this)
+    // this.handleProductsChange = this.handleProductsChange.bind(this)
+    // this.handleExportToFile = this.handleExportToFile.bind(this)
   }
 
-  handleExportToFile(event: React.FormEvent<HTMLButtonElement>) {
-    const testCase: ITestArguments = {
-      nr: 1,
-      trip: this.state.selectedTrip!,
-      fahrgaeste: this.state.fahrgaeste,
-      angebote: this.state.angebote
-    }
+  // handleExportToFile(event: React.FormEvent<HTMLButtonElement>) {
+  //   const testCase: ITestArguments = {
+  //     nr: 1,
+  //     trip: this.state.selectedTrip!,
+  //     fahrgaeste: this.state.fahrgaeste,
+  //     angebote: this.state.angebote
+  //   }
     
-    savetoFile(testCase)
-  }
+  //   savetoFile(testCase)
+  // }
 
   handleNewSelectedFromStop(stop_id:IPoint) {
     this.setState({fromStop: stop_id})
@@ -168,15 +170,15 @@ class App extends React.Component<{}, IState> {
     }
   }
 
-  handleProductsChange(tickets: Ticket[]):void {
+  // handleProductsChange(tickets: Ticket[]):void {
     
-    const arrayOfTickets :Ticket[][] = []
-    tickets.forEach(ticket =>{
-      arrayOfTickets.push([ticket])
-    })
-    this.setState({angebote: arrayOfTickets})
-    // console.log(tickets)
-  }
+  //   const arrayOfTickets :Ticket[][] = []
+  //   tickets.forEach(ticket =>{
+  //     arrayOfTickets.push([ticket])
+  //   })
+  //   this.setState({angebote: arrayOfTickets})
+  //   // console.log(tickets)
+  // }
 
   handleSelectedTrip(trip: ITrip) {
     // console.log(trip)
@@ -247,12 +249,12 @@ class App extends React.Component<{}, IState> {
             handleSelectedTrip={this.handleSelectedTrip}
             handleEditTrip={this.handleEditTrip}/>
       
-      {isTripSelected && 
+      {/* {isTripSelected && 
       <Reisende/>}
       {isTripSelected &&
       <Tarifangebot handleProductsChange={this.handleProductsChange}/>}
       {isTripSelected &&
-      <UseTestCaseComponent handleExportToFile={this.handleExportToFile} />}
+      <UseTestCaseComponent handleExportToFile={this.handleExportToFile} />} */}
       </div>
       )
     }
