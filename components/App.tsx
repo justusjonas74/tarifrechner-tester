@@ -11,8 +11,8 @@ import Routes from './Routes';
 import Datetime from 'react-datetime';
 // import logo from './logo.svg';
 import './App.css';
-import './DateTimePicker.css'
-import * as moment from 'moment';
+import './DateTimePicker.module.css'
+import moment from 'moment';
 // import Reisende from './Reisende';
 // import Tarifangebot from './Tarifangebot';
 // import { Ticket, Fahrgast, ITestArguments } from 'vvo-testcases';
@@ -224,7 +224,7 @@ class App extends React.Component<{}, IState> {
              <div className="card shadow-sm mb-2 bg-white rounded">
                     <div className="card-header">Abfahrt</div>
                     <div className="card-body">
-                      <Datetime onChange={this.handelNewDate} dateFormat="DD.MM.YYYY" timeFormat="HH:mm" value={this.state.tripDateTime}/>
+                      <Datetime onChange={this.handelNewDate} dateFormat="DD.MM.YYYY" timeFormat="HH:mm" value={this.state.tripDateTime} />
                     </div>
                 </div>
           </div>
