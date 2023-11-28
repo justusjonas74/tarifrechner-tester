@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import { ITrip, IStopLocation, INode, IStop, IMode } from 'dvbjs'
+import { ITrip, IStopLocation, INode, IStop, IMode } from 'dvbjs';
 import moment from 'moment';
-import './RouteView.scss';
+import './RouteView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faChevronDown, faChevronUp, faCheckSquare } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
 
 moment.locale('de');
 
@@ -88,7 +89,7 @@ const NodeTableRows = ({node}:INodeTableRowsProps) => {
     const arrivalRow =  <NodeTableRowsItems stop={node.arrival} line={node.line} stopType="ARRIVAL"/>
     const stopRows = node.stops.map((stop,index) => {
         if ((index !== 0) && (index !== node.stops.length - 1)) {
-        return <NodeTableRowsItems line={node.line} stop={stop} stopType="STOPS"/>
+        return <NodeTableRowsItems key={index} line={node.line} stop={stop} stopType="STOPS"/>
         } else {
             return <></>
         }
@@ -140,7 +141,7 @@ class RouteDetails extends React.Component<IRouteDetailsProps> {
 const NodeItem : FunctionComponent<{mode?: IMode, line: string }> = ({mode,line}) => {
     let modeImage : JSX.Element
     if (mode && mode!.iconUrl) {
-       modeImage = <img src ={mode!.iconUrl} alt={mode.title} className="nodeItemImage"/>
+       modeImage = <Image src ={mode!.iconUrl} width={20} height={20} alt={mode.title} className="nodeItemImage"/>
     }  else {
         modeImage = <></>;
     }

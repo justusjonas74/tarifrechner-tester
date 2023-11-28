@@ -1,5 +1,5 @@
 import React from "react";
-import { IPoint, IRoute,route, ITrip } from "dvbjs";
+import { IPoint, IRoute,route, ITrip } from 'dvbjs';
 import RouteView from "./RouteView";
 // import moment from "moment";
 
