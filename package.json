@@ -16,9 +16,11 @@
     "dvbjs": "^6.2.0",
     "moment": "^2.29.4",
     "next": "14.0.3",
+    "pkm-tarifrechner": "file:../tarifrechner-sst",
     "react": "^18",
     "react-autosuggest": "^10.1.0",
     "react-bootstrap": "^2.9.1",
+    "react-code-blocks": "^0.1.5",
     "react-datetime": "^3.2.0",
     "react-dom": "^18"
   },

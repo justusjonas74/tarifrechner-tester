@@ -5,6 +5,7 @@ import { ITrip } from 'dvbjs'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RoutingComponent from './RoutingComponent';
+import TarifrechnerComponent from './TarifrechnerComponent';
 
 // const UseTestCaseComponent = ({handleExportToFile}: UseTestCaseComponentProps) => (
 //   <div className="row">
@@ -48,6 +49,9 @@ export default function App() {
         <small className="text-muted"> für VVO-Tarifrechner</small> </h1>
        <h2>{selectedTrip ? "Ausgewählte Verbindung:" : "Wähle eine Verbindung:"}</h2>
       <RoutingComponent handleChangedTrip={handleChangedTrip} selectedTrip={selectedTrip} />
+      {selectedTrip && 
+      <TarifrechnerComponent selectedTrip={selectedTrip}/>}
+      
       {/* {isTripSelected && 
       <Reisende/>}
       {isTripSelected &&
