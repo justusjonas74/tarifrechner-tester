@@ -1,4 +1,5 @@
-import { CopyBlock , atomOneDark} from "react-code-blocks";
+import { CopyBlock , atomOneLight} from "react-code-blocks";
+import { CopyBlockProps } from "react-code-blocks/dist/components/CopyBlock";
 
 interface HighlightComponentProps {
 code:string,
@@ -6,12 +7,12 @@ language:string
 }
 
 export default function HighlightComponent(props:HighlightComponentProps) {
-    const copyBlockProps = {
+    const copyBlockProps:CopyBlockProps = {
         text: props.code,
         language: props.language,
         showLineNumbers: true,
         // startingLineNumber: props.startingLineNumber,
-        wrapLines: true,
+        wrapLongLines: true,
         
       };
 
@@ -19,11 +20,11 @@ export default function HighlightComponent(props:HighlightComponentProps) {
         <CopyBlock
           {...copyBlockProps}
           customStyle={{
-            height: '200px',
+            height: '400px',
             overflow: 'scroll',
-            fontSize: '0.75rem',
+            fontSize: '0.8rem',
           }}
-          theme={atomOneDark}
+          theme={atomOneLight}
         />
       );
 

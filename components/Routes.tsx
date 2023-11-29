@@ -37,15 +37,6 @@ class Routes extends React.Component<IProps, IState> {
         const to = this.props.toStop 
         const via = this.props.viaStop ? this.props.viaStop!.id : undefined
         const date = this.props.dateTime
-        //DEBUG
-        console.log(this.props.viaStop)
-        // console.log(via)
-        //END DEBUG
-        // const timezoneOffset = datetimeLocale.getTimezoneOffset()
-        // const isoDate = moment(datetimeLocale).add(-timezoneOffset, 'm').toDate()
-        // const isoDate = datetimeLocale
-        
-        // console.log(date.toISOString())
         if (from && to) {    
             this.setState({isLoading: true})        
             route(from!.id,to!.id, date, false, undefined , via)

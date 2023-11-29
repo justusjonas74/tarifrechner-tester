@@ -28,10 +28,11 @@ interface INodeTableRowsItemsProps {
     mode?: IMode,
     line: string,
     direction?: string,
+    key?:string
 
 } 
 
-const NodeTableRowsItems = ({stop,stopType, mode, line, direction} : INodeTableRowsItemsProps) => {
+const NodeTableRowsItems = ({stop,stopType, mode, line, direction, key} : INodeTableRowsItemsProps) => {
     if (!stop) {
         return (<></>)
     } else {
@@ -81,15 +82,16 @@ const NodeTableRowsItems = ({stop,stopType, mode, line, direction} : INodeTableR
 }
 
 interface INodeTableRowsProps {
-    node: INode
+    node: INode,
+    key: string
 }
 
-const NodeTableRows = ({node}:INodeTableRowsProps) => {
+const NodeTableRows = ({node,key}:INodeTableRowsProps) => {
     const departureRow = <NodeTableRowsItems stop={node.departure} stopType="DEPARTURE" line={node.line} mode={node.mode} direction={node.direction}/>
     const arrivalRow =  <NodeTableRowsItems stop={node.arrival} line={node.line} stopType="ARRIVAL"/>
     const stopRows = node.stops.map((stop,index) => {
         if ((index !== 0) && (index !== node.stops.length - 1)) {
-        return <NodeTableRowsItems key={index} line={node.line} stop={stop} stopType="STOPS"/>
+        return <NodeTableRowsItems key={"node-"+ key +"-stop-"+index.toString()} line={node.line} stop={stop} stopType="STOPS"/>
         } else {
             return <></>
         }
@@ -110,7 +112,7 @@ class RouteDetails extends React.Component<IRouteDetailsProps> {
 
     render(){
         const nodeViews = this.props.RouteNodes.map((node, index) => {
-            return <NodeTableRows node={node} key={index}/>
+            return <NodeTableRows node={node} key={index.toString()}/>
         })
         return (
            <div className="table-responsive">
@@ -138,8 +140,9 @@ class RouteDetails extends React.Component<IRouteDetailsProps> {
 
 }
 
-const NodeItem : FunctionComponent<{mode?: IMode, line: string }> = ({mode,line}) => {
+function NodeItem (props: {mode?: IMode, line: string}) {
     let modeImage : JSX.Element
+    const {mode, line} = props
     if (mode && mode!.iconUrl) {
        modeImage = <Image src ={mode!.iconUrl} width={20} height={20} alt={mode.title} className="nodeItemImage"/>
     }  else {
@@ -153,24 +156,22 @@ const NodeItem : FunctionComponent<{mode?: IMode, line: string }> = ({mode,line}
     )
 }
 
-const LineItems : FunctionComponent<{trip:ITrip}> = ({trip}) => {
-    let lines : JSX.Element[] = []
-    trip.nodes.forEach((node, index) =>{
+function LineItems (props: {trip:ITrip, key?:string}) {
+    
+    const {trip, key} = props
+    let lines =   trip.nodes.map((node, index) =>{
         if ((node.mode !== undefined) && 
             (node.mode!.name !== "Footpath") && 
             (node.mode!.name !== "StairsUp") &&
             (node.mode!.name !== "StairsDown")
             ) {
-            lines.push(<NodeItem mode={node.mode} line={node.line} key={index} />)
-            if (index < trip.nodes.length - 1 ) {
-                lines.push(<span> &#10095; </span>)
-            }
+          return <NodeItem mode={node.mode} line={node.line} key={key + index.toString()} />
+            // if (index < trip.nodes.length - 1 ) {
+            //     lines.push(<span> &#10095; </span>)
+            // }
         }
     })
-    return (
-        <React.Fragment>
-            {lines}
-        </React.Fragment>)
+    return lines
 }
 
 const StopItem : FunctionComponent<{stopLocation: IStopLocation|undefined}> = ({stopLocation}) =>  {
