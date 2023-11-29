@@ -18,7 +18,7 @@ export default function TarifrechnerComponent(props: TarifrechnerComponentProps)
     const api_key_header = api_key ? {'X-Api-Key': process.env.NEXT_PUBLIC_APIKEY} : {}
     const config: TarifrechnerRequestConfig = {
         // url: "https://pkm-tarifrechner-test.vvo.ivi.fraunhofer.de/vvo",
-        url: process.env.NEXT_PUBLIC_URL || "",
+        url: "tarifrechner/",
         axiosConfig: {
             headers: {
                 'Content-Type': 'application/json',
