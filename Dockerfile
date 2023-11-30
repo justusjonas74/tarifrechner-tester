@@ -6,8 +6,20 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+# Install Local NPM Package
+RUN mkdir /tarifrechner-sst
+COPY ./tarifrechner-sst /tarifrechner-sst
+WORKDIR /tarifrechner-sst 
+RUN npm install
+RUN npm run build
+
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+
+WORKDIR /app
+COPY ./tarifrechner-tester/package.json .
+COPY ./tarifrechner-tester/yarn.lock* .
+COPY ./tarifrechner-tester/package-lock.json* .
+COPY ./tarifrechner-tester/pnpm-lock.yaml* .
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
@@ -19,8 +31,10 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
+RUN mkdir /tarifrechner-sst
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY --from=deps /tarifrechner-sst /tarifrechner-sst
+COPY ./tarifrechner-tester .
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -36,7 +50,7 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-COPY .env .env
+COPY ./tarifrechner-tester/.env .env
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
