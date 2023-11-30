@@ -23,13 +23,20 @@ export default function TarifrechnerComponent(props: TarifrechnerComponentProps)
 
     const [efaAntwort, setEfaAntwort] = useState<IEFA_ANTWORTLISTE | undefined>(undefined)
     const [isLoading, setIsLoading] = useState<boolean>(true)
-    const [jsonRequest, setJSONRequest] = useState<string|undefined>(undefined)
+    const [jsonRequest, setJSONRequest] = useState<string | undefined>(undefined)
     const trip = props.selectedTrip
-    
-    const copyToClipboard = (text:string) => {navigator.clipboard.writeText(text)}
+
+    const copyToClipboard = async (text: string) => {
+        if ("clipboard" in navigator) {
+            await navigator.clipboard.writeText(text);
+        } else {
+            document.execCommand("copy", true, text);
+        }
+    }
 
 
-    
+
+
     useEffect(() => {
         const sendRequest = async () => {
             console.log("Fired sendRequest")
@@ -75,13 +82,13 @@ export default function TarifrechnerComponent(props: TarifrechnerComponentProps)
                     <div className="row">
                         <div className="col-sm-4">
                             <Tarifangaben tarifrechnerResponse={efaAntwort} />
-                            <Button onClick={copyPostManJSONToClipboard}  variant="outline-primary" className="my-4">
-                            <FontAwesomeIcon icon={faClipboard} className="mx-2" />
-                            Kopiere Postman-Testfall
+                            <Button onClick={copyPostManJSONToClipboard} variant="outline-primary" className="my-4">
+                                <FontAwesomeIcon icon={faClipboard} className="mx-2" />
+                                Kopiere Postman-Testfall
                             </Button>
                         </div>
                         <div className="col-sm-8">
-                            { jsonRequest && <CollapseComponent chevronText="JSON-Request" id="collapse-json-request" textClassName="fw-semibold fs-5">
+                            {jsonRequest && <CollapseComponent chevronText="JSON-Request" id="collapse-json-request" textClassName="fw-semibold fs-5">
                                 <HighlightComponent code={jsonRequest} language="json" />
                             </CollapseComponent>}
                             <CollapseComponent chevronText="JSON-Response" id="collapse-json-response" textClassName="fw-semibold fs-5">
