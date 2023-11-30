@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ITrip } from 'dvbjs'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -45,9 +47,9 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1>Testfallgenerator
+      <h1 className='my-4'>Testfallgenerator
         <small className="text-muted"> für VVO-Tarifrechner</small> </h1>
-       <h2>{selectedTrip ? "Ausgewählte Verbindung:" : "Wähle eine Verbindung:"}</h2>
+       <h2 className='my-4'>{selectedTrip ? "Ausgewählte Verbindung" : "Verbindungsauswahl"}</h2>
       <RoutingComponent handleChangedTrip={handleChangedTrip} selectedTrip={selectedTrip} />
       {selectedTrip && 
       <TarifrechnerComponent selectedTrip={selectedTrip}/>}
@@ -58,7 +60,8 @@ export default function App() {
       <Tarifangebot handleProductsChange={this.handleProductsChange}/>}
       {isTripSelected &&
       <UseTestCaseComponent handleExportToFile={this.handleExportToFile} />} */}
-    </div>
+     <ToastContainer />
+     </div>
   )
 }
 

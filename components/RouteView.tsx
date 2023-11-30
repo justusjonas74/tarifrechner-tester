@@ -5,6 +5,8 @@ import './RouteView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faChevronDown, faChevronUp, faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import Tarifangaben from './Tarifangaben';
+import TarifAbAnzeige from './TarifAbAnzeige';
 
 moment.locale('de');
 
@@ -245,6 +247,8 @@ class RouteView extends React.Component<IProps, IState> {
                                     <th className="dauer">Dauer	</th>
                                     <th className="umst">Umstiege</th>
                                     <th className="prod">Produkte</th>
+                                    <th className="tarif">Tarif</th>
+                                    
                                     <th className="select"></th>
                                </tr>
 
@@ -270,6 +274,9 @@ class RouteView extends React.Component<IProps, IState> {
                                <td>
                                    {/* Linien */}
                                    <LineItems trip={trip} />
+                               </td>
+                               <td>
+                                    <TarifAbAnzeige trip={trip} />
                                </td>
                                <td> 
                                    {/* Buttons */}
