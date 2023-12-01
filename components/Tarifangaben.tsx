@@ -12,7 +12,7 @@ export default function Tarifangaben(props: TarifangabenProps) {
 
     return (
         <>
-            <ul className="list-group list-group">
+            <ul className="list-group  list-group-flush">
                 {ticketdatenliste && ticketdatenliste.map((ticket, index) => {
                     return <li className="list-group-item d-flex justify-content-between align-items-start" key={index.toString()} ><TicketDetails ticket={ticket}  /></li>
                 })}
