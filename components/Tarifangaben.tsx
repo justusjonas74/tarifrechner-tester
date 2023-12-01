@@ -18,7 +18,7 @@ export default function Tarifangaben(props: TarifangabenProps) {
                 })}
 
                 {(!ticketdatenliste || ticketdatenliste.length == 0) &&
-                    <li>Die Anwort des Tarifrechners enthält keine Tarifangaben</li>}
+                    <li className="list-group-item d-flex justify-content-between align-items-start">Die Anwort des Tarifrechners enthält keine Tarifangaben</li>}
             </ul>
 
 
