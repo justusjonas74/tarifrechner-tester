@@ -21,6 +21,5 @@ export default function tarifrechnerAnfrage(trip: ITrip) {
       },
     },
   };
-  console.log(config);
   return EFA_ANFRAGE.fromITrip(trip, config);
 }
