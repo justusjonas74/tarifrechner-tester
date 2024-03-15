@@ -3,35 +3,41 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Button, Collapse } from "react-bootstrap";
 
-interface RoutingOptionsProps {
+interface CollapseComponentProps {
+    chevronText: string,
+    id:string,
+    textClassName?:string
 }
 
-export default function RoutingOptions(props: React.PropsWithChildren<RoutingOptionsProps>) {
-    // const [open, setOpen] = useState(false);
+export default function CollapseComponent(props: React.PropsWithChildren<CollapseComponentProps>) {
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    // const content = props.content
     return (
-        <>
-            <Collapse in={isOpen} timeout={50} >
-                <div id="example-collapse-text" className="row">
+        <>  
+        <div className="d-grid">
+
+        <Collapse in={isOpen} timeout={50} >
+                <div id={props.id} className="">
                     {props.children}
                 </div>
             </Collapse>
             <Button
                 onClick={() => setIsOpen(!isOpen)}
-                aria-controls="example-collapse-text"
+                aria-controls={props.id}
                 aria-expanded={isOpen}
-                size="sm"
+                // size="sm"
                 className="m-1"
                 variant="light"
-            // block
+
             >
                 {/* <FontAwesomeIcon icon={faWrench} fixedWidth/> */}
-                <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} height={15} className='p-2' />
-                Erweiterte Verbindungseinstellungen
+                <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} height={15} className="mx-2" />
+                <span className={props.textClassName}>
+                {props.chevronText}
+                </span>
 
             </Button>
-
+        </div>
         </>
     );
 }
