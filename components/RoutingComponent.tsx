@@ -4,7 +4,7 @@ import { useState } from "react"
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 
-import RoutingOptions from "./RoutingOptions"
+import CollapseComponent from "./CollapseComponent"
 import StopBox from "./StopBox"
 import Routes from "./Routes";
 
@@ -56,46 +56,47 @@ export default function RoutingComponent(props: RoutingComponentProps) {
     return (
         <>
             {!props.selectedTrip &&
-            <> 
-            <div className="row">
-                <div className="col-sm-4">
-                    <StopBox
-                        handleNewSelectedStop={handleNewSelectedFromStop}
-                        handleResetClick={handleResetClickForFromStop}
-                        title="Von"
-                        placeholder="Start"
-                        stop={fromStop} />
-                </div>
-                <div className="col-sm-4">
-                    <StopBox
-                        handleNewSelectedStop={handleNewSelectedToStop}
-                        handleResetClick={handleResetClickForToStop}
-                        title="Nach"
-                        placeholder="Ziel"
-                        stop={toStop} />
-                </div>
-                <div className="col-sm-4">
-                    <div className="card shadow-sm mb-2 bg-white rounded">
-                        <div className="card-header">Abfahrt</div>
-                        <div className="card-body">
-                            <Datetime onChange={handelNewDate} dateFormat="DD.MM.YYYY" timeFormat="HH:mm" value={tripDateTime} />
+                <>
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <StopBox
+                                handleNewSelectedStop={handleNewSelectedFromStop}
+                                handleResetClick={handleResetClickForFromStop}
+                                title="Von"
+                                placeholder="Start"
+                                stop={fromStop} />
+                        </div>
+                        <div className="col-sm-4">
+                            <StopBox
+                                handleNewSelectedStop={handleNewSelectedToStop}
+                                handleResetClick={handleResetClickForToStop}
+                                title="Nach"
+                                placeholder="Ziel"
+                                stop={toStop} />
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="card shadow-sm mb-2 bg-white rounded">
+                                <div className="card-header">Abfahrt</div>
+                                <div className="card-body">
+                                    <Datetime onChange={handelNewDate} dateFormat="DD.MM.YYYY" timeFormat="HH:mm" value={tripDateTime} />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-sm-4">
-                    <RoutingOptions>
-                        <StopBox
-                            handleNewSelectedStop={handleNewSelectedViaStop}
-                            handleResetClick={handleResetClickForViaStop}
-                            title="Via"
-                            placeholder="Zwischenstop"
-                            stop={viaStop} />
-                    </RoutingOptions>
-                </div>
-            </div >
-            </>
+                    <div className="row">
+                        <CollapseComponent chevronText="Erweiterte Verbindungseinstellungen" id="collapse-erweit-verb">
+                            <div className="col-sm-4">
+                                <StopBox
+                                    handleNewSelectedStop={handleNewSelectedViaStop}
+                                    handleResetClick={handleResetClickForViaStop}
+                                    title="Via"
+                                    placeholder="Zwischenstop"
+                                    stop={viaStop} />
+                            </div>
+                        </CollapseComponent>
+
+                    </div >
+                </>
             }
             < Routes
                 fromStop={fromStop}
