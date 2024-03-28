@@ -1,9 +1,9 @@
 import {
   TariffOverview,
   getTariffOverviewFromEfaAntwort,
-  parseTarifrechnerTicket,
+  parseTarifrechnerTicketEfa,
 } from "@/lib/parseTarifrechnerTicket";
-import tarifrechnerAnfrage from "@/lib/tarifrechnerAnfrage";
+import { tarifrechnerEfaAnfrage } from "@/lib/tarifrechnerAnfrage";
 import { ITrip } from "dvbjs";
 import { IEFA_ANTWORTLISTE } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
 import { useEffect, useState } from "react";
@@ -23,7 +23,7 @@ export default function TarifAbAnzeige(props: TarifAbAnzeigeProps) {
 
   useEffect(() => {
     const sendRequest = async () => {
-      const efaAnfrage = tarifrechnerAnfrage(trip);
+      const efaAnfrage = tarifrechnerEfaAnfrage(trip);
       try {
         setIsLoading(true);
         const response = await efaAnfrage.sendRequest();

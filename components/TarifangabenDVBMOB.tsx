@@ -1,12 +1,12 @@
-import { IEFA_ANTWORTLISTE } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
+import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
 
-import { TicketDetailsEfa } from "./TicketDetailsEfa";
+import { TicketDetailsDvb } from "./TicketDetailsDvb";
 
 interface TarifangabenProps {
-  tarifrechnerResponse: IEFA_ANTWORTLISTE;
+  tarifrechnerResponse: IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG;
 }
 
-export default function Tarifangaben(props: TarifangabenProps) {
+export default function TarifangabenDVBMOB(props: TarifangabenProps) {
   const ticketdatenliste =
     props.tarifrechnerResponse.antwortliste[0].ticketdatenliste;
 
@@ -20,7 +20,7 @@ export default function Tarifangaben(props: TarifangabenProps) {
                 className="list-group-item d-flex justify-content-between align-items-start"
                 key={index.toString()}
               >
-                <TicketDetailsEfa ticket={ticket} />
+                <TicketDetailsDvb ticket={ticket} />
               </li>
             );
           })}

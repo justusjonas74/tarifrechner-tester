@@ -5,14 +5,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
 
-import { IEFA_ANTWORTLISTE } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
+import {
+  IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
+  IEFA_ANTWORTLISTE,
+} from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
 import { useEffect, useState } from "react";
 import Tarifangaben from "./Tarifangaben";
-import tarifrechnerAnfrage from "@/lib/tarifrechnerAnfrage";
+import {
+  tarifrechnerEfaAnfrage,
+  tarifrechnerDvbAngebotsinfoAnfrage,
+} from "@/lib/tarifrechnerAnfrage";
 import CollapseComponent from "./CollapseComponent";
 import { toast } from "react-toastify";
 import { optimizeJSONForPostman } from "@/lib/postman";
 import copyTextToClipboard from "@/lib/copyToClipboard";
+import TarifangabenDVBMOB from "./TarifangabenDVBMOB";
 
 interface TarifrechnerComponentProps {
   selectedTrip: ITrip;
@@ -24,19 +31,35 @@ export default function TarifrechnerComponent(
   const [efaAntwort, setEfaAntwort] = useState<IEFA_ANTWORTLISTE | undefined>(
     undefined
   );
+  const [dvbAngebotsinfoAntwort, setDvbAngebotsinfoAntwort] = useState<
+    IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG | undefined
+  >(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [jsonRequest, setJSONRequest] = useState<string | undefined>(undefined);
+  const [
+    dvbAngebotsAnfrageJsonRequestData,
+    setdvbAngebotsAnfrageJsonRequestData,
+  ] = useState<string | undefined>(undefined);
+  const [efaJsonRequestData, setEfaJsonRequestData] = useState<
+    string | undefined
+  >(undefined);
   const trip = props.selectedTrip;
 
   useEffect(() => {
     const sendRequest = async () => {
       try {
-        const efaAnfrage = tarifrechnerAnfrage(trip);
-        setJSONRequest(efaAnfrage.dataToJSON());
         setIsLoading(true);
+        const efaAnfrage = tarifrechnerEfaAnfrage(trip);
+        setEfaJsonRequestData(efaAnfrage.dataToJSON());
         const response = await efaAnfrage.sendRequest();
         if (response) {
           setEfaAntwort(response);
+        }
+        const dvbAngebotsAnfrage = tarifrechnerDvbAngebotsinfoAnfrage(trip);
+        setdvbAngebotsAnfrageJsonRequestData(dvbAngebotsAnfrage.dataToJSON());
+        const dvbAngebotsAnfrageResponse =
+          await dvbAngebotsAnfrage.sendRequest();
+        if (dvbAngebotsAnfrageResponse) {
+          setDvbAngebotsinfoAntwort(dvbAngebotsAnfrageResponse);
         }
         setIsLoading(false);
       } catch (error) {
@@ -50,7 +73,7 @@ export default function TarifrechnerComponent(
   }, [trip]);
 
   const copyPostManJSONToClipboard = () => {
-    const data = jsonRequest;
+    const data = efaJsonRequestData;
     if (data) {
       const optimizedData = optimizeJSONForPostman(data);
       copyTextToClipboard(optimizedData);
@@ -67,15 +90,27 @@ export default function TarifrechnerComponent(
           <span className="visually-hidden">Loading...</span>
         </div>
       )}
-      {!isLoading && efaAntwort && (
+      {!isLoading && efaAntwort && dvbAngebotsinfoAntwort && (
         <>
           <div className="row">
             <div className="col-sm-4">
               <div className=" card shadow-sm rounded border">
                 <div className="card-header">
-                  <h5 className="card-title">Tarifrechnerantwort</h5>
+                  <h5 className="card-title">
+                    Tarifrechner Angebotsinfo (EFA)
+                  </h5>
                 </div>
                 <Tarifangaben tarifrechnerResponse={efaAntwort} />
+              </div>
+              <div className=" card shadow-sm rounded border">
+                <div className="card-header">
+                  <h5 className="card-title">
+                    Tarifrechner Angebotsinfo (DVB_MOB)
+                  </h5>
+                </div>
+                <TarifangabenDVBMOB
+                  tarifrechnerResponse={dvbAngebotsinfoAntwort}
+                />
               </div>
             </div>
             <div className="col-sm-8">
@@ -95,13 +130,16 @@ export default function TarifrechnerComponent(
                     />
                   </CollapseComponent>
                 )}
-                {jsonRequest && (
+                {efaJsonRequestData && (
                   <CollapseComponent
                     chevronText="Tarifrechner-Request (JSON)"
                     id="collapse-json-request"
                     textClassName="fw-semibold fs-5"
                   >
-                    <HighlightComponent code={jsonRequest} language="json" />
+                    <HighlightComponent
+                      code={efaJsonRequestData}
+                      language="json"
+                    />
                   </CollapseComponent>
                 )}
                 <CollapseComponent

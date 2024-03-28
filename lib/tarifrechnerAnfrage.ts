@@ -1,9 +1,12 @@
 import "dotenv/config";
 import { ITrip } from "dvbjs";
-import { EFA_ANFRAGE } from "pkm-tarifrechner";
+import {
+  EFA_ANFRAGE,
+  DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
+} from "pkm-tarifrechner";
 import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/trRequest";
 
-export default function tarifrechnerAnfrage(trip: ITrip) {
+const getConfig = () => {
   const api_key = process.env.NEXT_PUBLIC_APIKEY;
   const api_key_header = api_key ? { "X-Api-Key": api_key } : {};
   const bundleId = process.env.NEXT_PUBLIC_BUNDLEID;
@@ -21,5 +24,15 @@ export default function tarifrechnerAnfrage(trip: ITrip) {
       },
     },
   };
+  return config;
+};
+
+export function tarifrechnerEfaAnfrage(trip: ITrip) {
+  const config = getConfig();
   return EFA_ANFRAGE.fromITrip(trip, config);
+}
+
+export function tarifrechnerDvbAngebotsinfoAnfrage(trip: ITrip) {
+  const config = getConfig();
+  return DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG.fromITrip(trip, config);
 }
