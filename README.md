@@ -3,6 +3,8 @@
 ## Build 
 
 ```bash
+docker pull node:20-alpine # optional
+
 cd .. # Build Context must include private dependency tarifrechner-sst which is inside the parrent folder 
 
 sudo docker build -t tr-tester-docker -f ./tarifrechner-tester/Dockerfile .
