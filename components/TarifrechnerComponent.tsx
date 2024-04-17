@@ -72,8 +72,8 @@ export default function TarifrechnerComponent(
     sendRequest();
   }, [trip]);
 
-  const copyPostManJSONToClipboard = () => {
-    const data = efaJsonRequestData;
+  const copyPostManJSONToClipboard = (data: string | undefined) => {
+    // const data = efaJsonRequestData;
     if (data) {
       const optimizedData = optimizeJSONForPostman(data);
       copyTextToClipboard(optimizedData);
@@ -81,6 +81,14 @@ export default function TarifrechnerComponent(
     } else {
       toast.error("Ein Fehler ist aufgetreten.");
     }
+  };
+
+  const copyDVBPostManJSONToClipboard = () => {
+    copyPostManJSONToClipboard(dvbAngebotsAnfrageJsonRequestData);
+  };
+
+  const copyEFAPostManJSONToClipboard = () => {
+    copyPostManJSONToClipboard(efaJsonRequestData);
   };
 
   return (
@@ -92,79 +100,149 @@ export default function TarifrechnerComponent(
       )}
       {!isLoading && efaAntwort && dvbAngebotsinfoAntwort && (
         <>
-          <div className="row">
-            <div className="col-sm-4">
-              <div className=" card shadow-sm rounded border">
-                <div className="card-header">
-                  <h5 className="card-title">
-                    Tarifrechner Angebotsinfo (EFA)
-                  </h5>
+          <CollapseComponent
+            chevronText="EFA"
+            id="collapse-tarifrechner-efa-angebotsinfo"
+            textClassName="fw-bold fs-4"
+            isOpen
+          >
+            <div className="row">
+              <div className="col-sm-4">
+                <div className=" card shadow-sm rounded border">
+                  <div className="card-header">
+                    <h5 className="card-title">
+                      Tarifrechner Angebotsinfo (EFA)
+                    </h5>
+                  </div>
+                  <Tarifangaben tarifrechnerResponse={efaAntwort} />
                 </div>
-                <Tarifangaben tarifrechnerResponse={efaAntwort} />
               </div>
-              <div className=" card shadow-sm rounded border">
-                <div className="card-header">
-                  <h5 className="card-title">
-                    Tarifrechner Angebotsinfo (DVB_MOB)
-                  </h5>
+              <div className="col-sm-8">
+                <div className=" card shadow-sm rounded border">
+                  <div className="card-header">
+                    <h5 className="card-title">JSON-Daten</h5>
+                  </div>
+                  {props.selectedTrip && (
+                    <CollapseComponent
+                      chevronText="Verbindungsdaten (JSON)"
+                      id="collapse-json-request"
+                      textClassName="fw-semibold fs-5"
+                    >
+                      <HighlightComponent
+                        code={JSON.stringify(props.selectedTrip, undefined, 2)}
+                        language="json"
+                      />
+                    </CollapseComponent>
+                  )}
+                  {efaJsonRequestData && (
+                    <CollapseComponent
+                      chevronText="Tarifrechner-Request (JSON)"
+                      id="collapse-json-request"
+                      textClassName="fw-semibold fs-5"
+                    >
+                      <HighlightComponent
+                        code={efaJsonRequestData}
+                        language="json"
+                      />
+                    </CollapseComponent>
+                  )}
+                  <CollapseComponent
+                    chevronText="Tarifrechner-Response (JSON)"
+                    id="collapse-json-response"
+                    textClassName="fw-semibold fs-5"
+                  >
+                    <HighlightComponent
+                      code={JSON.stringify(efaAntwort, undefined, 2)}
+                      language="json"
+                    />
+                  </CollapseComponent>
+                  <div className="d-grid">
+                    <Button
+                      onClick={copyEFAPostManJSONToClipboard}
+                      variant="light"
+                      className="my-1"
+                    >
+                      <FontAwesomeIcon icon={faClipboard} className="mx-2" />
+                      Kopiere Postman-Testfall
+                    </Button>
+                  </div>
                 </div>
-                <TarifangabenDVBMOB
-                  tarifrechnerResponse={dvbAngebotsinfoAntwort}
-                />
               </div>
             </div>
-            <div className="col-sm-8">
-              <div className=" card shadow-sm rounded border">
-                <div className="card-header">
-                  <h5 className="card-title">JSON-Daten</h5>
-                </div>
-                {props.selectedTrip && (
-                  <CollapseComponent
-                    chevronText="Verbindungsdaten (JSON)"
-                    id="collapse-json-request"
-                    textClassName="fw-semibold fs-5"
-                  >
-                    <HighlightComponent
-                      code={JSON.stringify(props.selectedTrip, undefined, 2)}
-                      language="json"
-                    />
-                  </CollapseComponent>
-                )}
-                {efaJsonRequestData && (
-                  <CollapseComponent
-                    chevronText="Tarifrechner-Request (JSON)"
-                    id="collapse-json-request"
-                    textClassName="fw-semibold fs-5"
-                  >
-                    <HighlightComponent
-                      code={efaJsonRequestData}
-                      language="json"
-                    />
-                  </CollapseComponent>
-                )}
-                <CollapseComponent
-                  chevronText="Tarifrechner-Response (JSON)"
-                  id="collapse-json-response"
-                  textClassName="fw-semibold fs-5"
-                >
-                  <HighlightComponent
-                    code={JSON.stringify(efaAntwort, undefined, 2)}
-                    language="json"
+          </CollapseComponent>
+          <CollapseComponent
+            chevronText="DVB MOBI-Plattform"
+            id="collapse-tarifrechner-dvb-mobi-angebotsinfo"
+            textClassName="fw-bold fs-4"
+          >
+            <div className="row">
+              <div className="col-sm-4">
+                <div className=" card shadow-sm rounded border">
+                  <div className="card-header">
+                    <h5 className="card-title">Tarifrechner Angebotsinfo</h5>
+                  </div>
+                  <TarifangabenDVBMOB
+                    tarifrechnerResponse={dvbAngebotsinfoAntwort}
                   />
-                </CollapseComponent>
-                <div className="d-grid">
-                  <Button
-                    onClick={copyPostManJSONToClipboard}
-                    variant="light"
-                    className="my-1"
+                </div>
+              </div>
+              <div className="col-sm-8">
+                <div className=" card shadow-sm rounded border">
+                  <div className="card-header">
+                    <h5 className="card-title">JSON-Daten</h5>
+                  </div>
+                  {props.selectedTrip && (
+                    <CollapseComponent
+                      chevronText="Verbindungsdaten (JSON)"
+                      id="collapse-json-request"
+                      textClassName="fw-semibold fs-5"
+                    >
+                      <HighlightComponent
+                        code={JSON.stringify(props.selectedTrip, undefined, 2)}
+                        language="json"
+                      />
+                    </CollapseComponent>
+                  )}
+                  {dvbAngebotsAnfrageJsonRequestData && (
+                    <CollapseComponent
+                      chevronText="Tarifrechner-Request (JSON)"
+                      id="collapse-json-request"
+                      textClassName="fw-semibold fs-5"
+                    >
+                      <HighlightComponent
+                        code={dvbAngebotsAnfrageJsonRequestData}
+                        language="json"
+                      />
+                    </CollapseComponent>
+                  )}
+                  <CollapseComponent
+                    chevronText="Tarifrechner-Response (JSON)"
+                    id="collapse-json-response"
+                    textClassName="fw-semibold fs-5"
                   >
-                    <FontAwesomeIcon icon={faClipboard} className="mx-2" />
-                    Kopiere Postman-Testfall
-                  </Button>
+                    <HighlightComponent
+                      code={JSON.stringify(
+                        dvbAngebotsinfoAntwort,
+                        undefined,
+                        2
+                      )}
+                      language="json"
+                    />
+                  </CollapseComponent>
+                  <div className="d-grid">
+                    <Button
+                      onClick={copyDVBPostManJSONToClipboard}
+                      variant="light"
+                      className="my-1"
+                    >
+                      <FontAwesomeIcon icon={faClipboard} className="mx-2" />
+                      Kopiere Postman-Testfall
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </CollapseComponent>
         </>
       )}
     </>
