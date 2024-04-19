@@ -3,7 +3,9 @@ import { ITrip } from "dvbjs";
 import {
   EFA_ANFRAGE,
   DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
+  DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN,
 } from "pkm-tarifrechner";
+import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
 import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/trRequest";
 
 const getConfig = () => {
@@ -35,4 +37,14 @@ export function tarifrechnerEfaAnfrage(trip: ITrip) {
 export function tarifrechnerDvbAngebotsinfoAnfrage(trip: ITrip) {
   const config = getConfig();
   return DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG.fromITrip(trip, config);
+}
+
+export function tarifrechnerDvbKaufangeboteNachEingabedaten(
+  eingabedaten: IEINGABEDATEN
+) {
+  const config = getConfig();
+  return DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN.fromEingabedaten(
+    eingabedaten,
+    config
+  );
 }
