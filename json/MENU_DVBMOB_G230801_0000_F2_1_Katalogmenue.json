@@ -1,0 +1,1398 @@
+{
+  "tarifprodukte": [
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 100,
+      "ProduktbezeichnungText": "Einzelfahrt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 100,
+      "ProduktbezeichnungText": "Einzelfahrt",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 100,
+      "ProduktbezeichnungText": "Einzelfahrt",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 100,
+      "ProduktbezeichnungText": "Einzelfahrt",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 100,
+      "ProduktbezeichnungText": "Einzelfahrt",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 150,
+      "ProduktbezeichnungText": "Einzelfahrt ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 150,
+      "ProduktbezeichnungText": "Einzelfahrt ermäßigt",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 150,
+      "ProduktbezeichnungText": "Einzelfahrt ermäßigt",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 150,
+      "ProduktbezeichnungText": "Einzelfahrt ermäßigt",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 150,
+      "ProduktbezeichnungText": "Einzelfahrt ermäßigt",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 102,
+      "ProduktbezeichnungText": "4er-Karte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 102,
+      "ProduktbezeichnungText": "4er-Karte",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 102,
+      "ProduktbezeichnungText": "4er-Karte",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 102,
+      "ProduktbezeichnungText": "4er-Karte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 152,
+      "ProduktbezeichnungText": "4er-Karte ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 152,
+      "ProduktbezeichnungText": "4er-Karte ermäßigt",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 152,
+      "ProduktbezeichnungText": "4er-Karte ermäßigt",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 152,
+      "ProduktbezeichnungText": "4er-Karte ermäßigt",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 312,
+      "ProduktbezeichnungText": "Fahrradmonatskarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 204,
+      "ProduktbezeichnungText": "FahrradtagesKarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 204,
+      "ProduktbezeichnungText": "FahrradtagesKarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 200,
+      "ProduktbezeichnungText": "Tageskarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 200,
+      "ProduktbezeichnungText": "Tageskarte",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 200,
+      "ProduktbezeichnungText": "Tageskarte",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 200,
+      "ProduktbezeichnungText": "Tageskarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 250,
+      "ProduktbezeichnungText": "Tageskarte ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 250,
+      "ProduktbezeichnungText": "Tageskarte ermäßigt",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 250,
+      "ProduktbezeichnungText": "Tageskarte ermäßigt",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 250,
+      "ProduktbezeichnungText": "Tageskarte ermäßigt",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 202,
+      "ProduktbezeichnungText": "Familientageskarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 202,
+      "ProduktbezeichnungText": "Familientageskarte",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 202,
+      "ProduktbezeichnungText": "Familientageskarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 203,
+      "ProduktbezeichnungText": "Kleingruppenkarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 203,
+      "ProduktbezeichnungText": "Kleingruppenkarte",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 203,
+      "ProduktbezeichnungText": "Kleingruppenkarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 201,
+      "ProduktbezeichnungText": "NachtTicket",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 352,
+      "ProduktbezeichnungText": "Monatskarte ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 352,
+      "ProduktbezeichnungText": "Monatskarte ermäßigt",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 352,
+      "ProduktbezeichnungText": "Monatskarte ermäßigt",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 352,
+      "ProduktbezeichnungText": "Monatskarte ermäßigt",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 3,
+      "Anmerkung DVB": 3,
+      "Amerkung VVO": "3 ist korrekt"
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 352,
+      "ProduktbezeichnungText": "Monatskarte ermäßigt",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 350,
+      "ProduktbezeichnungText": "Wochenkarte ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 350,
+      "ProduktbezeichnungText": "Wochenkarte ermäßigt",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 350,
+      "ProduktbezeichnungText": "Wochenkarte ermäßigt",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 350,
+      "ProduktbezeichnungText": "Wochenkarte ermäßigt",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 3
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 350,
+      "ProduktbezeichnungText": "Wochenkarte ermäßigt",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 302,
+      "ProduktbezeichnungText": "Monatskarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 302,
+      "ProduktbezeichnungText": "Monatskarte",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 302,
+      "ProduktbezeichnungText": "Monatskarte",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 302,
+      "ProduktbezeichnungText": "Monatskarte",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 3
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 302,
+      "ProduktbezeichnungText": "Monatskarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 305,
+      "ProduktbezeichnungText": "9-Uhr-Monatskarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 305,
+      "ProduktbezeichnungText": "9-Uhr-Monatskarte",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": 305,
+      "Amerkung VVO": " ProduktbezeichnungNr angepasst (war 306, ist nun 305)"
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 305,
+      "ProduktbezeichnungText": "9-Uhr-Monatskarte",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2,
+      "Anmerkung DVB": 305,
+      "Amerkung VVO": " ProduktbezeichnungNr angepasst (war 307, ist nun 305)"
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 305,
+      "ProduktbezeichnungText": "9-Uhr-Monatskarte",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 3,
+      "Anmerkung DVB": 305,
+      "Amerkung VVO": " ProduktbezeichnungNr angepasst (war 308, ist nun 305)"
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 305,
+      "ProduktbezeichnungText": "9-Uhr-Monatskarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": 305,
+      "Amerkung VVO": " ProduktbezeichnungNr angepasst (war 309, ist nun 305)"
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 300,
+      "ProduktbezeichnungText": "Wochenkarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 4
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 300,
+      "ProduktbezeichnungText": "Wochenkarte",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 300,
+      "ProduktbezeichnungText": "Wochenkarte",
+      "GebietsparameterNr": 16,
+      "GebietsparameterText": "2 Tarifzonen",
+      "Zonenwahl": 2
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 300,
+      "ProduktbezeichnungText": "Wochenkarte",
+      "GebietsparameterNr": 18,
+      "GebietsparameterText": "3 Tarifzonen",
+      "Zonenwahl": 3
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 300,
+      "ProduktbezeichnungText": "Wochenkarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 301,
+      "ProduktbezeichnungText": "Übergang 1.Klasse Wochenkarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 303,
+      "ProduktbezeichnungText": "Übergang 1.Klasse Monatskarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 205,
+      "ProduktbezeichnungText": "Übergang 1.Klasse Tageskarte",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 1
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 205,
+      "ProduktbezeichnungText": "Übergang 1.Klasse Tageskarte",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 255,
+      "ProduktbezeichnungText": "Übergang 1.Klasse Tageskarte ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 1,
+      "Anmerkung DVB": 255,
+      "Amerkung VVO": " ProduktbezeichnungNr angepasst (war 254, ist nun 255)"
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 255,
+      "ProduktbezeichnungText": "Übergang 1.Klasse Tageskarte ermäßigt",
+      "GebietsparameterNr": 20,
+      "GebietsparameterText": "VVO-Verbundraum",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": 255,
+      "Amerkung VVO": " ProduktbezeichnungNr angepasst (war 254, ist nun 255)"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 500,
+      "ProduktbezeichnungText": "Fähre Einzelfahrt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 550,
+      "ProduktbezeichnungText": "Fähre Einzelfahrt ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 504,
+      "ProduktbezeichnungText": "Fähre Hin- und Rückfahrt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Fähre Hin- und Rückfahrt",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 554,
+      "ProduktbezeichnungText": "Fähre Hin- und Rückfahrt ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Fähre Hin- und Rückfahrt ermäßigt",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 502,
+      "ProduktbezeichnungText": "Fähre Einzelfahrt Fzg inkl. Fahrer",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 503,
+      "ProduktbezeichnungText": "Fähre Einzelfahrt Fzg inkl. Fahrer rabattiert",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 501,
+      "ProduktbezeichnungText": "Fähre Einzelfahrt Rad inkl. Fahrer",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 505,
+      "ProduktbezeichnungText": "Fähre Hin- und Rückfahrt Rad inkl. Fahrer",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Fähre Hin- und Rückfahrt Rad inkl. Fahrer",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 506,
+      "ProduktbezeichnungText": "Fähre Hin- und Rückfahrt Fzg inkl. Fahrer",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Fähre Hin- und Rückfahrt Fzg inkl. Fahrer",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 551,
+      "ProduktbezeichnungText": "Fähre Einzelfahrt Rad inkl. Fahrer ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 555,
+      "ProduktbezeichnungText": "Fähre Hin- und Rückfahrt Rad inkl. Fahrer ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Fähre Hin- und Rückfahrt Rad inkl. Fahrer ermäßigt",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 553,
+      "ProduktbezeichnungText": "Fähre Hin- und Rückfahrt Fzg inkl. Fahrer rabattiert",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Fähre Hin- und Rückfahrt Fzg inkl. Fahrer rabattiert",
+      "Amerkung VVO": "Texte sind passend;"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 511,
+      "ProduktbezeichnungText": "Fähre 10er-Karte",
+      "GebietsparameterNr": 0,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Amerkung VVO": "ProduktbezeichnungNr angepasst (war 501, ist nun 511)"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 561,
+      "ProduktbezeichnungText": "Fähre 10er-Karte ermäßigt",
+      "GebietsparameterNr": 0,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Amerkung VVO": "ProduktbezeichnungNr angepasst (war 551, ist nun 561)"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 512,
+      "ProduktbezeichnungText": "Fähre 10er-Karte Fzg inkl. Fahrer",
+      "GebietsparameterNr": 0,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Amerkung VVO": "ProduktbezeichnungNr angepasst (war 502, ist nun 512)"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 507,
+      "ProduktbezeichnungText": "Bergbahn Einzelfahrt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn Einzelfahrt",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 557,
+      "ProduktbezeichnungText": "Bergbahn Einzelfahrt ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn Einzelfahrt ermäßigt",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 508,
+      "ProduktbezeichnungText": "Bergbahn Hin- und Rückfahrt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn Hin- und Rückfahrt",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 558,
+      "ProduktbezeichnungText": "Bergbahn Hin- und Rückfahrt ermäßigt",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn Hin- und Rückfahrt ermäßigt",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 568,
+      "ProduktbezeichnungText": "Bergbahn Hin- und Rückfahrt Familie",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn Hin- und Rückfahrt Familie",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 513,
+      "ProduktbezeichnungText": "Bergbahn 12er-Karte",
+      "GebietsparameterNr": 0,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn 12er-Karte",
+      "Amerkung VVO": "Texte sind passend; ProduktbezeichnungNr angepasst (war 503, ist nun 513)"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 563,
+      "ProduktbezeichnungText": "Bergbahn 12er-Karte ermäßigt",
+      "GebietsparameterNr": 0,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn 12er-Karte ermäßigt",
+      "Amerkung VVO": "Texte sind passend; ProduktbezeichnungNr angepasst (war 553, ist nun 563)"
+    },
+    {
+      "PVNr": 6013,
+      "PVText": "DVB",
+      "ProduktbezeichnungNr": 566,
+      "ProduktbezeichnungText": "Bergbahn Einzelfahrt Familie",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "-",
+      "Zonenwahl": 0,
+      "Anmerkung DVB": "Bergbahn Einzelfahrt Familie",
+      "Amerkung VVO": "Texte sind passend"
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 103,
+      "ProduktbezeichnungText": "4er-Karte DD-Pass",
+      "GebietsparameterNr": 12,
+      "GebietsparameterText": "1 Tarifzone",
+      "Zonenwahl": 0
+    },
+    {
+      "PVNr": 6060,
+      "PVText": "VVO",
+      "ProduktbezeichnungNr": 304,
+      "ProduktbezeichnungText": "Monatskarte DD-Pass",
+      "GebietsparameterNr": 14,
+      "GebietsparameterText": "Tarifzone Dresden",
+      "Zonenwahl": 0
+    }
+  ],
+  "zonenwahl": [
+    [
+      [{ "nr": "10", "name": "Dresden" }],
+      [{ "nr": "20", "name": "Hoyerswerda" }],
+      [{ "nr": "30", "name": "Kamenz" }],
+      [{ "nr": "31", "name": "Radeberg" }],
+      [{ "nr": "32", "name": "Wittichenau" }],
+      [{ "nr": "33", "name": "Lauta" }],
+      [{ "nr": "34", "name": "Königsbrück" }],
+      [{ "nr": "40", "name": "Großenhain" }],
+      [{ "nr": "41", "name": "Riesa" }],
+      [{ "nr": "42", "name": "Thiendorf" }],
+      [{ "nr": "43", "name": "Gröditz" }],
+      [{ "nr": "50", "name": "Meißen" }],
+      [{ "nr": "51", "name": "Nossen" }],
+      [{ "nr": "52", "name": "Radebeul" }],
+      [{ "nr": "60", "name": "Dippoldiswalde" }],
+      [{ "nr": "61", "name": "Freital" }],
+      [{ "nr": "63", "name": "Altenberg" }],
+      [{ "nr": "70", "name": "Pirna" }],
+      [{ "nr": "71", "name": "Bad Gottleuba" }],
+      [{ "nr": "72", "name": "Bad Schandau" }],
+      [{ "nr": "73", "name": "Neustadt" }],
+      [{ "nr": "81", "name": "Bischofswerda Bus" }],
+      [{ "nr": "82", "name": "Königswartha" }],
+      [{ "nr": "92", "name": "Spremberg" }],
+      [{ "nr": "93", "name": "Elsterwerda" }],
+      [{ "nr": "94", "name": "Mühlberg" }],
+      [{ "nr": "96", "name": "Döbeln" }],
+      [{ "nr": "97", "name": "Hetzdorf" }],
+      [{ "nr": "98", "name": "Bienenmühle" }]
+    ],
+    [
+      [
+        { "nr": "10", "name": "Dresden" },
+        { "nr": "31", "name": "Radeberg" }
+      ],
+      [
+        { "nr": "10", "name": "Dresden" },
+        { "nr": "34", "name": "Königsbrück" }
+      ],
+      [
+        { "nr": "10", "name": "Dresden" },
+        { "nr": "51", "name": "Nossen" }
+      ],
+      [
+        { "nr": "10", "name": "Dresden" },
+        { "nr": "52", "name": "Radebeul" }
+      ],
+      [
+        { "nr": "10", "name": "Dresden" },
+        { "nr": "61", "name": "Freital" }
+      ],
+      [
+        { "nr": "10", "name": "Dresden" },
+        { "nr": "70", "name": "Pirna" }
+      ],
+      [
+        { "nr": "20", "name": "Hoyerswerda" },
+        { "nr": "32", "name": "Wittichenau" }
+      ],
+      [
+        { "nr": "20", "name": "Hoyerswerda" },
+        { "nr": "33", "name": "Lauta" }
+      ],
+      [
+        { "nr": "30", "name": "Kamenz" },
+        { "nr": "31", "name": "Radeberg" }
+      ],
+      [
+        { "nr": "30", "name": "Kamenz" },
+        { "nr": "32", "name": "Wittichenau" }
+      ],
+      [
+        { "nr": "30", "name": "Kamenz" },
+        { "nr": "33", "name": "Lauta" }
+      ],
+      [
+        { "nr": "30", "name": "Kamenz" },
+        { "nr": "34", "name": "Königsbrück" }
+      ],
+      [
+        { "nr": "30", "name": "Kamenz" },
+        { "nr": "81", "name": "Bischofswerda Bus" }
+      ],
+      [
+        { "nr": "31", "name": "Radeberg" },
+        { "nr": "10", "name": "Dresden" }
+      ],
+      [
+        { "nr": "31", "name": "Radeberg" },
+        { "nr": "30", "name": "Kamenz" }
+      ],
+      [
+        { "nr": "31", "name": "Radeberg" },
+        { "nr": "34", "name": "Königsbrück" }
+      ],
+      [
+        { "nr": "31", "name": "Radeberg" },
+        { "nr": "70", "name": "Pirna" }
+      ],
+      [
+        { "nr": "31", "name": "Radeberg" },
+        { "nr": "73", "name": "Neustadt" }
+      ],
+      [
+        { "nr": "31", "name": "Radeberg" },
+        { "nr": "81", "name": "Bischofswerda Bus" }
+      ],
+      [
+        { "nr": "32", "name": "Wittichenau" },
+        { "nr": "20", "name": "Hoyerswerda" }
+      ],
+      [
+        { "nr": "32", "name": "Wittichenau" },
+        { "nr": "30", "name": "Kamenz" }
+      ],
+      [
+        { "nr": "32", "name": "Wittichenau" },
+        { "nr": "33", "name": "Lauta" }
+      ],
+      [
+        { "nr": "32", "name": "Wittichenau" },
+        { "nr": "82", "name": "Königswartha" }
+      ],
+      [
+        { "nr": "33", "name": "Lauta" },
+        { "nr": "20", "name": "Hoyerswerda" }
+      ],
+      [
+        { "nr": "33", "name": "Lauta" },
+        { "nr": "30", "name": "Kamenz" }
+      ],
+      [
+        { "nr": "33", "name": "Lauta" },
+        { "nr": "32", "name": "Wittichenau" }
+      ],
+      [
+        { "nr": "33", "name": "Lauta" },
+        { "nr": "34", "name": "Königsbrück" }
+      ],
+      [
+        { "nr": "33", "name": "Lauta" },
+        { "nr": "42", "name": "Thiendorf" }
+      ],
+      [
+        { "nr": "33", "name": "Lauta" },
+        { "nr": "92", "name": "Spremberg" }
+      ],
+      [
+        { "nr": "34", "name": "Königsbrück" },
+        { "nr": "10", "name": "Dresden" }
+      ],
+      [
+        { "nr": "34", "name": "Königsbrück" },
+        { "nr": "30", "name": "Kamenz" }
+      ],
+      [
+        { "nr": "34", "name": "Königsbrück" },
+        { "nr": "31", "name": "Radeberg" }
+      ],
+      [
+        { "nr": "34", "name": "Königsbrück" },
+        { "nr": "33", "name": "Lauta" }
+      ],
+      [
+        { "nr": "34", "name": "Königsbrück" },
+        { "nr": "42", "name": "Thiendorf" }
+      ],
+      [
+        { "nr": "34", "name": "Königsbrück" },
+        { "nr": "52", "name": "Radebeul" }
+      ],
+      [
+        { "nr": "40", "name": "Großenhain" },
+        { "nr": "41", "name": "Riesa" }
+      ],
+      [
+        { "nr": "40", "name": "Großenhain" },
+        { "nr": "42", "name": "Thiendorf" }
+      ],
+      [
+        { "nr": "40", "name": "Großenhain" },
+        { "nr": "43", "name": "Gröditz" }
+      ],
+      [
+        { "nr": "40", "name": "Großenhain" },
+        { "nr": "50", "name": "Meißen" }
+      ],
+      [
+        { "nr": "40", "name": "Großenhain" },
+        { "nr": "52", "name": "Radebeul" }
+      ],
+      [
+        { "nr": "41", "name": "Riesa" },
+        { "nr": "40", "name": "Großenhain" }
+      ],
+      [
+        { "nr": "41", "name": "Riesa" },
+        { "nr": "43", "name": "Gröditz" }
+      ],
+      [
+        { "nr": "41", "name": "Riesa" },
+        { "nr": "50", "name": "Meißen" }
+      ],
+      [
+        { "nr": "41", "name": "Riesa" },
+        { "nr": "51", "name": "Nossen" }
+      ],
+      [
+        { "nr": "41", "name": "Riesa" },
+        { "nr": "94", "name": "Mühlberg" }
+      ],
+      [
+        { "nr": "42", "name": "Thiendorf" },
+        { "nr": "33", "name": "Lauta" }
+      ],
+      [
+        { "nr": "42", "name": "Thiendorf" },
+        { "nr": "34", "name": "Königsbrück" }
+      ],
+      [
+        { "nr": "42", "name": "Thiendorf" },
+        { "nr": "40", "name": "Großenhain" }
+      ],
+      [
+        { "nr": "42", "name": "Thiendorf" },
+        { "nr": "43", "name": "Gröditz" }
+      ],
+      [
+        { "nr": "42", "name": "Thiendorf" },
+        { "nr": "52", "name": "Radebeul" }
+      ],
+      [
+        { "nr": "43", "name": "Gröditz" },
+        { "nr": "40", "name": "Großenhain" }
+      ],
+      [
+        { "nr": "43", "name": "Gröditz" },
+        { "nr": "41", "name": "Riesa" }
+      ],
+      [
+        { "nr": "43", "name": "Gröditz" },
+        { "nr": "42", "name": "Thiendorf" }
+      ],
+      [
+        { "nr": "43", "name": "Gröditz" },
+        { "nr": "93", "name": "Elsterwerda" }
+      ],
+      [
+        { "nr": "50", "name": "Meißen" },
+        { "nr": "40", "name": "Großenhain" }
+      ],
+      [
+        { "nr": "50", "name": "Meißen" },
+        { "nr": "41", "name": "Riesa" }
+      ],
+      [
+        { "nr": "50", "name": "Meißen" },
+        { "nr": "51", "name": "Nossen" }
+      ],
+      [
+        { "nr": "50", "name": "Meißen" },
+        { "nr": "52", "name": "Radebeul" }
+      ],
+      [
+        { "nr": "51", "name": "Nossen" },
+        { "nr": "10", "name": "Dresden" }
+      ],
+      [
+        { "nr": "51", "name": "Nossen" },
+        { "nr": "41", "name": "Riesa" }
+      ],
+      [
+        { "nr": "51", "name": "Nossen" },
+        { "nr": "50", "name": "Meißen" }
+      ],
+      [
+        { "nr": "51", "name": "Nossen" },
+        { "nr": "52", "name": "Radebeul" }
+      ],
+      [
+        { "nr": "51", "name": "Nossen" },
+        { "nr": "61", "name": "Freital" }
+      ],
+      [
+        { "nr": "51", "name": "Nossen" },
+        { "nr": "96", "name": "Döbeln" }
+      ],
+      [
+        { "nr": "52", "name": "Radebeul" },
+        { "nr": "10", "name": "Dresden" }
+      ],
+      [
+        { "nr": "52", "name": "Radebeul" },
+        { "nr": "34", "name": "Königsbrück" }
+      ],
+      [
+        { "nr": "52", "name": "Radebeul" },
+        { "nr": "40", "name": "Großenhain" }
+      ],
+      [
+        { "nr": "52", "name": "Radebeul" },
+        { "nr": "42", "name": "Thiendorf" }
+      ],
+      [
+        { "nr": "52", "name": "Radebeul" },
+        { "nr": "50", "name": "Meißen" }
+      ],
+      [
+        { "nr": "52", "name": "Radebeul" },
+        { "nr": "51", "name": "Nossen" }
+      ],
+      [
+        { "nr": "60", "name": "Dippoldiswalde" },
+        { "nr": "61", "name": "Freital" }
+      ],
+      [
+        { "nr": "60", "name": "Dippoldiswalde" },
+        { "nr": "63", "name": "Altenberg" }
+      ],
+      [
+        { "nr": "60", "name": "Dippoldiswalde" },
+        { "nr": "98", "name": "Bienenmühle" }
+      ],
+      [
+        { "nr": "61", "name": "Freital" },
+        { "nr": "10", "name": "Dresden" }
+      ],
+      [
+        { "nr": "61", "name": "Freital" },
+        { "nr": "51", "name": "Nossen" }
+      ],
+      [
+        { "nr": "61", "name": "Freital" },
+        { "nr": "60", "name": "Dippoldiswalde" }
+      ],
+      [
+        { "nr": "61", "name": "Freital" },
+        { "nr": "71", "name": "Bad Gottleuba" }
+      ],
+      [
+        { "nr": "61", "name": "Freital" },
+        { "nr": "97", "name": "Hetzdorf" }
+      ],
+      [
+        { "nr": "63", "name": "Altenberg" },
+        { "nr": "60", "name": "Dippoldiswalde" }
+      ],
+      [
+        { "nr": "63", "name": "Altenberg" },
+        { "nr": "71", "name": "Bad Gottleuba" }
+      ],
+      [
+        { "nr": "63", "name": "Altenberg" },
+        { "nr": "98", "name": "Bienenmühle" }
+      ],
+      [
+        { "nr": "70", "name": "Pirna" },
+        { "nr": "10", "name": "Dresden" }
+      ],
+      [
+        { "nr": "70", "name": "Pirna" },
+        { "nr": "31", "name": "Radeberg" }
+      ],
+      [
+        { "nr": "70", "name": "Pirna" },
+        { "nr": "71", "name": "Bad Gottleuba" }
+      ],
+      [
+        { "nr": "70", "name": "Pirna" },
+        { "nr": "72", "name": "Bad Schandau" }
+      ],
+      [
+        { "nr": "70", "name": "Pirna" },
+        { "nr": "73", "name": "Neustadt" }
+      ],
+      [
+        { "nr": "71", "name": "Bad Gottleuba" },
+        { "nr": "61", "name": "Freital" }
+      ],
+      [
+        { "nr": "71", "name": "Bad Gottleuba" },
+        { "nr": "63", "name": "Altenberg" }
+      ],
+      [
+        { "nr": "71", "name": "Bad Gottleuba" },
+        { "nr": "70", "name": "Pirna" }
+      ],
+      [
+        { "nr": "71", "name": "Bad Gottleuba" },
+        { "nr": "72", "name": "Bad Schandau" }
+      ],
+      [
+        { "nr": "72", "name": "Bad Schandau" },
+        { "nr": "70", "name": "Pirna" }
+      ],
+      [
+        { "nr": "72", "name": "Bad Schandau" },
+        { "nr": "71", "name": "Bad Gottleuba" }
+      ],
+      [
+        { "nr": "72", "name": "Bad Schandau" },
+        { "nr": "73", "name": "Neustadt" }
+      ],
+      [
+        { "nr": "73", "name": "Neustadt" },
+        { "nr": "31", "name": "Radeberg" }
+      ],
+      [
+        { "nr": "73", "name": "Neustadt" },
+        { "nr": "70", "name": "Pirna" }
+      ],
+      [
+        { "nr": "73", "name": "Neustadt" },
+        { "nr": "72", "name": "Bad Schandau" }
+      ],
+      [
+        { "nr": "73", "name": "Neustadt" },
+        { "nr": "81", "name": "Bischofswerda Bus" }
+      ],
+      [
+        { "nr": "81", "name": "Bischofswerda Bus" },
+        { "nr": "30", "name": "Kamenz" }
+      ],
+      [
+        { "nr": "81", "name": "Bischofswerda Bus" },
+        { "nr": "31", "name": "Radeberg" }
+      ],
+      [
+        { "nr": "81", "name": "Bischofswerda Bus" },
+        { "nr": "73", "name": "Neustadt" }
+      ],
+      [
+        { "nr": "82", "name": "Königswartha" },
+        { "nr": "32", "name": "Wittichenau" }
+      ],
+      [
+        { "nr": "92", "name": "Spremberg" },
+        { "nr": "33", "name": "Lauta" }
+      ],
+      [
+        { "nr": "93", "name": "Elsterwerda" },
+        { "nr": "43", "name": "Gröditz" }
+      ],
+      [
+        { "nr": "94", "name": "Mühlberg" },
+        { "nr": "41", "name": "Riesa" }
+      ],
+      [
+        { "nr": "96", "name": "Döbeln" },
+        { "nr": "51", "name": "Nossen" }
+      ],
+      [
+        { "nr": "97", "name": "Hetzdorf" },
+        { "nr": "61", "name": "Freital" }
+      ],
+      [
+        { "nr": "98", "name": "Bienenmühle" },
+        { "nr": "60", "name": "Dippoldiswalde" }
+      ],
+      [
+        { "nr": "98", "name": "Bienenmühle" },
+        { "nr": "63", "name": "Altenberg" }
+      ]
+    ],
+    [
+      [{ "nr": "10", "name": "Dresden" }],
+      [{ "nr": "20", "name": "Hoyerswerda" }],
+      [{ "nr": "30", "name": "Kamenz" }],
+      [{ "nr": "31", "name": "Radeberg" }],
+      [{ "nr": "32", "name": "Wittichenau" }],
+      [{ "nr": "33", "name": "Lauta" }],
+      [{ "nr": "34", "name": "Königsbrück" }],
+      [{ "nr": "40", "name": "Großenhain" }],
+      [{ "nr": "41", "name": "Riesa" }],
+      [{ "nr": "42", "name": "Thiendorf" }],
+      [{ "nr": "43", "name": "Gröditz" }],
+      [{ "nr": "50", "name": "Meißen" }],
+      [{ "nr": "51", "name": "Nossen" }],
+      [{ "nr": "52", "name": "Radebeul" }],
+      [{ "nr": "60", "name": "Dippoldiswalde" }],
+      [{ "nr": "61", "name": "Freital" }],
+      [{ "nr": "63", "name": "Altenberg" }],
+      [{ "nr": "70", "name": "Pirna" }],
+      [{ "nr": "71", "name": "Bad Gottleuba" }],
+      [{ "nr": "72", "name": "Bad Schandau" }],
+      [{ "nr": "73", "name": "Neustadt" }],
+      [{ "nr": "81", "name": "Bischofswerda Bus" }]
+    ],
+    [
+      [{ "nr": "20", "name": "Hoyerswerda" }],
+      [{ "nr": "30", "name": "Kamenz" }],
+      [{ "nr": "31", "name": "Radeberg" }],
+      [{ "nr": "32", "name": "Wittichenau" }],
+      [{ "nr": "33", "name": "Lauta" }],
+      [{ "nr": "34", "name": "Königsbrück" }],
+      [{ "nr": "40", "name": "Großenhain" }],
+      [{ "nr": "41", "name": "Riesa" }],
+      [{ "nr": "42", "name": "Thiendorf" }],
+      [{ "nr": "43", "name": "Gröditz" }],
+      [{ "nr": "50", "name": "Meißen" }],
+      [{ "nr": "51", "name": "Nossen" }],
+      [{ "nr": "52", "name": "Radebeul" }],
+      [{ "nr": "60", "name": "Dippoldiswalde" }],
+      [{ "nr": "61", "name": "Freital" }],
+      [{ "nr": "63", "name": "Altenberg" }],
+      [{ "nr": "70", "name": "Pirna" }],
+      [{ "nr": "71", "name": "Bad Gottleuba" }],
+      [{ "nr": "72", "name": "Bad Schandau" }],
+      [{ "nr": "73", "name": "Neustadt" }],
+      [{ "nr": "81", "name": "Bischofswerda Bus" }],
+      [{ "nr": "82", "name": "Königswartha" }],
+      [{ "nr": "92", "name": "Spremberg" }],
+      [{ "nr": "93", "name": "Elsterwerda" }],
+      [{ "nr": "94", "name": "Mühlberg" }],
+      [{ "nr": "96", "name": "Döbeln" }],
+      [{ "nr": "97", "name": "Hetzdorf" }],
+      [{ "nr": "98", "name": "Bienenmühle" }]
+    ]
+  ]
+}

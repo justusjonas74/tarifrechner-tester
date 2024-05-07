@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import { Inter } from "next/font/google";
 // import './globals.css'
 
 // add bootstrap css
 import "bootstrap/dist/css/bootstrap.css";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Tarifrechner Test-Tool",
@@ -24,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>{children}      <ToastContainer /></body>
     </html>
   );
 }

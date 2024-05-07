@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { ITrip } from "dvbjs";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./App.css";
 import RoutingComponent from "./RoutingComponent";
 import TarifrechnerComponent from "./TarifrechnerComponent";
@@ -67,7 +65,7 @@ export default function App() {
       <Tarifangebot handleProductsChange={this.handleProductsChange}/>}
       {isTripSelected &&
       <UseTestCaseComponent handleExportToFile={this.handleExportToFile} />} */}
-      <ToastContainer />
+
     </div>
   );
 }
