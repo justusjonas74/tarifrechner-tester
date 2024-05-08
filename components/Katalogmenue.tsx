@@ -1,19 +1,60 @@
 import { Button } from "react-bootstrap";
 import * as json from "../json/MENU_DVBMOB_G230801_0000_F2_1_Katalogmenue.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 export default function Katalogmenue() {
-  const { tarifprodukte } = json;
+  const { tarifprodukte, zonenwahl } = json;
   type pvType = { PVNr: number; PVText: string };
-  type produktType = {ProduktbezeichnungNr: number,
-    ProduktbezeichnungText: string}
+  type produktType = {
+    ProduktbezeichnungNr: number;
+    ProduktbezeichnungText: string;
+  };
+
+  type gebietsType = {
+    GebietsparameterNr: number;
+    GebietsparameterText: string;
+    Zonenwahl: number;
+  };
+
+  type zonenType = {
+    nr: string;
+    name: string;
+  }[];
+
   const [selectedPv, setSelectedPv] = useState<pvType | undefined>(undefined);
+  const [selectedProduct, setSelectedProduct] = useState<
+    produktType | undefined
+  >(undefined);
+  const [selectedGebiet, setSelectedGebiet] = useState<gebietsType | undefined>(
+    undefined
+  );
+  const [selectedZonen, setSelectedZonen] = useState<zonenType | undefined>(
+    undefined
+  );
 
+  useEffect(() => {
+    if (!selectedPv) {
+      setSelectedProduct(undefined);
+    }
+    if (!selectedProduct) {
+      setSelectedGebiet(undefined);
+    }
+    if (
+      selectedProduct &&
+      selectedPv &&
+      pvTarifproduktGebiete(selectedPv, selectedProduct).length == 1
+    ) {
+      setSelectedGebiet(pvTarifproduktGebiete(selectedPv, selectedProduct)[0]);
+    }
+    if (!selectedGebiet) {
+      setSelectedZonen(undefined);
+    }
+  }, [selectedGebiet, selectedPv, selectedProduct]);
 
-  const initialValue: { PVNr: number; PVText: string }[] = [];
+  const initialPvValue: { PVNr: number; PVText: string }[] = [];
   const pv = tarifprodukte
     .map((tp) => {
       const { PVNr, PVText } = tp;
@@ -24,68 +65,175 @@ export default function Katalogmenue() {
         accumulator.push(current);
       }
       return accumulator;
-    }, initialValue);
+    }, initialPvValue);
 
-    const intialPvTarifprodukte : produktType[] = []
-    const pvTarifprodukte = (pv:pvType) => tarifprodukte.filter(tp=>tp.PVNr === pv.PVNr)    
-    .map(tp => {
+  const intialPvTarifprodukte: produktType[] = [];
+  const pvTarifprodukte = (pv: pvType) =>
+    tarifprodukte
+      .filter((tp) => tp.PVNr === pv.PVNr)
+      .map((tp) => {
         const { ProduktbezeichnungNr, ProduktbezeichnungText } = tp;
-        return { ProduktbezeichnungNr, ProduktbezeichnungText }
-    })
-    .reduce((accumulator, current) => {
-        if (!accumulator.find((item) => item.ProduktbezeichnungNr === current.ProduktbezeichnungNr)) {
+        return { ProduktbezeichnungNr, ProduktbezeichnungText };
+      })
+      .reduce((accumulator, current) => {
+        if (
+          !accumulator.find(
+            (item) => item.ProduktbezeichnungNr === current.ProduktbezeichnungNr
+          )
+        ) {
           accumulator.push(current);
         }
         return accumulator;
-      },intialPvTarifprodukte );
-  
+      }, intialPvTarifprodukte);
+
+  const intialPvTarifproduktGebiete: gebietsType[] = [];
+  const pvTarifproduktGebiete = (pv: pvType, produkt: produktType) =>
+    tarifprodukte
+      .filter(
+        (tp) =>
+          tp.PVNr === pv.PVNr &&
+          tp.ProduktbezeichnungNr === produkt.ProduktbezeichnungNr
+      )
+      .map((tp) => {
+        const { GebietsparameterNr, GebietsparameterText, Zonenwahl } = tp;
+        return { GebietsparameterNr, GebietsparameterText, Zonenwahl };
+      })
+      .reduce((accumulator, current) => {
+        if (
+          !accumulator.find(
+            (item) => item.GebietsparameterNr === current.GebietsparameterNr
+          )
+        ) {
+          accumulator.push(current);
+        }
+        return accumulator;
+      }, intialPvTarifproduktGebiete);
 
   return (
     <>
       <div className="container">
-
-          <h1>Test Katalogmenü</h1>
-
-          {!selectedPv && (
+        <h1>Test Katalogmenü</h1>
+        {!selectedPv && (
+          <div className="d-grid gap-2 mx-auto">
+            {pv.map((pvItem) => (
+              <Button
+                size="lg"
+                onClick={() => setSelectedPv(pvItem)}
+                key={pvItem.PVText + "button"}
+              >
+                {pvItem.PVText + "-Tarif"}
+              </Button>
+            ))}
+          </div>
+        )}
+        {selectedPv && (
+          <>
+            <span className="fs-3">
+              <b>Tarif: </b>
+              {selectedPv.PVText}
+            </span>
+            <Button
+              type="button"
+              className="close m-1"
+              variant="light"
+              size="sm"
+              aria-label="Close"
+              onClick={() => setSelectedPv(undefined)}
+            >
+              <FontAwesomeIcon size="sm" icon={faPen} />
+            </Button>
+          </>
+        )}
+        {selectedPv && !selectedProduct && (
+          <>
             <div className="d-grid gap-2 mx-auto">
-              {pv.map((pvItem) => (
+              {pvTarifprodukte(selectedPv).map((tp) => (
                 <Button
-                  size="lg"
-                  onClick={() => setSelectedPv(pvItem)}
-                  key={pvItem.PVText + "button"}
+                  key={
+                    selectedPv.PVNr.toString() +
+                    tp.ProduktbezeichnungNr.toString()
+                  }
+                  onClick={() => setSelectedProduct(tp)}
                 >
-                  {pvItem.PVText + "-Tarif"}
+                  {tp.ProduktbezeichnungText}
                 </Button>
               ))}
             </div>
-          )}
-          {selectedPv && (
-            <>
-              <span className="fs-3">
-                <b>Tarif: </b>
-                {selectedPv.PVText}
-              </span>
-              <Button
-                type="button"
-                className="close m-1"
-                variant="light"
-                size="sm"
-                aria-label="Close"
-                onClick={() => setSelectedPv(undefined)}
-              >
-                <FontAwesomeIcon size="sm" icon={faPen} />
-              </Button>
-            </>
-          )}
-          {selectedPv && <>
+          </>
+        )}
+        {selectedPv && selectedProduct && (
+          <>
+            <span className="fs-3">
+              <b>Produkt: </b>
+              {selectedProduct.ProduktbezeichnungText}
+            </span>
+            <Button
+              type="button"
+              className="close m-1"
+              variant="light"
+              size="sm"
+              aria-label="Close"
+              onClick={() => setSelectedProduct(undefined)}
+            >
+              <FontAwesomeIcon size="sm" icon={faPen} />
+            </Button>
+          </>
+        )}
+        {selectedPv && selectedProduct && !selectedGebiet && (
+          <>
             <div className="d-grid gap-2 mx-auto">
-            {pvTarifprodukte(selectedPv).map(tp => <Button
-                key={selectedPv.PVNr.toString() + tp.ProduktbezeichnungNr.toString()}>
-                    {tp.ProduktbezeichnungText}
+              {pvTarifproduktGebiete(selectedPv, selectedProduct).map((tp) => (
+                <Button
+                  key={
+                    selectedPv.PVNr.toString() +
+                    selectedProduct.ProduktbezeichnungNr.toString() +
+                    tp.GebietsparameterNr.toString()
+                  }
+                  onClick={() => setSelectedGebiet(tp)}
+                >
+                  {tp.GebietsparameterText}
                 </Button>
-                )}
-                </div>
-            </>}
+              ))}
+            </div>
+          </>
+        )}
+        {selectedPv && selectedProduct && selectedGebiet && (
+          <>
+            <span className="fs-3">
+              <b>Gebiet: </b>
+              {selectedGebiet.GebietsparameterText}
+            </span>
+            <Button
+              type="button"
+              className="close m-1"
+              variant="light"
+              size="sm"
+              aria-label="Close"
+              onClick={() => setSelectedGebiet(undefined)}
+            >
+              <FontAwesomeIcon size="sm" icon={faPen} />
+            </Button>
+          </>
+        )}
+        // TODO: Unfinished 08.05.2024 15:51
+        {/* {selectedPv && selectedProduct && selectedGebiet && !selectedZonen && (
+          <>
+            <div className="d-grid gap-2 mx-auto">
+              {zonenwahl[selectedGebiet.Zonenwahl - 1].map((zonen) => (
+                <Button
+                  key={
+                    selectedPv.PVNr.toString() +
+                    selectedProduct.ProduktbezeichnungNr.toString() +
+                    tp.GebietsparameterNr.toString()
+                  }
+                  onClick={() => setSelectedGebiet(tp)}
+                >
+                  {tp.GebietsparameterText}
+                </Button>
+              ))}
+            </div>
+          </>
+        )} */}
       </div>
     </>
   );
