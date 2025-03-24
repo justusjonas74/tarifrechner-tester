@@ -27,11 +27,11 @@
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-autosuggest": "^10.1.10",
     "@types/react-dom": "^18",
-    "eslint": "^8.57.0",
+    "eslint": "^9.23.0",
     "eslint-config-next": "^14.0.3",
     "typescript": "^5"
   }
