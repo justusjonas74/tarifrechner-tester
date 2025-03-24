@@ -215,25 +215,56 @@ export default function Katalogmenue() {
             </Button>
           </>
         )}
-        // TODO: Unfinished 08.05.2024 15:51
-        {/* {selectedPv && selectedProduct && selectedGebiet && !selectedZonen && (
+
+        {selectedPv &&
+          selectedProduct &&
+          selectedGebiet &&
+          !selectedZonen &&
+          selectedGebiet.Zonenwahl !== 0 && (
+            <>
+              <div className="d-grid gap-2 mx-auto">
+                {zonenwahl[selectedGebiet.Zonenwahl - 1].map((zonen, index) => {
+                  console.log(selectedGebiet.Zonenwahl);
+                  return (
+                    <Button
+                      key={
+                        selectedPv.PVNr.toString() +
+                        selectedProduct.ProduktbezeichnungNr.toString() +
+                        selectedGebiet.GebietsparameterNr.toString() +
+                        index.toString()
+                      }
+                      onClick={() => setSelectedZonen(zonen)}
+                    >
+                      {zonen.map((zone) => {
+                        return zone.name;
+                      })}
+                    </Button>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+        {selectedPv && selectedProduct && selectedGebiet && selectedZonen && (
           <>
-            <div className="d-grid gap-2 mx-auto">
-              {zonenwahl[selectedGebiet.Zonenwahl - 1].map((zonen) => (
-                <Button
-                  key={
-                    selectedPv.PVNr.toString() +
-                    selectedProduct.ProduktbezeichnungNr.toString() +
-                    tp.GebietsparameterNr.toString()
-                  }
-                  onClick={() => setSelectedGebiet(tp)}
-                >
-                  {tp.GebietsparameterText}
-                </Button>
+            <span className="fs-3">
+              <b>Zonen: </b>
+              {selectedZonen.map((zone) => (
+                <span className="p-1">{zone.name}</span>
               ))}
-            </div>
+            </span>
+            <Button
+              type="button"
+              className="close m-1"
+              variant="light"
+              size="sm"
+              aria-label="Close"
+              onClick={() => setSelectedZonen(undefined)}
+            >
+              <FontAwesomeIcon size="sm" icon={faPen} />
+            </Button>
           </>
-        )} */}
+        )}
       </div>
     </>
   );

@@ -47,10 +47,11 @@ export default function TarifangabenDVBMOB(props: TarifangabenProps) {
               <a
                 href="#"
                 key={index.toString()}
-                onClick={(e) =>
-                  fetchKaufangeboteNachEingabedaten(e, ticket.eingabedaten)
-                }
-                className="list-group-item d-flex  justify-content-between align-items-start list-group-item-action"
+                // onClick={(e) =>
+                // fetchKaufangeboteNachEingabedaten(e, ticket.eingabedaten)
+                // TODO: Arbeit vor Elternzeit im Juni 2024 begonnen aber nicht abgeschlossen. Es öffnet sich ein Modal, dass aber noch nicht funktioniert. Hat aber aktuell keine Prio.
+                // }
+                className="list-group-item d-flex  justify-content-between align-items-start list-group-item-action disabled"
               >
                 <TicketDetailsDvb ticket={ticket} />
               </a>
