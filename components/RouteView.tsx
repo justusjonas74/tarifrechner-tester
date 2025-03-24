@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, type JSX } from 'react';
 import { ITrip, IStopLocation, INode, IStop, IMode } from 'dvbjs';
 import moment from 'moment';
 import './RouteView.css';
