@@ -35,24 +35,52 @@ export default function Katalogmenue() {
     undefined
   );
 
-  useEffect(() => {
-    if (!selectedPv) {
-      setSelectedProduct(undefined);
-    }
-    if (!selectedProduct) {
-      setSelectedGebiet(undefined);
-    }
-    if (
-      selectedProduct &&
-      selectedPv &&
-      pvTarifproduktGebiete(selectedPv, selectedProduct).length == 1
-    ) {
-      setSelectedGebiet(pvTarifproduktGebiete(selectedPv, selectedProduct)[0]);
-    }
-    if (!selectedGebiet) {
-      setSelectedZonen(undefined);
-    }
-  }, [selectedGebiet, selectedPv, selectedProduct]);
+  const intialPvTarifproduktGebiete: gebietsType[] = [];
+  const pvTarifproduktGebiete = (pv: pvType, produkt: produktType) =>
+    tarifprodukte
+      .filter(
+        (tp) =>
+          tp.PVNr === pv.PVNr &&
+          tp.ProduktbezeichnungNr === produkt.ProduktbezeichnungNr
+      )
+      .map((tp) => {
+        const { GebietsparameterNr, GebietsparameterText, Zonenwahl } = tp;
+        return { GebietsparameterNr, GebietsparameterText, Zonenwahl };
+      })
+      .reduce((accumulator, current) => {
+        if (
+          !accumulator.find(
+            (item) => item.GebietsparameterNr === current.GebietsparameterNr
+          )
+        ) {
+          accumulator.push(current);
+        }
+        return accumulator;
+      }, intialPvTarifproduktGebiete);
+
+  useEffect(
+    () => {
+      if (!selectedPv) {
+        setSelectedProduct(undefined);
+      }
+      if (!selectedProduct) {
+        setSelectedGebiet(undefined);
+      }
+      if (
+        selectedProduct &&
+        selectedPv &&
+        pvTarifproduktGebiete(selectedPv, selectedProduct).length == 1
+      ) {
+        setSelectedGebiet(
+          pvTarifproduktGebiete(selectedPv, selectedProduct)[0]
+        );
+      }
+      if (!selectedGebiet) {
+        setSelectedZonen(undefined);
+      }
+    },
+    [selectedPv, selectedProduct, selectedGebiet]
+  );
 
   const initialPvValue: { PVNr: number; PVText: string }[] = [];
   const pv = tarifprodukte
@@ -85,29 +113,6 @@ export default function Katalogmenue() {
         }
         return accumulator;
       }, intialPvTarifprodukte);
-
-  const intialPvTarifproduktGebiete: gebietsType[] = [];
-  const pvTarifproduktGebiete = (pv: pvType, produkt: produktType) =>
-    tarifprodukte
-      .filter(
-        (tp) =>
-          tp.PVNr === pv.PVNr &&
-          tp.ProduktbezeichnungNr === produkt.ProduktbezeichnungNr
-      )
-      .map((tp) => {
-        const { GebietsparameterNr, GebietsparameterText, Zonenwahl } = tp;
-        return { GebietsparameterNr, GebietsparameterText, Zonenwahl };
-      })
-      .reduce((accumulator, current) => {
-        if (
-          !accumulator.find(
-            (item) => item.GebietsparameterNr === current.GebietsparameterNr
-          )
-        ) {
-          accumulator.push(current);
-        }
-        return accumulator;
-      }, intialPvTarifproduktGebiete);
 
   return (
     <>
@@ -250,7 +255,9 @@ export default function Katalogmenue() {
             <span className="fs-3">
               <b>Zonen: </b>
               {selectedZonen.map((zone) => (
-                <span className="p-1">{zone.name}</span>
+                <span className="p-1" key={"zone-" + zone.nr}>
+                  {zone.name}
+                </span>
               ))}
             </span>
             <Button
