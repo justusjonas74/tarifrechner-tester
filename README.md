@@ -7,7 +7,7 @@ docker pull node:lts-alpine # optional
 
 cd .. # Build Context must include private dependency tarifrechner-sst which is inside the parrent folder 
 
-sudo docker build -t tr-tester-docker -f ./tarifrechner-tester/Dockerfile .
+sudo docker build -t tarifrechner-tester --name tarifrechner-tester-prod  -f ./tarifrechner-tester/Dockerfile .
 sudo docker system prune 
 ```
 
