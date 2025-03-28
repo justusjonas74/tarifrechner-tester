@@ -47,7 +47,11 @@ export const getTariffOverviewFromEfaAntwort = (
     return undefined;
   }
 
-  const ticket = parseTarifrechnerTicketEfa(antwort.ticketdatenliste[0]);
+  const ticketRaw = antwort.ticketdatenliste.find(
+    (t) => t.anzeigetext == "VVO Einzelfahrt"
+  );
+  if (!ticketRaw) return undefined;
+  const ticket = parseTarifrechnerTicketEfa(ticketRaw);
 
   if (
     ticket.anzeigetext !== "VVO Einzelfahrt" ||
@@ -83,7 +87,7 @@ export const parseTarifrechnerTicketEfa = (
     const erweiterungenNummern = [
       "FPAVVO_PREISSTUFE_KENNUNG",
       "FPAVVO_PREISSTUFE_TEXT",
-      "FPAVVO_GUELTIGKEITSRAUM_TEXT",
+      "FPAVVO_RAUM_TEXT",
     ];
     const [preisstufeKennung, preisstufeText, gueltigkeitsraumText] =
       erweiterungenNummern.map((erweiterungNr) => {
