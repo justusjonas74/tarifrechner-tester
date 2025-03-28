@@ -3,7 +3,6 @@
 require("dotenv").config();
 const { join } = require("path");
 
-console.log(join(__dirname, "../tarifrechner-sst"));
 const nextConfig = {
   output: "standalone",
   allowedDevOrigins: [process.env.NEXT_PUBLIC_URL, "efm.lan.vvo"],
