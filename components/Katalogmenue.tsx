@@ -58,29 +58,28 @@ export default function Katalogmenue() {
         return accumulator;
       }, intialPvTarifproduktGebiete);
 
-  useEffect(
-    () => {
-      if (!selectedPv) {
-        setSelectedProduct(undefined);
-      }
-      if (!selectedProduct) {
-        setSelectedGebiet(undefined);
-      }
-      if (
-        selectedProduct &&
-        selectedPv &&
-        pvTarifproduktGebiete(selectedPv, selectedProduct).length == 1
-      ) {
-        setSelectedGebiet(
-          pvTarifproduktGebiete(selectedPv, selectedProduct)[0]
-        );
-      }
-      if (!selectedGebiet) {
-        setSelectedZonen(undefined);
-      }
-    },
-    [selectedPv, selectedProduct, selectedGebiet]
-  );
+  useEffect(() => {
+    if (!selectedPv) {
+      setSelectedProduct(undefined);
+      setSelectedGebiet(undefined);
+      setSelectedZonen(undefined);
+    }
+    if (!selectedProduct) {
+      setSelectedGebiet(undefined);
+      setSelectedZonen(undefined);
+    }
+    if (
+      selectedProduct &&
+      selectedPv &&
+      !selectedGebiet &&
+      pvTarifproduktGebiete(selectedPv, selectedProduct).length == 1
+    ) {
+      setSelectedGebiet(pvTarifproduktGebiete(selectedPv, selectedProduct)[0]);
+    }
+    if (!selectedGebiet) {
+      setSelectedZonen(undefined);
+    }
+  }, [selectedPv, selectedProduct, selectedGebiet, selectedZonen]);
 
   const initialPvValue: { PVNr: number; PVText: string }[] = [];
   const pv = tarifprodukte
@@ -229,7 +228,6 @@ export default function Katalogmenue() {
             <>
               <div className="d-grid gap-2 mx-auto">
                 {zonenwahl[selectedGebiet.Zonenwahl - 1].map((zonen, index) => {
-                  console.log(selectedGebiet.Zonenwahl);
                   return (
                     <Button
                       key={
