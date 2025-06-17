@@ -13,6 +13,7 @@ import CollapseComponent from "./CollapseComponent";
 import HighlightComponent from "./HighlightComponent";
 import { DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN } from "pkm-tarifrechner";
 import { tarifrechnerDvbKaufangeboteNachEingabedaten } from "@/lib/tarifrechnerAnfrage";
+import VdvEinheitslayout from "./VdvEinheitslayout";
 
 interface IKaufangeboteModalProps {
   handleCloseFn: () => void;
@@ -20,7 +21,7 @@ interface IKaufangeboteModalProps {
 }
 function KaufangeboteModal(props: IKaufangeboteModalProps) {
   const [show, setShow] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { eingabedaten } = props;
   const [anfrageJSON, setAnfrageJSON] = useState<string | undefined>(undefined);
   const [antwortJSON, setAntwortJSON] = useState<
@@ -54,6 +55,13 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
           <Modal.Title>Kaufangebote</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {!isLoading &&
+            antwortJSON?.antwortliste?.[0] &&
+            Object.keys(antwortJSON.antwortliste[0]).length === 0 && (
+              <div className="alert alert-warning text-center">
+                <strong>Keine Kaufangebote verfügbar.</strong>
+              </div>
+            )}
           {isLoading && (
             <div className="LoadingSpinner text-center">
               <span className="align-middle">
@@ -61,30 +69,41 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
               </span>
             </div>
           )}
-          {!isLoading && (
-            <>
-              <CollapseComponent
-                chevronText="Anfragedaten an Tarifrechner"
-                id="collapse-json-request-anfragedatenAnTarifrechner"
-                textClassName="fw-semibold fs-5"
-              >
-                <HighlightComponent
-                  code={JSON.stringify(anfrageJSON, undefined, 2)}
-                  language="json"
-                />
-              </CollapseComponent>
-              <CollapseComponent
-                chevronText="Antwortdaten an Tarifrechner"
-                id="collapse-json-request-antwortdatenAnTarifrechner"
-                textClassName="fw-semibold fs-5"
-              >
-                <HighlightComponent
-                  code={JSON.stringify(antwortJSON, undefined, 2)}
-                  language="json"
-                />
-              </CollapseComponent>
-            </>
-          )}
+          <div className="row">
+            {antwortJSON?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten
+              ?.vdveinheitslayout && (
+              <div className="col-md-3 ">
+                <VdvEinheitslayout daten={antwortJSON} />
+              </div>
+            )}
+            <div className="col-md-9">
+              {!isLoading && anfrageJSON && (
+                <>
+                  <CollapseComponent
+                    chevronText="Anfragedaten an Tarifrechner"
+                    id="collapse-json-request-anfragedatenAnTarifrechner"
+                    textClassName="fw-semibold fs-5"
+                  >
+                    <HighlightComponent
+                      // code={JSON.stringify(anfrageJSON, undefined, 2)}
+                      code={anfrageJSON}
+                      language="json"
+                    />
+                  </CollapseComponent>
+                  <CollapseComponent
+                    chevronText="Antwortdaten an Tarifrechner"
+                    id="collapse-json-request-antwortdatenAnTarifrechner"
+                    textClassName="fw-semibold fs-5"
+                  >
+                    <HighlightComponent
+                      code={JSON.stringify(antwortJSON, undefined, 2)}
+                      language="json"
+                    />
+                  </CollapseComponent>
+                </>
+              )}
+            </div>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>

@@ -1,0 +1,13 @@
+--2025-04-30 17:17:28--  https://www.matchup-project.eu/wp-content/uploads/2018/03/DVB-Logo-1024x341.png
+Resolving www.matchup-project.eu (www.matchup-project.eu)... 185.2.4.134
+Connecting to www.matchup-project.eu (www.matchup-project.eu)|185.2.4.134|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 121196 (118K) [image/png]
+Saving to: ‘DVB-Logo-1024x341.png’
+
+     0K .......... .......... .......... .......... .......... 42% 2.26M 0s
+    50K .......... .......... .......... .......... .......... 84% 2.41M 0s
+   100K .......... ........                                   100% 29.7M=0.04s
+
+2025-04-30 17:17:28 (2.72 MB/s) - ‘DVB-Logo-1024x341.png’ saved [121196/121196]
+
