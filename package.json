@@ -16,27 +16,23 @@
     "dotenv": "^16.5.0",
     "dvbjs": "^6.2.0",
     "moment": "^2.30.1",
-    "next": "15.2.3",
+    "next": "^15.3.3",
     "pkm-tarifrechner": "file:../tarifrechner-sst",
-    "react": "19.0.0",
+    "react": "^19.1.0",
     "react-autosuggest": "^10.1.0",
     "react-bootstrap": "^2.10.10",
     "react-code-blocks": "^0.1.6",
     "react-datetime": "^3.3.1",
-    "react-dom": "19.0.0",
+    "react-dom": "^19.1.0",
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {
-    "@types/node": "^22.15.32",
-    "@types/react": "19.0.12",
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.8",
     "@types/react-autosuggest": "^10.1.11",
-    "@types/react-dom": "19.0.4",
+    "@types/react-dom": "^19.1.6",
     "eslint": "^9.29.0",
-    "eslint-config-next": "15.2.3",
+    "eslint-config-next": "^15.3.3",
     "typescript": "^5.8.3"
-  },
-  "overrides": {
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4"
   }
 }
