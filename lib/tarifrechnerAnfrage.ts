@@ -4,9 +4,10 @@ import {
   EFA_ANFRAGE,
   DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
   DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN,
+  INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG
 } from "pkm-tarifrechner";
-import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
-import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/trRequest";
+import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/tarifrechner/generic/trRequest";
 
 const getConfig = () => {
   const api_key = process.env.NEXT_PUBLIC_APIKEY;
@@ -47,4 +48,11 @@ export function tarifrechnerDvbKaufangeboteNachEingabedaten(
     eingabedaten,
     config
   );
+}
+
+export function tarifrechnerFairtiqAnfrage(
+  trip: ITrip,
+) {
+  const config = getConfig();
+  return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(trip, config)
 }

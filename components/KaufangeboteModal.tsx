@@ -5,15 +5,14 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import {
-  IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
-  IEINGABEDATEN,
-} from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
+
 import CollapseComponent from "./CollapseComponent";
 import HighlightComponent from "./HighlightComponent";
-import { DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN } from "pkm-tarifrechner";
+
 import { tarifrechnerDvbKaufangeboteNachEingabedaten } from "@/lib/tarifrechnerAnfrage";
 import VdvEinheitslayout from "./VdvEinheitslayout";
+import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
 
 interface IKaufangeboteModalProps {
   handleCloseFn: () => void;
@@ -72,10 +71,10 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
           <div className="row">
             {antwortJSON?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten
               ?.vdveinheitslayout && (
-              <div className="col-md-3 ">
-                <VdvEinheitslayout daten={antwortJSON} />
-              </div>
-            )}
+                <div className="col-md-3 ">
+                  <VdvEinheitslayout daten={antwortJSON} />
+                </div>
+              )}
             <div className="col-md-9">
               {!isLoading && anfrageJSON && (
                 <>

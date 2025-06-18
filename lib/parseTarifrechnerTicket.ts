@@ -1,8 +1,7 @@
-import {
-  IEFA_ANTWORTLISTE,
-  IEFA_TICKETDATEN,
-  ITICKETDATEN,
-} from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
+import moment from "moment";
+import { IEFA_ANTWORTLISTE, IEFA_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
+import { IFAIRTIQ_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { ITICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 
 export type TarifrechnerTicket = {
   anzeigetext: string;
@@ -135,6 +134,42 @@ export const parseTarifrechnerTicketDvb = (
   //     });
   //     trTicket.dvbAnzeigetexte = dvbAnzeigetexte;
   //   }
+  return trTicket;
+};
+
+type FairtiqTarifrechnerTicket = TarifrechnerTicket & {
+  preisberuecksichtigungsfrist?: string;
+  ticketdatenersetzungsfrist?: string
+}
+export const parseTarifrechnerTicketFairtiq = (
+  ticket: IFAIRTIQ_TICKETDATEN
+): FairtiqTarifrechnerTicket => {
+  let trTicket: FairtiqTarifrechnerTicket = {
+    anzeigetext: ticket.anzeigetext,
+  };
+
+  if (
+    ticket.bezahldatenliste &&
+    ticket.bezahldatenliste.length > 0 &&
+    ticket.bezahldatenliste[0].betrag
+  ) {
+    const bezahldaten = ticket.bezahldatenliste[0];
+    trTicket.betraginEuro = centToEuroString(bezahldaten.betrag);
+  }
+  const preisberuecksichtigungsfrist = ticket.erweiterungsliste?.find(
+    (e) => e.nr === "PREISBERUECKSICHTIGUNGSFRIST"
+  )?.wert as string | undefined;
+
+  const ticketdatenersetzungsfrist = ticket.erweiterungsliste?.find(
+    (e) => e.nr === "TICKETDATENERSETZUNGSFRIST"
+  )?.wert as string | undefined;
+
+  if (preisberuecksichtigungsfrist) {
+    trTicket.preisberuecksichtigungsfrist = moment(preisberuecksichtigungsfrist.substring(1)).format("DD.MM.YYYY HH:mm:ss");
+  }
+  if (ticketdatenersetzungsfrist) {
+    trTicket.ticketdatenersetzungsfrist = moment(ticketdatenersetzungsfrist.substring(1)).format("DD.MM.YYYY HH:mm:ss");
+  }
   return trTicket;
 };
 function centToEuroString(cents: number): string {

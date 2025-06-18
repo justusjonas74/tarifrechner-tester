@@ -1,11 +1,10 @@
 import {
   TariffOverview,
   getTariffOverviewFromEfaAntwort,
-  parseTarifrechnerTicketEfa,
 } from "@/lib/parseTarifrechnerTicket";
 import { tarifrechnerEfaAnfrage } from "@/lib/tarifrechnerAnfrage";
 import { ITrip } from "dvbjs";
-import { IEFA_ANTWORTLISTE } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
+
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
