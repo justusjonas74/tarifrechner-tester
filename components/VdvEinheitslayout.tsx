@@ -1,21 +1,19 @@
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/interfaces";
 import CollapseComponent from "./CollapseComponent";
 
 import Image from "next/image";
+import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
 import { useState } from "react";
 
 export default function VdvEinheitslayout(props: {
   daten?: IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG;
 }) {
   const { daten } = props;
-
-  const einheitslayout =
-    daten?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten
-      ?.vdveinheitslayout || null;
+  const [hasError, setHasError] = useState(false);
+  const einheitslayout = daten?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten?.vdveinheitslayout || null;
   if (!einheitslayout) {
     return <div>Keine (Layout-)Daten verfügbar</div>;
   }
-  const [hasError, setHasError] = useState(false);
+
   return (
     <CollapseComponent
       chevronText="Einheitslayout"
