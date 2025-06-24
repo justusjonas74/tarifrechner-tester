@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import * as json from "../json/MENU_DVBMOB_G230801_0000_F2_1_Katalogmenue.json";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
@@ -35,28 +35,34 @@ export default function Katalogmenue() {
     undefined
   );
 
-  const intialPvTarifproduktGebiete: gebietsType[] = [];
-  const pvTarifproduktGebiete = (pv: pvType, produkt: produktType) =>
-    tarifprodukte
-      .filter(
-        (tp) =>
-          tp.PVNr === pv.PVNr &&
-          tp.ProduktbezeichnungNr === produkt.ProduktbezeichnungNr
-      )
-      .map((tp) => {
-        const { GebietsparameterNr, GebietsparameterText, Zonenwahl } = tp;
-        return { GebietsparameterNr, GebietsparameterText, Zonenwahl };
-      })
-      .reduce((accumulator, current) => {
-        if (
-          !accumulator.find(
-            (item) => item.GebietsparameterNr === current.GebietsparameterNr
-          )
-        ) {
-          accumulator.push(current);
-        }
-        return accumulator;
-      }, intialPvTarifproduktGebiete);
+
+  const pvTarifproduktGebiete = useCallback(
+    (pv: pvType, produkt: produktType) => {
+      const intialPvTarifproduktGebiete: gebietsType[] = [];
+      return tarifprodukte
+        .filter(
+          (tp) =>
+            tp.PVNr === pv.PVNr &&
+            tp.ProduktbezeichnungNr === produkt.ProduktbezeichnungNr
+        )
+        .map((tp) => {
+          const { GebietsparameterNr, GebietsparameterText, Zonenwahl } = tp;
+          return { GebietsparameterNr, GebietsparameterText, Zonenwahl };
+        })
+        .reduce((accumulator, current) => {
+          if (
+            !accumulator.find(
+              (item) => item.GebietsparameterNr === current.GebietsparameterNr
+            )
+          ) {
+            accumulator.push(current);
+          }
+          return accumulator;
+        }, intialPvTarifproduktGebiete)
+    },
+    [tarifprodukte]
+
+  );
 
   useEffect(() => {
     if (!selectedPv) {
@@ -79,7 +85,7 @@ export default function Katalogmenue() {
     if (!selectedGebiet) {
       setSelectedZonen(undefined);
     }
-  }, [selectedPv, selectedProduct, selectedGebiet, selectedZonen]);
+  }, [selectedPv, selectedProduct, selectedGebiet, selectedZonen, pvTarifproduktGebiete]);
 
   const initialPvValue: { PVNr: number; PVText: string }[] = [];
   const pv = tarifprodukte

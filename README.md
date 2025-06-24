@@ -3,7 +3,7 @@
 ## Build 
 
 ```bash
-docker pull node:lts-alpine # optional
+docker pull node:lts-slim # optional
 
 cd .. # Build Context must include private dependency tarifrechner-sst which is inside the parrent folder 
 
