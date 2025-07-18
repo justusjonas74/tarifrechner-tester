@@ -14,32 +14,35 @@ import CollapseComponent from "./CollapseComponent";
 import { toast } from "react-toastify";
 import { optimizeJSONForPostman } from "@/lib/postman";
 import copyTextToClipboard from "@/lib/copyToClipboard";
-import { IFAIRTIQ_ANTWORTLISTE } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_ANTWORTLISTE, IFAIRTIQ_REISENDER, IFAIRTIQREISENDER_TYP } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import CicoTarifangaben from "./CicoTarifangaben";
 
 interface TarifrechnerComponentProps {
   selectedTrip: ITrip;
+  reisendenliste: IFAIRTIQ_REISENDER[];
 }
 
 export default function TarifrechnerCiCoComponent(
   props: TarifrechnerComponentProps
 ) {
+  const trip = props.selectedTrip;
+  const reisendenliste = props.reisendenliste;
   const [fairtiqAntwort, setFairtiqAntwort] = useState<IFAIRTIQ_ANTWORTLISTE | undefined>(
     undefined
   );
+
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [fairtiqJsonRequestData, setFairtiqJsonRequestData] = useState<
     string | undefined
   >(undefined);
-  const trip = props.selectedTrip;
 
   useEffect(() => {
     const sendRequest = async () => {
       try {
         setIsLoading(true);
-        const fairtiqAnfrage = tarifrechnerFairtiqAnfrage(trip);
+        const fairtiqAnfrage = tarifrechnerFairtiqAnfrage(trip, reisendenliste);
         setFairtiqJsonRequestData(fairtiqAnfrage.dataToJSON());
         const response = await fairtiqAnfrage.sendRequest();
         if (response) {
@@ -55,7 +58,7 @@ export default function TarifrechnerCiCoComponent(
       }
     };
     sendRequest();
-  }, [trip]);
+  }, [trip, reisendenliste]);
 
   const copyPostManJSONToClipboard = (data: string | undefined) => {
     // const data = efaJsonRequestData;

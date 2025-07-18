@@ -1,16 +1,15 @@
-
-
+import Badge from 'react-bootstrap/Badge';
 import { parseTarifrechnerTicketFairtiq } from "@/lib/parseTarifrechnerTicket";
 import { TicketDetailsEfa } from "./TicketDetailsEfa";
-import { IFAIRTIQ_ANTWORTLISTE, IFAIRTIQ_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_ANTWORTLISTE, IFAIRTIQ_REISENDER, IFAIRTIQ_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 
 function ListItem(props: {
-    key?: string,
+    id: string,
     children: React.ReactNode
 }) {
-    const { key } = props;
+    const { id } = props;
     return (
-        <li className="list-group-item d-flex justify-content-between align-items-start" key={key}>
+        <li className="list-group-item d-flex justify-content-between align-items-start" key={id}>
             {props.children}
         </li>
     );
@@ -18,6 +17,7 @@ function ListItem(props: {
 
 interface TarifangabenProps {
     tarifrechnerResponse: IFAIRTIQ_ANTWORTLISTE;
+    // reisendenliste: IFAIRTIQ_REISENDER[];
 }
 
 export default function CicoTarifangaben(props: TarifangabenProps) {
@@ -25,11 +25,11 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
         props.tarifrechnerResponse.antwortliste?.[0];
 
     if (!ticketdatenliste || ticketdatenliste.length === 0) {
-        return <ListItem>Die Anwort des Tarifrechners enthält keine Ticketdaten.</ListItem>
+        return <ListItem id="li-no-cico-tickets">Die Anwort des Tarifrechners enthält keine Ticketdaten.</ListItem>
     }
 
     if (!angebotsdatenliste || angebotsdatenliste.length === 0) {
-        return <ListItem>Die Anwort des Tarifrechners enthält keine Angebotsdaten.</ListItem>
+        return <ListItem id="li-no-cico-offers">Die Anwort des Tarifrechners enthält keine Angebotsdaten.</ListItem>
     }
 
     return (
@@ -38,14 +38,14 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
                 {angebotsdatenliste.map((angebot, angebot_index) => {
                     const { ticketdatenbezug } = angebot
                     if (!ticketdatenbezug || ticketdatenbezug.length === 0) {
-                        return <ListItem key={"a" + angebot_index.toString()}>Keine Ticketdaten für dieses Angebot verfügbar.</ListItem>
+                        return <ListItem key={"ListItem-" + angebot_index + "-without-tickets"} id={"li-" + angebot_index + "-without-tickets"}>Keine Ticketdaten für dieses Angebot verfügbar.</ListItem>
                     }
                     return ticketdatenbezug.map((ticketReference, ticketdatenbezug_index) => {
                         const ticketdaten = ticketdatenliste[ticketReference - 1]
                         if (!ticketdaten) {
-                            return < ListItem key={"a" + angebot_index.toString() + "-t" + ticketdatenbezug_index.toString()}>Ticketdaten nicht gefunden.</ListItem>
+                            return < ListItem key={"ListItem-" + angebot_index + "-ticket-not-found"} id={"a" + angebot_index.toString() + "-t" + ticketdatenbezug_index.toString()}>Ticketdaten nicht gefunden.</ListItem>
                         }
-                        return (<ListItem key={"a" + angebot_index.toString() + "-t" + ticketdatenbezug_index.toString()}>
+                        return (<ListItem key={"listitem-a" + angebot_index + "-t" + ticketdatenbezug_index} id={"a" + angebot_index + "-t" + ticketdatenbezug_index}>
                             <TicketDetailsCicoTicket ticket={ticketdaten} />
                         </ListItem>)
 
@@ -60,7 +60,6 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
 export function TicketDetailsCicoTicket(props: { ticket: IFAIRTIQ_TICKETDATEN }) {
 
     const ticket = parseTarifrechnerTicketFairtiq(props.ticket);
-    console.log("TicketDetailsCicoTicket", ticket);
     return (
         <>
             <div className="ms-2 me-auto">
@@ -71,13 +70,16 @@ export function TicketDetailsCicoTicket(props: { ticket: IFAIRTIQ_TICKETDATEN })
                 </span><br />
                 <span className="fw-normal small text-body-secondary p-2">
                     Ticketdatenersetzungsfrist: {ticket.ticketdatenersetzungsfrist || "n/a"}
+                </span><br />
+                <span className="fw-normal small  p-2">
+                    Für Reisenden: {ticket.reisendenbezug.map((r, i) => <Badge key={"reisenden-badge-" + i} pill bg="primary" >{r}.</Badge>)}
                 </span>
                 {/* <br /> */}
                 {/* <span className="fw-light fst-italic text-body-secondary p-2">
           <small>{ticket.gueltigkeitsraumText || "Keine Raumangabe"}</small>
         </span> */}
             </div>
-            <span className="badge bg-secondary rounded">
+            <span className="badge bg-success rounded">
                 {ticket.betraginEuro || "Keine Preisangabe"}
             </span>
         </>

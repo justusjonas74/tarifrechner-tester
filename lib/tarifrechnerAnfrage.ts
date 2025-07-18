@@ -6,6 +6,7 @@ import {
   DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN,
   INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG
 } from "pkm-tarifrechner";
+import { IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/tarifrechner/generic/trRequest";
 
@@ -52,7 +53,8 @@ export function tarifrechnerDvbKaufangeboteNachEingabedaten(
 
 export function tarifrechnerFairtiqAnfrage(
   trip: ITrip,
+  reisendenliste: IFAIRTIQ_REISENDER[]
 ) {
   const config = getConfig();
-  return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(trip, config)
+  return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(trip, config, reisendenliste)
 }

@@ -140,12 +140,14 @@ export const parseTarifrechnerTicketDvb = (
 type FairtiqTarifrechnerTicket = TarifrechnerTicket & {
   preisberuecksichtigungsfrist?: string;
   ticketdatenersetzungsfrist?: string
+  reisendenbezug: number[];
 }
 export const parseTarifrechnerTicketFairtiq = (
   ticket: IFAIRTIQ_TICKETDATEN
 ): FairtiqTarifrechnerTicket => {
   let trTicket: FairtiqTarifrechnerTicket = {
     anzeigetext: ticket.anzeigetext,
+    reisendenbezug: []
   };
 
   if (
@@ -156,6 +158,8 @@ export const parseTarifrechnerTicketFairtiq = (
     const bezahldaten = ticket.bezahldatenliste[0];
     trTicket.betraginEuro = centToEuroString(bezahldaten.betrag);
   }
+  trTicket.reisendenbezug = ticket.reisendenbezug;
+
   const preisberuecksichtigungsfrist = ticket.erweiterungsliste?.find(
     (e) => e.nr === "PREISBERUECKSICHTIGUNGSFRIST"
   )?.wert as string | undefined;
