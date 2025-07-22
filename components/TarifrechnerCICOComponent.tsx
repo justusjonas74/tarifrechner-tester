@@ -14,12 +14,15 @@ import CollapseComponent from "./CollapseComponent";
 import { toast } from "react-toastify";
 import { optimizeJSONForPostman } from "@/lib/postman";
 import copyTextToClipboard from "@/lib/copyToClipboard";
-import { IFAIRTIQ_ANTWORTLISTE, IFAIRTIQ_REISENDER, IFAIRTIQREISENDER_TYP } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_ANFRAGE_ANTWORT, IFAIRTIQ_ANFRAGELISTE, IFAIRTIQ_ANTWORTLISTE, IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import CicoTarifangaben from "./CicoTarifangaben";
+
 
 interface TarifrechnerComponentProps {
   selectedTrip: ITrip;
   reisendenliste: IFAIRTIQ_REISENDER[];
+  handleSaveCiCoRequest: (request: IFAIRTIQ_ANFRAGE_ANTWORT) => void;
+  previousCiCoRequests: IFAIRTIQ_ANFRAGE_ANTWORT[];
 }
 
 export default function TarifrechnerCiCoComponent(
@@ -27,7 +30,12 @@ export default function TarifrechnerCiCoComponent(
 ) {
   const trip = props.selectedTrip;
   const reisendenliste = props.reisendenliste;
+  const previousCiCoRequests = props.previousCiCoRequests;
   const [fairtiqAntwort, setFairtiqAntwort] = useState<IFAIRTIQ_ANTWORTLISTE | undefined>(
+    undefined
+  );
+
+  const [fairtiqAnfrage, setFairtiqAnfrage] = useState<IFAIRTIQ_ANFRAGELISTE | undefined>(
     undefined
   );
 
@@ -42,7 +50,10 @@ export default function TarifrechnerCiCoComponent(
     const sendRequest = async () => {
       try {
         setIsLoading(true);
-        const fairtiqAnfrage = tarifrechnerFairtiqAnfrage(trip, reisendenliste);
+        const fairtiqAnfrage = tarifrechnerFairtiqAnfrage(trip, reisendenliste, previousCiCoRequests);
+        // toast.info(`${previousCiCoRequests.length} Verbindungen übergeben.`);
+        // toast.info(`${fairtiqAnfrage.data.anfrageliste[0].verbindungsliste.length} Verbindungen in Anfrage.`);
+        setFairtiqAnfrage(fairtiqAnfrage.data);
         setFairtiqJsonRequestData(fairtiqAnfrage.dataToJSON());
         const response = await fairtiqAnfrage.sendRequest();
         if (response) {
@@ -76,6 +87,24 @@ export default function TarifrechnerCiCoComponent(
     copyPostManJSONToClipboard(fairtiqJsonRequestData);
   };
 
+  const saveCiCoRequest = () => {
+    if (fairtiqAntwort && fairtiqAnfrage) {
+      const fairtiqAntwortData: IFAIRTIQ_ANFRAGE_ANTWORT = {
+        anfrage: fairtiqAnfrage.anfrageliste[0],
+        antwort: fairtiqAntwort.antwortliste[0]
+      };
+      props.handleSaveCiCoRequest(fairtiqAntwortData);
+
+    } else if (!fairtiqAntwort) {
+      toast.error("Keine FAIRTIQ-Antwort zum Speichern vorhanden.");
+    } else if (!fairtiqAnfrage) {
+      toast.error("Keine FAIRTIQ-Anfrage zum Speichern vorhanden.");
+    } else {
+      toast.error("Keine FAIRTIQ-Antwort oder Anfrage zum Speichern vorhanden.");
+    }
+  };
+
+
   return (
     <>
       {isLoading && (
@@ -99,7 +128,7 @@ export default function TarifrechnerCiCoComponent(
                       Tarifrechner Angebotsinfo (FAIRTIQ)
                     </h5>
                   </div>
-                  <CicoTarifangaben tarifrechnerResponse={fairtiqAntwort} />
+                  <CicoTarifangaben tarifrechnerResponse={fairtiqAntwort} handleSaveCiCoRequest={saveCiCoRequest} />
                 </div>
               </div>
               <div className="col-sm-8">

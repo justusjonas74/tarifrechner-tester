@@ -1,7 +1,8 @@
 import Badge from 'react-bootstrap/Badge';
 import { parseTarifrechnerTicketFairtiq } from "@/lib/parseTarifrechnerTicket";
 import { TicketDetailsEfa } from "./TicketDetailsEfa";
-import { IFAIRTIQ_ANTWORTLISTE, IFAIRTIQ_REISENDER, IFAIRTIQ_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_ANTWORTLISTE, IFAIRTIQ_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { Button } from 'react-bootstrap';
 
 function ListItem(props: {
     id: string,
@@ -17,6 +18,7 @@ function ListItem(props: {
 
 interface TarifangabenProps {
     tarifrechnerResponse: IFAIRTIQ_ANTWORTLISTE;
+    handleSaveCiCoRequest: () => void;
     // reisendenliste: IFAIRTIQ_REISENDER[];
 }
 
@@ -51,6 +53,12 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
 
                     });
                 })}
+                <ListItem key="save-trip-and-ticket" id="save-trip-and-ticket">
+                    <Button variant="primary" onClick={props.handleSaveCiCoRequest} className="d-flex align-items-center">
+                        <span className="fa fa-save me-2"></span>
+                        Fahrt und Ticket speichern
+                    </Button>
+                </ListItem>
             </ul>
         </>
     );

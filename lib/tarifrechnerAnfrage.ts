@@ -6,7 +6,8 @@ import {
   DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN,
   INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG
 } from "pkm-tarifrechner";
-import { IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_ANFRAGELISTE_ANTWORTLISTE, IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { FromITripOptions } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/requests";
 import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/tarifrechner/generic/trRequest";
 
@@ -53,8 +54,13 @@ export function tarifrechnerDvbKaufangeboteNachEingabedaten(
 
 export function tarifrechnerFairtiqAnfrage(
   trip: ITrip,
-  reisendenliste: IFAIRTIQ_REISENDER[]
+  reisendenliste: IFAIRTIQ_REISENDER[],
+  vergangeneAnfragen?: IFAIRTIQ_ANFRAGELISTE_ANTWORTLISTE[],
 ) {
   const config = getConfig();
-  return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(trip, config, reisendenliste)
+  const options: FromITripOptions = {
+    reisendenliste,
+    vergangeneAnfragen
+  }
+  return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(trip, config, options)
 }
