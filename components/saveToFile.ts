@@ -15,7 +15,6 @@
 
 // }
 
-
 // export function savetoFile(testCase: ITestArguments){
 //     const fileName = getFilename(testCase.trip)
 //     const tester = new Tester()
@@ -25,4 +24,4 @@
 //     })
 // }
 
-export {}
+export {};

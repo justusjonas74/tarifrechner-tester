@@ -45,7 +45,7 @@ export default function SearchStopField(props: SearchStopFieldProps) {
 
   const onChange = (
     event: FormEvent<HTMLElement>,
-    params: Autosuggest.ChangeEvent
+    params: Autosuggest.ChangeEvent,
   ) => {
     const { newValue } = params;
     setInputValue(newValue);
@@ -58,7 +58,7 @@ export default function SearchStopField(props: SearchStopFieldProps) {
       "api/stops?" +
         new URLSearchParams({
           name: searchterm,
-        })
+        }),
     );
     if (data) {
       const stops = data;
@@ -102,7 +102,7 @@ export default function SearchStopField(props: SearchStopFieldProps) {
 
   const onSuggestionSelected: OnSuggestionSelected<IPoint> = (
     event: React.FormEvent<any>,
-    data: SuggestionSelectedEventData<IPoint>
+    data: SuggestionSelectedEventData<IPoint>,
   ) => {
     const handler =
       // props.handleNewSelectedCard || defaultHandlerOnSuggestionSelected;

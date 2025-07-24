@@ -1,42 +1,42 @@
 .trip-card:hover {
-    background-color: #eeeeee; 
+  background-color: #eeeeee;
 }
 
 .nodeItemImage {
-    height: 75%;
-    margin: 1%;
+  height: 75%;
+  margin: 1%;
 }
 
 table.routeViewTable {
-    width: 100%;
+  width: 100%;
 }
 
 th.bhf {
-    width: 29%
+  width: 29%;
 }
 th.zeit {
-    width: 12%
+  width: 12%;
 }
 th.dauer {
-    width: 7%
+  width: 7%;
 }
 th.umst {
-    width: 7%
+  width: 7%;
 }
 th.prod {
-    width: 15%
+  width: 15%;
 }
 th.tarif {
-    width: 15%
+  width: 15%;
 }
 th.select {
-    width: 15%
+  width: 15%;
 }
 .card {
-    margin: 5px;
+  margin: 5px;
 }
 
 div.LoadingSpinner {
-    width: 100%;
-    padding: 3rem;
+  width: 100%;
+  padding: 3rem;
 }

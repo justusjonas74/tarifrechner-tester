@@ -24,10 +24,10 @@ interface TarifrechnerComponentProps {
 }
 
 export default function TarifrechnerComponent(
-  props: TarifrechnerComponentProps
+  props: TarifrechnerComponentProps,
 ) {
   const [efaAntwort, setEfaAntwort] = useState<IEFA_ANTWORTLISTE | undefined>(
-    undefined
+    undefined,
   );
   const [dvbAngebotsinfoAntwort, setDvbAngebotsinfoAntwort] = useState<
     IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG | undefined
@@ -222,7 +222,7 @@ export default function TarifrechnerComponent(
                       code={JSON.stringify(
                         dvbAngebotsinfoAntwort,
                         undefined,
-                        2
+                        2,
                       )}
                       language="json"
                     />

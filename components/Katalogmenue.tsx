@@ -29,12 +29,11 @@ export default function Katalogmenue() {
     produktType | undefined
   >(undefined);
   const [selectedGebiet, setSelectedGebiet] = useState<gebietsType | undefined>(
-    undefined
+    undefined,
   );
   const [selectedZonen, setSelectedZonen] = useState<zonenType | undefined>(
-    undefined
+    undefined,
   );
-
 
   const pvTarifproduktGebiete = useCallback(
     (pv: pvType, produkt: produktType) => {
@@ -43,7 +42,7 @@ export default function Katalogmenue() {
         .filter(
           (tp) =>
             tp.PVNr === pv.PVNr &&
-            tp.ProduktbezeichnungNr === produkt.ProduktbezeichnungNr
+            tp.ProduktbezeichnungNr === produkt.ProduktbezeichnungNr,
         )
         .map((tp) => {
           const { GebietsparameterNr, GebietsparameterText, Zonenwahl } = tp;
@@ -52,16 +51,15 @@ export default function Katalogmenue() {
         .reduce((accumulator, current) => {
           if (
             !accumulator.find(
-              (item) => item.GebietsparameterNr === current.GebietsparameterNr
+              (item) => item.GebietsparameterNr === current.GebietsparameterNr,
             )
           ) {
             accumulator.push(current);
           }
           return accumulator;
-        }, intialPvTarifproduktGebiete)
+        }, intialPvTarifproduktGebiete);
     },
-    [tarifprodukte]
-
+    [tarifprodukte],
   );
 
   useEffect(() => {
@@ -85,7 +83,13 @@ export default function Katalogmenue() {
     if (!selectedGebiet) {
       setSelectedZonen(undefined);
     }
-  }, [selectedPv, selectedProduct, selectedGebiet, selectedZonen, pvTarifproduktGebiete]);
+  }, [
+    selectedPv,
+    selectedProduct,
+    selectedGebiet,
+    selectedZonen,
+    pvTarifproduktGebiete,
+  ]);
 
   const initialPvValue: { PVNr: number; PVText: string }[] = [];
   const pv = tarifprodukte
@@ -111,7 +115,8 @@ export default function Katalogmenue() {
       .reduce((accumulator, current) => {
         if (
           !accumulator.find(
-            (item) => item.ProduktbezeichnungNr === current.ProduktbezeichnungNr
+            (item) =>
+              item.ProduktbezeichnungNr === current.ProduktbezeichnungNr,
           )
         ) {
           accumulator.push(current);

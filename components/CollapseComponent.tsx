@@ -11,7 +11,7 @@ interface CollapseComponentProps {
 }
 
 export default function CollapseComponent(
-  props: React.PropsWithChildren<CollapseComponentProps>
+  props: React.PropsWithChildren<CollapseComponentProps>,
 ) {
   const [isOpen, setIsOpen] = useState<boolean>(props.isOpen || false);
   return (

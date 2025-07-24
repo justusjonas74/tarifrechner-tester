@@ -1,10 +1,7 @@
-"use client"
+"use client";
 
-import CicoTestComponent from "@/components/CicoTestComponent"
-
+import CicoTestComponent from "@/components/CicoTestComponent";
 
 export default function Home() {
-  return (
-    <CicoTestComponent />
-  )
+  return <CicoTestComponent />;
 }

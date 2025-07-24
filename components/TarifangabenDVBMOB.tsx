@@ -1,4 +1,3 @@
-
 import { TicketDetailsDvb } from "./TicketDetailsDvb";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -22,7 +21,7 @@ export default function TarifangabenDVBMOB(props: TarifangabenProps) {
   };
   const fetchKaufangeboteNachEingabedaten = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    eingabedaten?: IEINGABEDATEN
+    eingabedaten?: IEINGABEDATEN,
   ) => {
     if (!eingabedaten) {
       toast.error("Das Ticket hat keine Eingabedaten");

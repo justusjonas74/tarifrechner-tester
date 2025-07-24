@@ -9,7 +9,9 @@ export default function VdvEinheitslayout(props: {
 }) {
   const { daten } = props;
   const [hasError, setHasError] = useState(false);
-  const einheitslayout = daten?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten?.vdveinheitslayout || null;
+  const einheitslayout =
+    daten?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten
+      ?.vdveinheitslayout || null;
   if (!einheitslayout) {
     return <div>Keine (Layout-)Daten verfügbar</div>;
   }

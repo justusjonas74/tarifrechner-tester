@@ -71,10 +71,10 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
           <div className="row">
             {antwortJSON?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten
               ?.vdveinheitslayout && (
-                <div className="col-md-3 ">
-                  <VdvEinheitslayout daten={antwortJSON} />
-                </div>
-              )}
+              <div className="col-md-3 ">
+                <VdvEinheitslayout daten={antwortJSON} />
+              </div>
+            )}
             <div className="col-md-9">
               {!isLoading && anfrageJSON && (
                 <>

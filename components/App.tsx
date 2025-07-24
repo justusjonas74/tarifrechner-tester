@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { ITrip } from "dvbjs";
 
-
 import "./App.css";
 import RoutingComponent from "./RoutingComponent";
 import TarifrechnerComponent from "./TarifrechnerComponent";
-
 
 export default function App() {
   const [selectedTrip, setSelectedTrip] = useState<ITrip | null>(null);
@@ -40,7 +38,6 @@ export default function App() {
       <Tarifangebot handleProductsChange={this.handleProductsChange}/>}
       {isTripSelected &&
       <UseTestCaseComponent handleExportToFile={this.handleExportToFile} />} */}
-
     </div>
   );
 }

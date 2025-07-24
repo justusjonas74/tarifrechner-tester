@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { parseTarifrechnerTicketDvb } from "@/lib/parseTarifrechnerTicket";
 import { ITICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 
-
 export interface TicketDetailsProps {
   ticket: ITICKETDATEN;
 }

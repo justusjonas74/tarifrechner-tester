@@ -14,7 +14,7 @@ interface TarifAbAnzeigeProps {
 
 export default function TarifAbAnzeige(props: TarifAbAnzeigeProps) {
   const [efaAntwort, setEfaAntwort] = useState<TariffOverview | undefined>(
-    undefined
+    undefined,
   );
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

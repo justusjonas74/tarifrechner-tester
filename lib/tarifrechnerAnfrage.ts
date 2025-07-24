@@ -4,9 +4,12 @@ import {
   EFA_ANFRAGE,
   DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
   DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN,
-  INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG
+  INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG,
 } from "pkm-tarifrechner";
-import { IFAIRTIQ_ANFRAGELISTE_ANTWORTLISTE, IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import {
+  IFAIRTIQ_ANFRAGELISTE_ANTWORTLISTE,
+  IFAIRTIQ_REISENDER,
+} from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { FromITripOptions } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/requests";
 import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/tarifrechner/generic/trRequest";
@@ -43,12 +46,12 @@ export function tarifrechnerDvbAngebotsinfoAnfrage(trip: ITrip) {
 }
 
 export function tarifrechnerDvbKaufangeboteNachEingabedaten(
-  eingabedaten: IEINGABEDATEN
+  eingabedaten: IEINGABEDATEN,
 ) {
   const config = getConfig();
   return DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN.fromEingabedaten(
     eingabedaten,
-    config
+    config,
   );
 }
 
@@ -60,7 +63,11 @@ export function tarifrechnerFairtiqAnfrage(
   const config = getConfig();
   const options: FromITripOptions = {
     reisendenliste,
-    vergangeneAnfragen
-  }
-  return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(trip, config, options)
+    vergangeneAnfragen,
+  };
+  return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(
+    trip,
+    config,
+    options,
+  );
 }
