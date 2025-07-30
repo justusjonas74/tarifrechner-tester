@@ -7,7 +7,7 @@ import {
   INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG,
 } from "pkm-tarifrechner";
 import {
-  IFAIRTIQ_ANFRAGELISTE_ANTWORTLISTE,
+  IFAIRTIQ_ANFRAGE_ANTWORT,
   IFAIRTIQ_REISENDER,
 } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { FromITripOptions } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/requests";
@@ -58,7 +58,7 @@ export function tarifrechnerDvbKaufangeboteNachEingabedaten(
 export function tarifrechnerFairtiqAnfrage(
   trip: ITrip,
   reisendenliste: IFAIRTIQ_REISENDER[],
-  vergangeneAnfragen?: IFAIRTIQ_ANFRAGELISTE_ANTWORTLISTE[],
+  vergangeneAnfragen?: IFAIRTIQ_ANFRAGE_ANTWORT[],
 ) {
   const config = getConfig();
   const options: FromITripOptions = {

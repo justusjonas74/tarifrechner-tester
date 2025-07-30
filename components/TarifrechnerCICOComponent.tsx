@@ -73,7 +73,7 @@ export default function TarifrechnerCiCoComponent(
       }
     };
     sendRequest();
-  }, [trip, reisendenliste]);
+  }, [trip, reisendenliste, previousCiCoRequests]);
 
   const copyPostManJSONToClipboard = (data: string | undefined) => {
     // const data = efaJsonRequestData;
