@@ -6,7 +6,6 @@ import { faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
 
 import { useEffect, useState } from "react";
-// import Tarifangaben from "./Tarifangaben";
 import { tarifrechnerFairtiqAnfrage } from "@/lib/tarifrechnerAnfrage";
 import CollapseComponent from "./CollapseComponent";
 import { toast } from "react-toastify";

@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import { config } from "@fortawesome/fontawesome-svg-core";
+import NavbarComponent from "@/components/NavBarComponent";
 config.autoAddCss = false; /* eslint-disable import/first */
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
+        <NavbarComponent />
         {children} <ToastContainer />
       </body>
     </html>

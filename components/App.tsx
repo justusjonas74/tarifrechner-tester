@@ -16,7 +16,7 @@ export default function App() {
     <div className="container">
       <h1 className="my-4">
         Testfallgenerator
-        <small className="text-muted"> für VVO-Tarifrechner</small>{" "}
+        <small className="text-muted">{" "}EFA/MOBI-App-Tests</small>{" "}
       </h1>
       <h2 className="my-4">
         {selectedTrip ? "Ausgewählte Verbindung" : "Verbindungsauswahl"}

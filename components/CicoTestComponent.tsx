@@ -46,7 +46,7 @@ export default function CicoTestComponent() {
     const exists = previousCiCoRequests.some(
       (prevRequest) =>
         JSON.stringify(prevRequest.anfrage) ===
-          JSON.stringify(request.anfrage) &&
+        JSON.stringify(request.anfrage) &&
         JSON.stringify(prevRequest.antwort) === JSON.stringify(request.antwort),
     );
     if (exists) {
@@ -60,7 +60,10 @@ export default function CicoTestComponent() {
 
   return (
     <div className="container">
-      <h1>Check-In/Check-Out-Tests</h1>
+      <h1 className="my-4">
+        Testfallgenerator
+        <small className="text-muted">{" "}Check-In/Check-Out-Tests</small>{" "}
+      </h1>
 
       <div className="row">
         <ReisendenComponent
