@@ -10,8 +10,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/tarifrechner/:path*",
-        destination: process.env.NEXT_PUBLIC_URL + ":path*",
+        source: "/tarifrechner",
+        // source: "/tarifrechner/:path*",
+        // destination: process.env.NEXT_PUBLIC_URL + ":path*",
+        destination: process.env.NEXT_PUBLIC_URL,
       },
     ];
   },
