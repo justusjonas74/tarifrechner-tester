@@ -42,6 +42,27 @@ export interface ReisendenComponentProps {
   handleChangedReisendenliste: (reisendenliste: IFAIRTIQ_REISENDER[]) => void;
 }
 
+function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFAIRTIQ_REISENDER) => void }) {
+  return (
+    <Dropdown>
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
+        <FontAwesomeIcon icon={faUserPlus} /> weitere Reisende hinzufügen
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        {REISENDE_ARRAY.map((reisender, index) => (
+          <Dropdown.Item
+            key={"reisender_dropdown_" + index}
+            onClick={() => props.handleAddReisender(reisender)}
+          >
+            {reisender.typ?.name}
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
+
 export default function ReisendenComponent(props: ReisendenComponentProps) {
   const { reisendenliste, handleChangedReisendenliste } = props;
 
@@ -56,7 +77,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
   function handleSetMainReisender(index: number) {
     const newReisendenliste = [...reisendenliste];
     // Set all reisenders to not main user
-    newReisendenliste.forEach((r, i) => {
+    newReisendenliste.forEach((r) => {
       r.erweiterungsliste = [{ nr: "INOUTMDM_ISTHAUPTNUTZER", wert: "F" }];
     });
     // Set selected reisender as main user
@@ -78,27 +99,6 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
     const newReisendenliste = [...reisendenliste, reisender];
     handleChangedReisendenliste(newReisendenliste);
   }
-
-  const AddPassengerDropdownButton = () => {
-    return (
-      <Dropdown>
-        <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
-          <FontAwesomeIcon icon={faUserPlus} /> weitere Reisende hinzufügen
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          {REISENDE_ARRAY.map((reisender, index) => (
-            <Dropdown.Item
-              key={"reisender_dropdown_" + index}
-              onClick={() => handleAddReisender(reisender)}
-            >
-              {reisender.typ?.name}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
-    );
-  };
 
   return (
     <div className="col-sm-6">
@@ -134,7 +134,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                     <button
                       type="button"
                       className="btn btn-secondary btn-sm me-1"
-                      onClick={(e) => handleSetMainReisender(index)}
+                      onClick={(_e) => handleSetMainReisender(index)}
                     >
                       {" "}
                       <FontAwesomeIcon icon={faPen} className="mr-1" /> Als
@@ -144,7 +144,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                   <button
                     type="button"
                     className="btn btn-danger btn-sm"
-                    onClick={(e) => handleRemoveReisender(index)}
+                    onClick={(_e) => handleRemoveReisender(index)}
                   >
                     {" "}
                     <FontAwesomeIcon icon={faTrash} />
@@ -154,7 +154,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
             );
           })}
           <li className="list-group-item" id="reisender_add_button">
-            <AddPassengerDropdownButton />
+            <AddPassengerDropdownButton handleAddReisender={handleAddReisender} />
           </li>
         </ul>
       </div>
