@@ -1,9 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import { Inter } from "next/font/google";
-// import './globals.css'
-
+import { ToastContainer } from "react-toastify";
 // add bootstrap css
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -14,7 +10,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import { config } from "@fortawesome/fontawesome-svg-core";
 import NavbarComponent from "@/components/NavBarComponent";
-config.autoAddCss = false; /* eslint-disable import/first */
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: "Tarifrechner Test-Tool",

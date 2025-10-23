@@ -19,7 +19,7 @@ interface IKaufangeboteModalProps {
   eingabedaten: IEINGABEDATEN | undefined;
 }
 function KaufangeboteModal(props: IKaufangeboteModalProps) {
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { eingabedaten } = props;
   const [anfrageJSON, setAnfrageJSON] = useState<string | undefined>(undefined);
@@ -38,10 +38,10 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
     };
 
     if (eingabedaten) {
-      setShow(true);
+      // setShow(true);
       sendRequest(eingabedaten);
     } else {
-      setShow(false);
+      // setShow(false);
     }
   }, [eingabedaten]);
 
@@ -49,7 +49,7 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} fullscreen>
+      <Modal show={!!eingabedaten} onHide={handleClose} fullscreen>
         <Modal.Header closeButton>
           <Modal.Title>Kaufangebote</Modal.Title>
         </Modal.Header>
@@ -64,17 +64,17 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
           {isLoading && (
             <div className="LoadingSpinner text-center">
               <span className="align-middle">
-                <FontAwesomeIcon icon={faSpinner} size="3x" pulse={true} />
+                <FontAwesomeIcon icon={faSpinner} size="3x" spinPulse={true} />
               </span>
             </div>
           )}
           <div className="row">
             {antwortJSON?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten
               ?.vdveinheitslayout && (
-              <div className="col-md-3 ">
-                <VdvEinheitslayout daten={antwortJSON} />
-              </div>
-            )}
+                <div className="col-md-3 ">
+                  <VdvEinheitslayout daten={antwortJSON} />
+                </div>
+              )}
             <div className="col-md-9">
               {!isLoading && anfrageJSON && (
                 <>
