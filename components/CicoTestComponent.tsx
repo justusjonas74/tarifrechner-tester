@@ -4,10 +4,8 @@ import RoutingComponent from "./RoutingComponent";
 import TarifrechnerCiCoComponent from "./TarifrechnerCICOComponent";
 import {
   IFAIRTIQ_ANFRAGE_ANTWORT,
-  IFAIRTIQ_ANFRAGELISTE,
-  IFAIRTIQ_ANTWORTLISTE,
+  IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
-  IFAIRTIQ_VERBINDUNG,
 } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import ReisendenComponent from "./ReisendenComponent";
 import PreviousRequestComponent from "./PreviousRequestComponent";
@@ -30,6 +28,8 @@ export default function CicoTestComponent() {
   const [reisendenliste, setReisendenliste] = useState<IFAIRTIQ_REISENDER[]>([
     defaultReisender,
   ]);
+
+  const [berechtigungsliste, setBerechtigungsliste] = useState<IFAIRTIQ_BERECHTIGUNG[]>([]);
 
   const handleChangedReisendenliste = (
     reisendenliste: IFAIRTIQ_REISENDER[],
@@ -57,6 +57,9 @@ export default function CicoTestComponent() {
     setPreviousCiCoRequests((prevRequests) => [...prevRequests, request]);
     toast.success("FAIRTIQ-Antwort gespeichert.");
   };
+  const handleChangedBerechtigungsliste = (berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[]) => {
+    setBerechtigungsliste(berechtigungsliste);
+  };
 
   return (
     <div className="container">
@@ -69,6 +72,8 @@ export default function CicoTestComponent() {
         <ReisendenComponent
           reisendenliste={reisendenliste}
           handleChangedReisendenliste={handleChangedReisendenliste}
+          berechtigungsliste={berechtigungsliste}
+          handleChangedBerechtigungsliste={handleChangedBerechtigungsliste}
         />
         <PreviousRequestComponent
           previousRequests={previousCiCoRequests}
@@ -90,6 +95,7 @@ export default function CicoTestComponent() {
             previousCiCoRequests={previousCiCoRequests}
             selectedTrip={selectedTrip}
             reisendenliste={reisendenliste}
+            berechtigungsliste={berechtigungsliste}
             handleSaveCiCoRequest={handleAddCiCoRequests}
           />
         </>

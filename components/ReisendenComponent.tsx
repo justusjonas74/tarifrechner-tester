@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash, faUserPlus, faTicket } from "@fortawesome/free-solid-svg-icons";
 import Badge from "react-bootstrap/Badge";
-import { IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_BERECHTIGUNG, IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import Dropdown from "react-bootstrap/Dropdown";
+import ZeitkartenModal from "./ZeitkartenModal";
+import { useState } from "react";
 
 const REISENDE_ARRAY: IFAIRTIQ_REISENDER[] = [
   {
@@ -39,7 +41,9 @@ const REISENDE_ARRAY: IFAIRTIQ_REISENDER[] = [
 
 export interface ReisendenComponentProps {
   reisendenliste: IFAIRTIQ_REISENDER[];
+  berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[];
   handleChangedReisendenliste: (reisendenliste: IFAIRTIQ_REISENDER[]) => void;
+  handleChangedBerechtigungsliste: (berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[]) => void;
 }
 
 function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFAIRTIQ_REISENDER) => void }) {
@@ -58,6 +62,12 @@ function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFA
             {reisender.typ?.name}
           </Dropdown.Item>
         ))}
+        <Dropdown.Divider />
+        <Dropdown.ItemText className="text-body-secondary">
+          <small>
+            <span className="fw-bold">Info:</span> In Phase 1 kann nur mit einem Reisenden angefragt werden.
+          </small>
+        </Dropdown.ItemText>
       </Dropdown.Menu>
     </Dropdown>
   );
@@ -65,15 +75,22 @@ function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFA
 
 export default function ReisendenComponent(props: ReisendenComponentProps) {
   const { reisendenliste, handleChangedReisendenliste } = props;
+  const [showZeitkartenModal, setShowZeitkartenModal] = useState(false);
 
-  // ToDo handleRemoveReisender
   function handleRemoveReisender(index: number) {
     const newReisendenliste = [...reisendenliste];
     newReisendenliste.splice(index, 1);
     handleChangedReisendenliste(newReisendenliste);
   }
+  function handleAddZeitkarte(_index: number) {
+    setShowZeitkartenModal(true);
+  }
 
-  // ToDo handleSetMainReisender
+  function handleChangedBerechtigungsliste(berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[]) {
+    setShowZeitkartenModal(false);
+    props.handleChangedBerechtigungsliste(berechtigungsliste);
+  }
+
   function handleSetMainReisender(index: number) {
     const newReisendenliste = [...reisendenliste];
     // Set all reisenders to not main user
@@ -85,6 +102,11 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
       { nr: "INOUTMDM_ISTHAUPTNUTZER", wert: "T" },
     ];
     handleChangedReisendenliste(newReisendenliste);
+  }
+  function getIndexOfHauptreisender() {
+    return reisendenliste.findIndex(
+      (r) => r.erweiterungsliste?.[0]?.wert === "T"
+    );
   }
 
   // handleAddReisender
@@ -116,6 +138,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
               reisender.erweiterungsliste?.[0]?.wert === "T";
             const istVollzahler =
               reisender.typ?.nr === "1" || reisender.typ?.nr === "25";
+            const hatBerechtigungen = props.berechtigungsliste.filter(berechtigung => berechtigung.reisendenbezug.includes(index + 1)).length > 0;
 
             return (
               <li className="list-group-item" key={"reisender_li_" + index}>
@@ -129,6 +152,11 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                   </span>
                 )}
 
+                {hatBerechtigungen && (
+                  <span className="badge mx-1 text-bg-info">
+                    Zeitkarte hinterlegt
+                  </span>
+                )}
                 <span className="float-end">
                   {!istHauptnutzer && istVollzahler && (
                     <button
@@ -139,6 +167,17 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                       {" "}
                       <FontAwesomeIcon icon={faPen} className="mr-1" /> Als
                       Hauptnutzer festlegen
+                    </button>
+                  )}
+                  {/* Aktuell kann nur der Haupnutzer eine Zeitkarte hinterlegen. */}
+                  {istHauptnutzer && (
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-sm mx-1"
+                      onClick={(_e) => handleAddZeitkarte(index)}
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faTicket} /> {props.berechtigungsliste.length !== 0 ? "Zeitkarte ändern" : "Zeitkarte hinterlegen"}
                     </button>
                   )}
                   <button
@@ -158,6 +197,13 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
           </li>
         </ul>
       </div>
+      <ZeitkartenModal
+        showModal={showZeitkartenModal}
+        handleCloseModal={() => setShowZeitkartenModal(false)}
+        reisenderIndex={getIndexOfHauptreisender()}
+        handleUpdateBerechtigungsliste={handleChangedBerechtigungsliste}
+        berechtigungsliste={props.berechtigungsliste}
+      />
     </div>
   );
 }

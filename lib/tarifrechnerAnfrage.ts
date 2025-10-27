@@ -8,6 +8,7 @@ import {
 } from "pkm-tarifrechner";
 import {
   IFAIRTIQ_ANFRAGE_ANTWORT,
+  IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
 } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { FromITripOptions } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/requests";
@@ -59,10 +60,12 @@ export function tarifrechnerFairtiqAnfrage(
   trip: ITrip,
   reisendenliste: IFAIRTIQ_REISENDER[],
   vergangeneAnfragen?: IFAIRTIQ_ANFRAGE_ANTWORT[],
+  berechtigungsliste?: IFAIRTIQ_BERECHTIGUNG[],
 ) {
   const config = getConfig();
   const options: FromITripOptions = {
     reisendenliste,
+    berechtigungsliste,
     vergangeneAnfragen,
   };
   return INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG.fromITrip(

@@ -15,12 +15,14 @@ import {
   IFAIRTIQ_ANFRAGE_ANTWORT,
   IFAIRTIQ_ANFRAGELISTE,
   IFAIRTIQ_ANTWORTLISTE,
+  IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
 } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import CicoTarifangaben from "./CicoTarifangaben";
 
 interface TarifrechnerComponentProps {
   selectedTrip: ITrip;
+  berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[];
   reisendenliste: IFAIRTIQ_REISENDER[];
   handleSaveCiCoRequest: (request: IFAIRTIQ_ANFRAGE_ANTWORT) => void;
   previousCiCoRequests: IFAIRTIQ_ANFRAGE_ANTWORT[];
@@ -30,6 +32,7 @@ export default function TarifrechnerCiCoComponent(
   props: TarifrechnerComponentProps,
 ) {
   const trip = props.selectedTrip;
+  const berechtigungsliste = props.berechtigungsliste;
   const reisendenliste = props.reisendenliste;
   const previousCiCoRequests = props.previousCiCoRequests;
   const [fairtiqAntwort, setFairtiqAntwort] = useState<
@@ -54,11 +57,14 @@ export default function TarifrechnerCiCoComponent(
           trip,
           reisendenliste,
           previousCiCoRequests,
+          berechtigungsliste
         );
         // toast.info(`${previousCiCoRequests.length} Verbindungen übergeben.`);
         // toast.info(`${fairtiqAnfrage.data.anfrageliste[0].verbindungsliste.length} Verbindungen in Anfrage.`);
         setFairtiqAnfrage(fairtiqAnfrage.data);
+        console.log("fairtiqAnfrage.dataToJSON", fairtiqAnfrage.dataToJSON());
         setFairtiqJsonRequestData(fairtiqAnfrage.dataToJSON());
+        console.log("fairtiqJsonRequestData:", fairtiqJsonRequestData);
         const response = await fairtiqAnfrage.sendRequest();
         if (response) {
           setFairtiqAntwort(response);
@@ -70,10 +76,11 @@ export default function TarifrechnerCiCoComponent(
         if (error instanceof Error) message = error.message;
         else message = String(error);
         toast.error(message);
+        setIsLoading(false);
       }
     };
     sendRequest();
-  }, [trip, reisendenliste, previousCiCoRequests]);
+  }, [trip, reisendenliste, berechtigungsliste, previousCiCoRequests]);
 
   const copyPostManJSONToClipboard = (data: string | undefined) => {
     // const data = efaJsonRequestData;
