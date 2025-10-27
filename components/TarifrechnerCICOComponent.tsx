@@ -62,9 +62,7 @@ export default function TarifrechnerCiCoComponent(
         // toast.info(`${previousCiCoRequests.length} Verbindungen übergeben.`);
         // toast.info(`${fairtiqAnfrage.data.anfrageliste[0].verbindungsliste.length} Verbindungen in Anfrage.`);
         setFairtiqAnfrage(fairtiqAnfrage.data);
-        console.log("fairtiqAnfrage.dataToJSON", fairtiqAnfrage.dataToJSON());
         setFairtiqJsonRequestData(fairtiqAnfrage.dataToJSON());
-        console.log("fairtiqJsonRequestData:", fairtiqJsonRequestData);
         const response = await fairtiqAnfrage.sendRequest();
         if (response) {
           setFairtiqAntwort(response);

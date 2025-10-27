@@ -63,7 +63,7 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
   if (pruefergebnisliste && pruefergebnisliste.length > 0) {
     pruefergebnisliste.forEach((pruefergebnis, index) => {
       output.push((
-        <ListItem id={"li-cico-pruefergebnisse-" + index}>
+        <ListItem key={"li-cico-pruefergebnisse-" + index} id={"li-cico-pruefergebnisse-" + index}>
           {formatPruefergebnis(pruefergebnis)}
         </ListItem >
       ))
@@ -72,7 +72,7 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
 
   if (!ticketdatenliste || ticketdatenliste.length === 0) {
     output.push((
-      <ListItem id="li-no-cico-tickets">
+      <ListItem key="li-no-cico-tickets" id="li-no-cico-tickets">
         Die Anwort des Tarifrechners enthält keine Ticketdaten.
       </ListItem>
     ));
@@ -80,7 +80,7 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
 
   if (!angebotsdatenliste || angebotsdatenliste.length === 0) {
     output.push((
-      <ListItem id="li-no-cico-offers">
+      <ListItem key="li-no-cico-offers" id="li-no-cico-offers">
         Die Anwort des Tarifrechners enthält keine Angebotsdaten.
       </ListItem>
     ));
@@ -125,7 +125,7 @@ export default function CicoTarifangaben(props: TarifangabenProps) {
                 }
                 id={"a" + angebot_index + "-t" + ticketdatenbezug_index}
               >
-                <TicketDetailsCicoTicket ticket={ticketdaten} />
+                <TicketDetailsCicoTicket key={"TicketDetailsCicoTicket-a" + angebot_index + "-t" + ticketdatenbezug_index} ticket={ticketdaten} />
               </ListItem>
             );
           },

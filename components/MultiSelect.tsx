@@ -6,25 +6,32 @@ export interface TARIFZONEN extends IELEMENT { }
 
 interface MultiSelectProps {
   items: TARIFZONEN[];
-  selectedItems?: TARIFZONEN[];
+  selectedItems: TARIFZONEN[];
   onChange: (selected: TARIFZONEN[]) => void;
 }
 export default function MultiSelect({ items, onChange, selectedItems }: MultiSelectProps) {
-  const [selected, setSelected] = useState<string[]>(selectedItems?.map((i) => i.nr) || []);
-  useEffect(() => {
-    const selectedItems = items.filter((i) => selected.includes(i.nr));
-    onChange(selectedItems);
-  }, [selected]);
+  // const [selected, setSelected] = useState<string[]>(selectedItems?.map((i) => i.nr) || []);
+  // useEffect(() => {
+  //   const selectedItems = items.filter((i) => selected.includes(i.nr));
+  //   onChange(selectedItems);
+  // }, [selected]);
 
-  const toggleSelect = (nr: string) => {
-    setSelected((prev) =>
-      prev.includes(nr) ? prev.filter((id) => id !== nr) : [...prev, nr]
-    )
+  // const toggleSelect = (nr: string) => {
+  //   setSelected((prev) =>
+  //     prev.includes(nr) ? prev.filter((id) => id !== nr) : [...prev, nr]
+  //   )
+  // };
+
+  const toggleSelect = (tarifzone: TARIFZONEN) => {
+    const newState = !!selectedItems.find(i => i.nr === tarifzone.nr) ? selectedItems.filter((id) => id.nr !== tarifzone.nr) : [...selectedItems, tarifzone]
+    onChange(newState);
   };
+  // const selectAll = () => setSelected(items.map((i) => i.nr));
 
-  const selectAll = () => setSelected(items.map((i) => i.nr));
-  const selectNone = () => setSelected([]);
+  const selectAll = () => onChange(items.map((i) => i));
+  // const selectNone = () => setSelected([]);
 
+  const selectNone = () => onChange([]);
   return (
     <div>
       <h5>Tarifzonen auswählen</h5>
@@ -35,12 +42,12 @@ export default function MultiSelect({ items, onChange, selectedItems }: MultiSel
         }}
       >
         {items.map((item) => {
-          const isSelected = selected.includes(item.nr);
+          const isSelected = !!selectedItems.find(i => i.nr == item.nr);
           return (
             <Button
               key={item.nr}
               variant={isSelected ? "primary" : "outline-primary"}
-              onClick={() => toggleSelect(item.nr)}
+              onClick={() => toggleSelect(item)}
               className="rounded-pill px-3 py-1"
               style={{
                 transition: "all 0.15s ease-in-out",
