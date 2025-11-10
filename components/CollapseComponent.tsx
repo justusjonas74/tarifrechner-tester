@@ -1,5 +1,5 @@
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CaretDownIcon } from "@phosphor-icons/react/dist/csr/CaretDown";
+import { CaretUpIcon } from "@phosphor-icons/react/dist/csr/CaretUp";
 import { useState } from "react";
 import { Button, Collapse } from "react-bootstrap";
 
@@ -25,12 +25,12 @@ export default function CollapseComponent(
           className="m-1"
           variant="light"
         >
-          {/* <FontAwesomeIcon icon={faWrench} fixedWidth/> */}
-          <FontAwesomeIcon
-            icon={isOpen ? faChevronUp : faChevronDown}
-            height={15}
-            className="mx-2"
-          />
+          {isOpen ? (
+            <CaretUpIcon size={16} className="mx-2" />
+          ) : (
+            <CaretDownIcon size={16} className="mx-2" />
+          )}
+
           <span className={props.textClassName}>{props.chevronText}</span>
         </Button>
         <Collapse in={isOpen} timeout={50}>

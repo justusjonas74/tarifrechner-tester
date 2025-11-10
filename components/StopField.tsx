@@ -1,8 +1,8 @@
 import React from "react";
 
 import { IPoint } from "dvbjs";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+
+import { PencilSimpleIcon } from "@phosphor-icons/react/dist/csr/PencilSimple";
 import Button from "react-bootstrap/Button";
 
 // interface IState {}
@@ -28,7 +28,7 @@ export default function StopField(props: IStopFieldProps) {
         aria-label="Close"
         onClick={props.handleResetClick}
       >
-        <FontAwesomeIcon size="xs" icon={faPen} />
+        <PencilSimpleIcon weight="regular" size="16" />
       </Button>
       <br />
       <span className="small text-secondary">(ID:{props.stop.id}) </span>

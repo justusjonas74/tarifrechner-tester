@@ -1,5 +1,4 @@
 import React, { FormEvent, useState } from "react";
-import * as dvb from "dvbjs";
 import { IPoint } from "dvbjs";
 import Autosuggest, {
   OnSuggestionSelected,
@@ -56,9 +55,9 @@ export default function SearchStopField(props: SearchStopFieldProps) {
 
     const data = await api<IPoint[]>(
       "api/stops?" +
-        new URLSearchParams({
-          name: searchterm,
-        }),
+      new URLSearchParams({
+        name: searchterm,
+      }),
     );
     if (data) {
       const stops = data;

@@ -14,5 +14,7 @@ docker system prune
 ## Start
 
 ```bash
+docker container kill tarifrechner-tester-prod
 docker run --name tarifrechner-tester-prod -p 3000:3000 -d --restart always tarifrechner-tester
+
 ```
