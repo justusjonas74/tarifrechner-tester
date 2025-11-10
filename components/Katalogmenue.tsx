@@ -2,8 +2,7 @@ import { Button } from "react-bootstrap";
 import * as json from "../json/MENU_DVBMOB_G230801_0000_F2_1_Katalogmenue.json";
 import { useState, useEffect, useCallback } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil"
 
 export default function Katalogmenue() {
   const { tarifprodukte, zonenwahl } = json;
@@ -155,7 +154,7 @@ export default function Katalogmenue() {
               aria-label="Close"
               onClick={() => setSelectedPv(undefined)}
             >
-              <FontAwesomeIcon size="sm" icon={faPen} />
+              <PencilIcon />
             </Button>
           </>
         )}
@@ -190,7 +189,7 @@ export default function Katalogmenue() {
               aria-label="Close"
               onClick={() => setSelectedProduct(undefined)}
             >
-              <FontAwesomeIcon size="sm" icon={faPen} />
+              <PencilIcon />
             </Button>
           </>
         )}
@@ -226,7 +225,7 @@ export default function Katalogmenue() {
               aria-label="Close"
               onClick={() => setSelectedGebiet(undefined)}
             >
-              <FontAwesomeIcon size="sm" icon={faPen} />
+              <PencilIcon />
             </Button>
           </>
         )}
@@ -277,7 +276,7 @@ export default function Katalogmenue() {
               aria-label="Close"
               onClick={() => setSelectedZonen(undefined)}
             >
-              <FontAwesomeIcon size="sm" icon={faPen} />
+              <PencilIcon />
             </Button>
           </>
         )}

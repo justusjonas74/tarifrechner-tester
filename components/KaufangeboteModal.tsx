@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-
+import { SpinnerIcon } from "@phosphor-icons/react/dist/csr/Spinner"
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -64,7 +62,7 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
           {isLoading && (
             <div className="LoadingSpinner text-center">
               <span className="align-middle">
-                <FontAwesomeIcon icon={faSpinner} size="3x" spinPulse={true} />
+                <SpinnerIcon size={48} className="spin" />
               </span>
             </div>
           )}

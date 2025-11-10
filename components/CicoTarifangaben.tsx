@@ -1,6 +1,5 @@
 import Badge from "react-bootstrap/Badge";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { WarningIcon } from "@phosphor-icons/react/dist/csr/Warning";
 import { parseTarifrechnerTicketFairtiq } from "@/lib/parseTarifrechnerTicket";
 import {
   IFAIRTIQ_ANTWORTLISTE,
@@ -22,7 +21,8 @@ function ListItem(props: { id: string; children: React.ReactNode }) {
 }
 function formatPruefergebnis(pruefergebnis: IPRUEFERGEBNIS) {
   const element = (string: string, entwicklerinfo?: string) => {
-    return <div className="justify-content-between"><FontAwesomeIcon icon={faTriangleExclamation} />{" " + string} {entwicklerinfo && <><br /><span className="text-body-secondary small" >{entwicklerinfo}</span></>}</div>;
+    return <div className="justify-content-between">
+      <WarningIcon />{" " + string} {entwicklerinfo && <><br /><span className="text-body-secondary small" >{entwicklerinfo}</span></>}</div>;
   }
 
   switch (pruefergebnis.nr) {

@@ -1,8 +1,8 @@
 import { ITrip } from "dvbjs";
 
 import HighlightComponent from "./HighlightComponent";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+
+import { ClipboardIcon } from "@phosphor-icons/react/dist/csr/Clipboard";
 import { Button } from "react-bootstrap";
 
 import { useEffect, useState } from "react";
@@ -160,7 +160,7 @@ export default function TarifrechnerComponent(
                       variant="light"
                       className="my-1"
                     >
-                      <FontAwesomeIcon icon={faClipboard} className="mx-2" />
+                      <ClipboardIcon className="mx-2" />
                       Kopiere Postman-Testfall
                     </Button>
                   </div>
@@ -233,7 +233,7 @@ export default function TarifrechnerComponent(
                       variant="light"
                       className="my-1"
                     >
-                      <FontAwesomeIcon icon={faClipboard} className="mx-2" />
+                      <ClipboardIcon className="mx-2" />
                       Kopiere Postman-Testfall
                     </Button>
                   </div>

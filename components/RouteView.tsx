@@ -2,14 +2,11 @@ import React, { FunctionComponent, type JSX } from "react";
 import { ITrip, IStopLocation, INode, IStop, IMode } from "dvbjs";
 import moment from "moment";
 import "./RouteView.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPen,
-  faChevronDown,
-  faChevronUp,
-  faCheckSquare,
-} from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
+import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil";
+import { CaretDownIcon } from "@phosphor-icons/react/dist/csr/CaretDown";
+import { CaretUpIcon } from "@phosphor-icons/react/dist/csr/CaretUp";
+import { CheckSquareIcon } from "@phosphor-icons/react/dist/csr/CheckSquare";
+
 // import Tarifangaben from './Tarifangaben';
 import TarifAbAnzeige from "./TarifAbAnzeige";
 
@@ -318,7 +315,7 @@ class RouteView extends React.Component<IProps, IState> {
                         onClick={this.handleSelectRoute}
                       >
                         {" "}
-                        <FontAwesomeIcon icon={faCheckSquare} /> auswählen
+                        <CheckSquareIcon /> auswählen
                       </button>
                     ) : (
                       <button
@@ -328,7 +325,7 @@ class RouteView extends React.Component<IProps, IState> {
                         onClick={this.handleEditTrip}
                       >
                         {" "}
-                        <FontAwesomeIcon icon={faPen} /> Ändern{" "}
+                        <PencilIcon /> Ändern{" "}
                       </button>
                     )}
                     <button
@@ -336,9 +333,7 @@ class RouteView extends React.Component<IProps, IState> {
                       className="m-1 btn btn-sm btn-secondary"
                       onClick={this.toggleShowDetails}
                     >
-                      <FontAwesomeIcon
-                        icon={showDetails ? faChevronUp : faChevronDown}
-                      />
+                      {showDetails ? <CaretUpIcon /> : <CaretDownIcon />}
                       Zwischenhalte
                     </button>
                   </td>
