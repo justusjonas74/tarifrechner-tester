@@ -15,9 +15,7 @@ export function TicketDetailsDvb(props: TicketDetailsProps) {
       <div className="ms-2 me-auto">
         <span className="p-2">
           <ShoppingCartIcon size="16" />
-
           {" " + ticket.anzeigetext}</span>
-
       </div>
       <span className="badge bg-secondary rounded">
         {ticket.betraginEuro || "Keine Preisangabe"}

@@ -54,7 +54,7 @@ function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFA
     <Dropdown>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
         <UserPlusIcon size="20" /> weitere Reisende hinzufügen
-      </Dropdown.Toggle>
+      </Dropdown.Toggle >
 
       <Dropdown.Menu>
         {REISENDE_ARRAY.map((reisender, index) => (
@@ -72,7 +72,7 @@ function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFA
           </small>
         </Dropdown.ItemText>
       </Dropdown.Menu>
-    </Dropdown>
+    </Dropdown >
   );
 };
 
