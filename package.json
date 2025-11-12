@@ -25,7 +25,7 @@
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {
-    "@types/node": "^24.10.0",
+    "@types/node": "^24.10.1",
     "@types/react": "19.2.2",
     "@types/react-autosuggest": "^10.1.11",
     "@types/react-dom": "19.2.2",
