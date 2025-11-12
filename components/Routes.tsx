@@ -3,8 +3,7 @@ import { IPoint, IRoute, route, ITrip } from "dvbjs";
 import RouteView from "./RouteView";
 // import moment from "moment";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { SpinnerIcon } from "@phosphor-icons/react/dist/csr/Spinner";
 import { api } from "@/lib/apiFetch";
 
 interface IState {
@@ -81,7 +80,7 @@ class Routes extends React.Component<IProps, IState> {
       content = (
         <RouteView
           trip={trip}
-          handleSelectedTrip={(e) => {}}
+          handleSelectedTrip={(e) => { }}
           selectable={false}
           handleEditTrip={this.props.handleEditTrip}
         />
@@ -92,8 +91,17 @@ class Routes extends React.Component<IProps, IState> {
           const spinner = (
             <div className="LoadingSpinner text-center">
               <span className="align-middle">
-                <FontAwesomeIcon icon={faSpinner} size="3x" pulse={true} />
+                <SpinnerIcon ><animateTransform
+                  attributeName="transform"
+                  attributeType="XML"
+                  type="rotate"
+                  dur="1s"
+                  from="0 0 0"
+                  to="360 0 0"
+                  repeatCount="indefinite"
+                ></animateTransform></SpinnerIcon>
               </span>
+
             </div>
           );
           content = spinner;
@@ -104,7 +112,7 @@ class Routes extends React.Component<IProps, IState> {
               trip={trip}
               key={index}
               handleSelectedTrip={this.props.handleSelectedTrip}
-              handleEditTrip={() => {}}
+              handleEditTrip={() => { }}
             />
           ));
           content = routeItems;

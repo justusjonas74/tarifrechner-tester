@@ -1,5 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash, faUserPlus, faTicket } from "@fortawesome/free-solid-svg-icons";
+
+import { TrashIcon } from "@phosphor-icons/react/dist/csr/Trash"
+import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil"
+import { UserPlusIcon } from "@phosphor-icons/react/dist/csr/UserPlus"
+import { TicketIcon } from "@phosphor-icons/react/dist/csr/Ticket"
 import Badge from "react-bootstrap/Badge";
 import { IFAIRTIQ_BERECHTIGUNG, IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -50,8 +53,8 @@ function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFA
   return (
     <Dropdown>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
-        <FontAwesomeIcon icon={faUserPlus} /> weitere Reisende hinzufügen
-      </Dropdown.Toggle>
+        <UserPlusIcon size="20" /> weitere Reisende hinzufügen
+      </Dropdown.Toggle >
 
       <Dropdown.Menu>
         {REISENDE_ARRAY.map((reisender, index) => (
@@ -69,7 +72,7 @@ function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFA
           </small>
         </Dropdown.ItemText>
       </Dropdown.Menu>
-    </Dropdown>
+    </Dropdown >
   );
 };
 
@@ -165,7 +168,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                       onClick={(_e) => handleSetMainReisender(index)}
                     >
                       {" "}
-                      <FontAwesomeIcon icon={faPen} className="mr-1" /> Als
+                      <PencilIcon size="20" className="mr-1" /> Als
                       Hauptnutzer festlegen
                     </button>
                   )}
@@ -177,7 +180,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                       onClick={(_e) => handleAddZeitkarte(index)}
                     >
                       {" "}
-                      <FontAwesomeIcon icon={faTicket} /> {props.berechtigungsliste.length !== 0 ? "Zeitkarte ändern" : "Zeitkarte hinterlegen"}
+                      <TicketIcon size="20" /> {props.berechtigungsliste.length !== 0 ? "Zeitkarte ändern" : "Zeitkarte hinterlegen"}
                     </button>
                   )}
                   <button
@@ -186,7 +189,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                     onClick={(_e) => handleRemoveReisender(index)}
                   >
                     {" "}
-                    <FontAwesomeIcon icon={faTrash} />
+                    <TrashIcon size="20" />
                   </button>
                 </span>
               </li>

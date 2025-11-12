@@ -1,7 +1,11 @@
+import dynamic from 'next/dynamic'
+
+const Datetime = dynamic(() => import('react-datetime'), { ssr: false })
+
 import { IPoint, ITrip } from "dvbjs";
 import moment from "moment";
 import { useState } from "react";
-import Datetime from "react-datetime";
+// import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 
 import CollapseComponent from "./CollapseComponent";
