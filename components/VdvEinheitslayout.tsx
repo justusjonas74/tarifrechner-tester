@@ -1,7 +1,7 @@
 import CollapseComponent from "./CollapseComponent";
 
 import Image from "next/image";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
+import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
 import { useState } from "react";
 
 export default function VdvEinheitslayout(props: {

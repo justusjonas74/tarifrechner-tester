@@ -1,4 +1,4 @@
-import { IEFA_ANTWORTLISTE } from "pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
+import { IEFA_ANTWORTLISTE } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 import { TicketDetailsEfa } from "./TicketDetailsEfa";
 
 interface TarifangabenProps {

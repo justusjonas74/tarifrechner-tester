@@ -4,7 +4,7 @@ import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil"
 import { UserPlusIcon } from "@phosphor-icons/react/dist/csr/UserPlus"
 import { TicketIcon } from "@phosphor-icons/react/dist/csr/Ticket"
 import Badge from "react-bootstrap/Badge";
-import { IFAIRTIQ_BERECHTIGUNG, IFAIRTIQ_REISENDER } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_BERECHTIGUNG, IFAIRTIQ_REISENDER } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import Dropdown from "react-bootstrap/Dropdown";
 import ZeitkartenModal from "./ZeitkartenModal";
 import { useState } from "react";

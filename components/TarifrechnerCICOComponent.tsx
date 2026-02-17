@@ -16,7 +16,7 @@ import {
   IFAIRTIQ_ANTWORTLISTE,
   IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
-} from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+} from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import CicoTarifangaben from "./CicoTarifangaben";
 
 interface TarifrechnerComponentProps {

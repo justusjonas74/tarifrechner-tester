@@ -16,8 +16,8 @@ import { toast } from "react-toastify";
 import { optimizeJSONForPostman } from "@/lib/postman";
 import copyTextToClipboard from "@/lib/copyToClipboard";
 import TarifangabenDVBMOB from "./TarifangabenDVBMOB";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
-import { IEFA_ANTWORTLISTE } from "pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
+import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
+import { IEFA_ANTWORTLISTE } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 
 interface TarifrechnerComponentProps {
   selectedTrip: ITrip;
