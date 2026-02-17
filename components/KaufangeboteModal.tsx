@@ -9,8 +9,8 @@ import HighlightComponent from "./HighlightComponent";
 
 import { tarifrechnerDvbKaufangeboteNachEingabedaten } from "@/lib/tarifrechnerAnfrage";
 import VdvEinheitslayout from "./VdvEinheitslayout";
-import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
+import { IEINGABEDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
 
 interface IKaufangeboteModalProps {
   handleCloseFn: () => void;

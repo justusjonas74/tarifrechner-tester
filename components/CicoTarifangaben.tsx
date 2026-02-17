@@ -4,9 +4,9 @@ import { parseTarifrechnerTicketFairtiq } from "@/lib/parseTarifrechnerTicket";
 import {
   IFAIRTIQ_ANTWORTLISTE,
   IFAIRTIQ_TICKETDATEN,
-} from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+} from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { Button } from "react-bootstrap";
-import { IPRUEFERGEBNIS } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { IPRUEFERGEBNIS } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 
 function ListItem(props: { id: string; children: React.ReactNode }) {
   const { id } = props;

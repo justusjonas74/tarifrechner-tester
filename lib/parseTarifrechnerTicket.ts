@@ -2,9 +2,9 @@ import moment from "moment";
 import {
   IEFA_ANTWORTLISTE,
   IEFA_TICKETDATEN,
-} from "pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
-import { IFAIRTIQ_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
-import { ITICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+} from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
+import { IFAIRTIQ_TICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { ITICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 
 export type TarifrechnerTicket = {
   anzeigetext: string;

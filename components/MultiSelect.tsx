@@ -1,4 +1,4 @@
-import { IELEMENT } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { IELEMENT } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 

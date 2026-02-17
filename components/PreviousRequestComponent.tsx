@@ -1,4 +1,4 @@
-import { IFAIRTIQ_ANFRAGE_ANTWORT } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_ANFRAGE_ANTWORT } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { Button } from "react-bootstrap";
 
 export interface PreviousRequestComponentProps {

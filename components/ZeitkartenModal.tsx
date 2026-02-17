@@ -1,4 +1,4 @@
-import { IFAIRTIQ_BERECHTIGUNG } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { IFAIRTIQ_BERECHTIGUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { Button, Modal } from "react-bootstrap";
 import MultiSelect, { TARIFZONEN } from "./MultiSelect";
 import { useState } from "react";

@@ -1,7 +1,7 @@
 import { ShoppingCartIcon } from "@phosphor-icons/react/dist/csr/ShoppingCart"
 
 import { parseTarifrechnerTicketDvb } from "@/lib/parseTarifrechnerTicket";
-import { ITICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { ITICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 
 export interface TicketDetailsProps {
   ticket: ITICKETDATEN;

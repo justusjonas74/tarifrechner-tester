@@ -60,9 +60,9 @@ export default function Katalogmenue() {
     },
     [tarifprodukte],
   );
-
   useEffect(() => {
     if (!selectedPv) {
+      // eslint-disable-next-line 
       setSelectedProduct(undefined);
       setSelectedGebiet(undefined);
       setSelectedZonen(undefined);

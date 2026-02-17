@@ -5,15 +5,15 @@ import {
   DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
   DVBMOB_KAUFANGEBOTE_NACH_EINGABEDATEN,
   INOUTVVO_FAIRTIQ_KAUFANGEBOTE_NACH_VERBINDUNG,
-} from "pkm-tarifrechner";
+} from "@justusjonas74/pkm-tarifrechner/build/src/main";
 import {
   IFAIRTIQ_ANFRAGE_ANTWORT,
   IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
-} from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
-import { FromITripOptions } from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/requests";
-import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
-import { TarifrechnerRequestConfig } from "pkm-tarifrechner/build/src/tarifrechner/generic/trRequest";
+} from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { FromITripOptions } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/requests";
+import { IEINGABEDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { TarifrechnerRequestConfig } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/trRequest";
 
 const getConfig = () => {
   const api_key = process.env.NEXT_PUBLIC_APIKEY;

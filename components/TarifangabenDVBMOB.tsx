@@ -2,8 +2,8 @@ import { TicketDetailsDvb } from "./TicketDetailsDvb";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import KaufangeboteModal from "./KaufangeboteModal";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
-import { IEINGABEDATEN } from "pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
+import { IEINGABEDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 
 interface TarifangabenProps {
   tarifrechnerResponse: IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG;

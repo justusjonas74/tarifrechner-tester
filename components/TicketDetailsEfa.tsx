@@ -1,5 +1,5 @@
 import { parseTarifrechnerTicketEfa } from "@/lib/parseTarifrechnerTicket";
-import { IEFA_TICKETDATEN } from "pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
+import { IEFA_TICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 
 export interface TicketDetailsProps {
   ticket: IEFA_TICKETDATEN;

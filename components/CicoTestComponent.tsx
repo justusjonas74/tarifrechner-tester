@@ -6,7 +6,7 @@ import {
   IFAIRTIQ_ANFRAGE_ANTWORT,
   IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
-} from "pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+} from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import ReisendenComponent from "./ReisendenComponent";
 import PreviousRequestComponent from "./PreviousRequestComponent";
 import { toast } from "react-toastify";
