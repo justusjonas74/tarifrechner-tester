@@ -11,6 +11,8 @@ updates:
     directory: "/"                # adjust if needed
     schedule:
       interval: "weekly"          # or "monthly"
+    registries:
+    - github
 
     # Ignore major updates
     ignore:
