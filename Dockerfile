@@ -8,19 +8,19 @@ FROM base AS deps
 WORKDIR /app
 
 # Install Local NPM Package
-RUN mkdir /tarifrechner-sst
-COPY ./tarifrechner-sst /tarifrechner-sst
-WORKDIR /tarifrechner-sst 
-RUN npm install
-RUN npm run build
+# RUN mkdir /tarifrechner-sst
+# COPY ./tarifrechner-sst /tarifrechner-sst
+# WORKDIR /tarifrechner-sst 
+# RUN npm install
+# RUN npm run build
 
 # Install dependencies based on the preferred package manager
 
-WORKDIR /app
-COPY ./tarifrechner-tester/package.json .
-COPY ./tarifrechner-tester/yarn.lock* .
-COPY ./tarifrechner-tester/package-lock.json* .
-COPY ./tarifrechner-tester/pnpm-lock.yaml* .
+# WORKDIR /app
+COPY ./package.json .
+COPY ./yarn.lock* .
+COPY ./package-lock.json* .
+COPY ./pnpm-lock.yaml* .
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
@@ -32,9 +32,9 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
-RUN mkdir /tarifrechner-sst
+# RUN mkdir /tarifrechner-sst
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /tarifrechner-sst /tarifrechner-sst
+# COPY --from=deps /tarifrechner-sst /tarifrechner-sst
 COPY ./tarifrechner-tester .
 
 # Next.js collects completely anonymous telemetry data about general usage.
