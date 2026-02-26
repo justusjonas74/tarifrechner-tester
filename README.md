@@ -5,9 +5,7 @@
 ```bash
 docker pull node:lts-slim # optional
 
-cd .. # Build Context must include private dependency tarifrechner-sst which is inside the parrent folder
-
-docker build -t tarifrechner-tester -f ./tarifrechner-tester/Dockerfile .
+docker build --secret id=gh_token,env=GITHUB_TOKEN -t tarifrechner-tester .
 docker system prune
 ```
 

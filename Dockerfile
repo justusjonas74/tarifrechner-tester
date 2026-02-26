@@ -3,16 +3,7 @@ ENV TZ="Europe/Berlin"
 
 # Install dependencies only when needed
 FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-# RUN apk add --no-cache libc6-compat
 WORKDIR /app
-
-# Install Local NPM Package
-# RUN mkdir /tarifrechner-sst
-# COPY ./tarifrechner-sst /tarifrechner-sst
-# WORKDIR /tarifrechner-sst 
-# RUN npm install
-# RUN npm run build
 
 # Install dependencies based on the preferred package manager
 
@@ -21,13 +12,12 @@ COPY ./package.json .
 COPY ./yarn.lock* .
 COPY ./package-lock.json* .
 COPY ./pnpm-lock.yaml* .
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+COPY ./.npmrc* .
 
+RUN --mount=type=secret,id=gh_token \
+  export GITHUB_TOKEN=$(cat /run/secrets/gh_token) && \
+  npm ci && \
+  rm -f .npmrc
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -35,7 +25,7 @@ WORKDIR /app
 # RUN mkdir /tarifrechner-sst
 COPY --from=deps /app/node_modules ./node_modules
 # COPY --from=deps /tarifrechner-sst /tarifrechner-sst
-COPY ./tarifrechner-tester .
+COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -51,7 +41,7 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-COPY ./tarifrechner-tester/.env .env
+COPY .env .env
 ENV NODE_ENV=production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
@@ -60,7 +50,6 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
-
 # Set the correct permission for prerender cache
 RUN mkdir .next
 RUN chown nextjs:nodejs .next
