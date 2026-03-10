@@ -1,7 +1,33 @@
-Dockerfile
-.dockerignore
+# Abhängigkeiten
 node_modules
 npm-debug.log
-README.md
+yarn-error.log
+pnpm-debug.log
+
+# Build-Ausgaben
 .next
+out
+dist
+build
+
+# IDE / Betriebssystem
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Git
 .git
+.gitignore
+
+# Docker-spezifisch
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Dokumentation & Tests
+README.md
+LICENSE
+.github
+tests
+coverage
