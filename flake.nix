@@ -15,7 +15,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.nodejs
-            pkgs.nodePackages.pnpm
+            pkgs.pnpm
           ];
 
           shellHook = ''

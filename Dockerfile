@@ -1,5 +1,6 @@
 FROM node:lts-slim AS base
 ENV TZ="Europe/Berlin"
+RUN corepack enable pnpm
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -9,14 +10,12 @@ WORKDIR /app
 
 # WORKDIR /app
 COPY ./package.json .
-COPY ./yarn.lock* .
-COPY ./package-lock.json* .
-COPY ./pnpm-lock.yaml* .
+COPY ./pnpm-lock.yaml .
 COPY ./.npmrc* .
 
 RUN --mount=type=secret,id=gh_token \
   export GITHUB_TOKEN=$(cat /run/secrets/gh_token) && \
-  npm ci && \
+  pnpm i --frozen-lockfile && \
   rm -f .npmrc
 
 # Rebuild the source code only when needed
@@ -32,10 +31,8 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-# RUN yarn build
-
-# If using npm comment out above and use below instead
-RUN npm run build
+# If using pnpm
+RUN pnpm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner

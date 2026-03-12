@@ -1,8 +1,6 @@
 # Abhängigkeiten
 node_modules
-npm-debug.log
-yarn-error.log
-pnpm-debug.log
+.pnpm-debug.log*
 
 # Build-Ausgaben
 .next
