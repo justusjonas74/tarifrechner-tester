@@ -4,6 +4,7 @@ import { oneLight } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { ClipboardIcon } from "@phosphor-icons/react/dist/csr/Clipboard";
 import copyTextToClipboard from "@/lib/copyToClipboard";
 import { toast } from "react-toastify";
+import { Button } from "react-bootstrap";
 
 interface HighlightComponentProps {
   code: string;
@@ -26,28 +27,26 @@ export default function HighlightComponent(props: HighlightComponentProps) {
 
   return (
     <div style={{ position: "relative" }}>
-      <button
+      <Button
+        variant="outline-secondary"
+        size="sm"
         onClick={handleCopy}
         style={{
           position: "absolute",
           top: "5px",
           right: "5px",
           zIndex: 10,
-          background: "rgba(255, 255, 255, 0.8)",
-          border: "1px solid #ddd",
-          borderRadius: "4px",
-          padding: "2px 5px",
-          cursor: "pointer",
           display: "flex",
           alignItems: "center",
           gap: "4px",
           fontSize: "0.7rem",
+          padding: "2px 5px",
         }}
         title="Kopieren"
       >
         <ClipboardIcon size={14} />
         Kopieren
-      </button>
+      </Button>
       <SyntaxHighlighter
         language={props.language}
         style={oneLight}

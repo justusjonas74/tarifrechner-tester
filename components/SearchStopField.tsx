@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import { IPoint } from "dvbjs";
 import AsyncSelect from "react-select/async";
 import { api } from "@/lib/apiFetch";
@@ -22,6 +22,9 @@ const formatOptionLabel = (option: Option) => (
 );
 
 export default function SearchStopField(props: SearchStopFieldProps) {
+  const instanceId = useId();
+  const [inputValue, setInputValue] = React.useState("");
+
   const loadOptions = async (inputValue: string): Promise<Option[]> => {
     const searchTerm = inputValue.trim();
     if (searchTerm.length < 3) {
@@ -54,13 +57,20 @@ export default function SearchStopField(props: SearchStopFieldProps) {
 
   return (
     <AsyncSelect
+      instanceId={instanceId}
       cacheOptions
       loadOptions={loadOptions}
       onChange={handleChange}
+      onInputChange={(newValue) => setInputValue(newValue)}
+      menuIsOpen={inputValue.trim().length >= 3}
       formatOptionLabel={formatOptionLabel}
       placeholder="Haltstelle suchen..."
+      components={{
+        DropdownIndicator: null,
+        IndicatorSeparator: null,
+      }}
       noOptionsMessage={({ inputValue }) =>
-        inputValue.trim().length < 3 ? "Mindestens 3 Zeichen eingeben" : "Keine Haltestellen gefunden"
+        inputValue.trim().length < 3 ? null : "Keine Haltestellen gefunden"
       }
       loadingMessage={() => "Lade..."}
       styles={{
