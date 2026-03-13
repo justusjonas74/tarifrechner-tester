@@ -1,8 +1,8 @@
 {
-  description = "Next.js Entwicklungsumgebung mit pnpm";
+  description = "Nix based development environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11"; # Stable
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -13,14 +13,14 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.nodejs
-            pkgs.pnpm
+          buildInputs = with pkgs; [
+            nodejs
+            pnpm
           ];
 
           shellHook = ''
-            echo "🚀 Flake-basierte Next.js Shell aktiv!"
-            # Optional: pnpm Store Pfad für Ubuntu :optimieren
+            echo "Nix based development environment loaded."
+            pnpm --version
             export PNPM_HOME="$HOME/.local/share/pnpm"
             export PATH="$PNPM_HOME:$PATH"
           '';
