@@ -5,18 +5,12 @@ registries:
     type: npm-registry
     url: https://npm.pkg.github.com
     token: ${{ secrets.DEPENDABOT_TOKEN }}
-  npm-npmjs:
-    type: npm-registry
-    url: https://registry.npmjs.org
     
 updates:
   - package-ecosystem: "npm"
     directory: "/"                # adjust if needed
     schedule:
       interval: "weekly"          # or "monthly"
-    registries:
-    - github
-    - npm-npmjs
 
     # Ignore major updates
     ignore:
