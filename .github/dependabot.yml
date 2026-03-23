@@ -7,7 +7,7 @@ registries:
     token: ${{ secrets.DEPENDABOT_TOKEN }}
     
 updates:
-  - package-ecosystem: "pnpm"
+  - package-ecosystem: "npm"
     directory: "/"                # adjust if needed
     schedule:
       interval: "weekly"          # or "monthly"
