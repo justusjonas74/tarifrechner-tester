@@ -4,7 +4,6 @@ import RouteView from "./RouteView";
 // import moment from "moment";
 
 import { SpinnerIcon } from "@phosphor-icons/react/dist/csr/Spinner";
-import { api } from "@/lib/apiFetch";
 
 interface IState {
   fetchedRoutes: IRoute | null;
@@ -47,8 +46,10 @@ class Routes extends React.Component<IProps, IState> {
           searchParams.append("via", via);
         }
 
-        const route = await api<IRoute>("api/route?" + searchParams);
-        this.setState({ fetchedRoutes: route, isLoading: false });
+        // const route = await api<IRoute>("api/route?" + searchParams);
+
+        const routes: IRoute = await route(from.id, to.id, date, false, undefined, via);
+        this.setState({ fetchedRoutes: routes, isLoading: false });
       } catch (err) {
         console.log(err);
       }

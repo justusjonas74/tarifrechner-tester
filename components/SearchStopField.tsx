@@ -1,7 +1,6 @@
 import React, { useId } from "react";
-import { IPoint } from "dvbjs";
+import { findStop, IPoint } from "dvbjs";
 import AsyncSelect from "react-select/async";
-import { api } from "@/lib/apiFetch";
 
 interface SearchStopFieldProps {
   handleNewSelectedStop: (stop: IPoint) => void;
@@ -31,12 +30,7 @@ export default function SearchStopField(props: SearchStopFieldProps) {
       return [];
     }
 
-    const data = await api<IPoint[]>(
-      "api/stops?" +
-        new URLSearchParams({
-          name: searchTerm,
-        }),
-    );
+    const data: IPoint[] = await findStop(searchTerm);
 
     if (data) {
       return data.slice(0, 20).map((stop) => ({
