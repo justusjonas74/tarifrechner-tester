@@ -1,0 +1,14 @@
+services:
+  tarifrechner:
+    container_name: tarifrechner-tester-prod
+    build:
+      context: .
+      secrets:
+        - gh_token
+    ports:
+      - "3000:3000"
+    restart: always
+
+secrets:
+  gh_token:
+    environment: GITHUB_TOKEN
