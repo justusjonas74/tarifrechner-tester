@@ -10,7 +10,7 @@
     "lint": "eslint . && tsc --noEmit"
   },
   "dependencies": {
-    "@justusjonas74/pkm-tarifrechner": "^0.3.3",
+    "@justusjonas74/pkm-tarifrechner": "^0.3.4",
     "@phosphor-icons/react": "^2.1.10",
     "bootstrap": "^5.3.8",
     "dotenv": "^17.4.2",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.12.4",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^9.39.4",
