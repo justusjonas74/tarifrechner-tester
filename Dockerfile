@@ -11,6 +11,7 @@ WORKDIR /app
 # WORKDIR /app
 COPY ./package.json .
 COPY ./pnpm-lock.yaml .
+COPY ./pnpm-workspace.yaml .
 COPY ./.npmrc* .
 
 RUN --mount=type=secret,id=gh_token \

@@ -2,7 +2,6 @@
   "name": "tarifrechner-tester",
   "version": "2.5.0",
   "private": true,
-  "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +9,7 @@
     "lint": "eslint . && tsc --noEmit"
   },
   "dependencies": {
-    "@justusjonas74/pkm-tarifrechner": "^0.3.4",
+    "@justusjonas74/pkm-tarifrechner": "^0.3.5",
     "@phosphor-icons/react": "^2.1.10",
     "bootstrap": "^5.3.8",
     "dotenv": "^17.4.2",
