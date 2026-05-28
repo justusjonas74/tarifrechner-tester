@@ -2,7 +2,7 @@
   description = "Nix based development environment";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11"; # Stable
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable
     flake-utils.url = "github:numtide/flake-utils";
   };
 
