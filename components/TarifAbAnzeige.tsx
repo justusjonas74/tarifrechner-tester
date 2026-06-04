@@ -3,13 +3,13 @@ import {
   getTariffOverviewFromEfaAntwort,
 } from "@/lib/parseTarifrechnerTicket";
 import { tarifrechnerEfaAnfrage } from "@/lib/tarifrechnerAnfrage";
-import { ITrip } from "dvbjs";
+import { Trip } from "dvbjs";
 
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 interface TarifAbAnzeigeProps {
-  trip: ITrip;
+  trip: Trip;
 }
 
 export default function TarifAbAnzeige(props: TarifAbAnzeigeProps) {

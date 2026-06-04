@@ -1,4 +1,4 @@
-import { ITrip } from "dvbjs";
+import { Trip } from "dvbjs";
 
 import HighlightComponent from "./HighlightComponent";
 
@@ -20,7 +20,7 @@ import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas7
 import { IEFA_ANTWORTLISTE } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 
 interface TarifrechnerComponentProps {
-  selectedTrip: ITrip;
+  selectedTrip: Trip;
 }
 
 export default function TarifrechnerComponent(

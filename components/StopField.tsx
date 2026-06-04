@@ -1,13 +1,13 @@
 import React from "react";
 
-import { IPoint } from "dvbjs";
+import { Point } from "dvbjs";
 
 import { PencilSimpleIcon } from "@phosphor-icons/react/dist/csr/PencilSimple";
 import Button from "react-bootstrap/Button";
 
 // interface IState {}
 interface IStopFieldProps {
-  stop: IPoint;
+  stop: Point;
   handleResetClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;

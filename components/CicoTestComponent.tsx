@@ -1,4 +1,4 @@
-import { ITrip } from "dvbjs";
+import { Trip } from "dvbjs";
 import { useState } from "react";
 import RoutingComponent from "./RoutingComponent";
 import TarifrechnerCiCoComponent from "./TarifrechnerCICOComponent";
@@ -12,7 +12,7 @@ import PreviousRequestComponent from "./PreviousRequestComponent";
 import { toast } from "react-toastify";
 
 export default function CicoTestComponent() {
-  const [selectedTrip, setSelectedTrip] = useState<ITrip | null>(null);
+  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
   const [previousCiCoRequests, setPreviousCiCoRequests] = useState<
     IFAIRTIQ_ANFRAGE_ANTWORT[]
   >([]);
@@ -37,7 +37,7 @@ export default function CicoTestComponent() {
     setReisendenliste(reisendenliste);
   };
 
-  const handleChangedTrip = (trip: ITrip | null) => {
+  const handleChangedTrip = (trip: Trip | null) => {
     setSelectedTrip(trip);
   };
 

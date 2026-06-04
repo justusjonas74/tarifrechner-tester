@@ -1,22 +1,22 @@
 import React from "react";
-import { IPoint, IRoute, route, ITrip } from "dvbjs";
+import { Point, Route, route, Trip } from "dvbjs";
 import RouteView from "./RouteView";
 // import moment from "moment";
 
 import { SpinnerIcon } from "@phosphor-icons/react/dist/csr/Spinner";
 
 interface IState {
-  fetchedRoutes: IRoute | null;
+  fetchedRoutes: Route | null;
   isLoading: boolean;
 }
 
 interface IProps {
-  fromStop: IPoint | null;
-  toStop: IPoint | null;
-  viaStop: IPoint | null;
-  selectedTrip: ITrip | null;
+  fromStop: Point | null;
+  toStop: Point | null;
+  viaStop: Point | null;
+  selectedTrip: Trip | null;
   dateTime: Date;
-  handleSelectedTrip: (trip: ITrip) => void;
+  handleSelectedTrip: (trip: Trip) => void;
   handleEditTrip: () => void;
 }
 
@@ -48,7 +48,7 @@ class Routes extends React.Component<IProps, IState> {
 
         // const route = await api<IRoute>("api/route?" + searchParams);
 
-        const routes: IRoute = await route(from.id, to.id, date, false, undefined, via);
+        const routes: Route = await route(from.id, to.id, date, false, undefined, via);
         this.setState({ fetchedRoutes: routes, isLoading: false });
       } catch (err) {
         console.log(err);

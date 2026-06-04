@@ -1,15 +1,15 @@
 import React, { useId } from "react";
-import { findStop, IPoint } from "dvbjs";
+import { findStop, Point } from "dvbjs";
 import AsyncSelect from "react-select/async";
 
 interface SearchStopFieldProps {
-  handleNewSelectedStop: (stop: IPoint) => void;
+  handleNewSelectedStop: (stop: Point) => void;
 }
 
 interface Option {
   value: string;
   label: string;
-  stop: IPoint;
+  stop: Point;
 }
 
 const formatOptionLabel = (option: Option) => (
@@ -30,7 +30,7 @@ export default function SearchStopField(props: SearchStopFieldProps) {
       return [];
     }
 
-    const data: IPoint[] = await findStop(searchTerm);
+    const data: Point[] = await findStop(searchTerm);
 
     if (data) {
       return data.slice(0, 20).map((stop) => ({

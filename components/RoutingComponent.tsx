@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 
 const Datetime = dynamic(() => import('react-datetime'), { ssr: false })
 
-import { IPoint, ITrip } from "dvbjs";
+import { Point, Trip } from "dvbjs";
 import moment from "moment";
 import { useState } from "react";
 // import Datetime from "react-datetime";
@@ -13,17 +13,17 @@ import StopBox from "./StopBox";
 import Routes from "./Routes";
 
 interface RoutingComponentProps {
-  handleChangedTrip: (trip: ITrip | null) => void;
-  selectedTrip: ITrip | null;
+  handleChangedTrip: (trip: Trip | null) => void;
+  selectedTrip: Trip | null;
 }
 
 export default function RoutingComponent(props: RoutingComponentProps) {
-  const [fromStop, setFromStop] = useState<IPoint | null>(null);
-  const [toStop, setToStop] = useState<IPoint | null>(null);
-  const [viaStop, setViaStop] = useState<IPoint | null>(null);
+  const [fromStop, setFromStop] = useState<Point | null>(null);
+  const [toStop, setToStop] = useState<Point | null>(null);
+  const [viaStop, setViaStop] = useState<Point | null>(null);
   const [tripDateTime, setTripDateTime] = useState<Date>(new Date());
 
-  const handleSelectedTrip = (trip: ITrip) => {
+  const handleSelectedTrip = (trip: Trip) => {
     props.handleChangedTrip(trip);
   };
 
@@ -31,13 +31,13 @@ export default function RoutingComponent(props: RoutingComponentProps) {
     props.handleChangedTrip(null);
   };
 
-  const handleNewSelectedFromStop = (stop_id: IPoint) => {
+  const handleNewSelectedFromStop = (stop_id: Point) => {
     setFromStop(stop_id);
   };
-  const handleNewSelectedToStop = (stop_id: IPoint) => {
+  const handleNewSelectedToStop = (stop_id: Point) => {
     setToStop(stop_id);
   };
-  const handleNewSelectedViaStop = (stop_id: IPoint) => {
+  const handleNewSelectedViaStop = (stop_id: Point) => {
     setViaStop(stop_id);
   };
 

@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { ITrip } from "dvbjs";
+import { Trip } from "dvbjs";
 import {
   EFA_ANFRAGE,
   DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG,
@@ -36,12 +36,12 @@ const getConfig = () => {
   return config;
 };
 
-export function tarifrechnerEfaAnfrage(trip: ITrip) {
+export function tarifrechnerEfaAnfrage(trip: Trip) {
   const config = getConfig();
   return EFA_ANFRAGE.fromITrip(trip, config);
 }
 
-export function tarifrechnerDvbAngebotsinfoAnfrage(trip: ITrip) {
+export function tarifrechnerDvbAngebotsinfoAnfrage(trip: Trip) {
   const config = getConfig();
   return DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG.fromITrip(trip, config);
 }
@@ -57,7 +57,7 @@ export function tarifrechnerDvbKaufangeboteNachEingabedaten(
 }
 
 export function tarifrechnerFairtiqAnfrage(
-  trip: ITrip,
+  trip: Trip,
   reisendenliste: IFAIRTIQ_REISENDER[],
   vergangeneAnfragen?: IFAIRTIQ_ANFRAGE_ANTWORT[],
   berechtigungsliste?: IFAIRTIQ_BERECHTIGUNG[],

@@ -1,13 +1,13 @@
 import React from "react";
 import SearchStopField from "./SearchStopField";
 import StopField from "./StopField";
-import { IPoint } from "dvbjs";
+import { Point } from "dvbjs";
 
 interface IStopBoxProps {
   title: string;
-  stop: IPoint | null;
+  stop: Point | null;
   placeholder: string;
-  handleNewSelectedStop: (stop_id: IPoint) => void;
+  handleNewSelectedStop: (stop_id: Point) => void;
   handleResetClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;

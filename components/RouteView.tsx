@@ -1,6 +1,6 @@
 import React, { FunctionComponent, type JSX } from "react";
 import Image from 'next/image'
-import { ITrip, IStopLocation, INode, IStop, IMode } from "dvbjs";
+import { Trip, StopLocation, Node, Stop, Mode } from "dvbjs";
 import moment from "moment";
 import "./RouteView.css";
 import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil";
@@ -18,8 +18,8 @@ interface IState {
 }
 
 interface IProps {
-  trip: ITrip;
-  handleSelectedTrip: (trip: ITrip) => void;
+  trip: Trip;
+  handleSelectedTrip: (trip: Trip) => void;
   handleEditTrip: () => void;
   selectable: boolean;
 }
@@ -28,9 +28,9 @@ interface IProps {
 // }
 
 interface INodeTableRowsItemsProps {
-  stop: IStopLocation | IStop | undefined;
+  stop: StopLocation | Stop | undefined;
   stopType: "DEPARTURE" | "ARRIVAL" | "STOPS";
-  mode?: IMode;
+  mode?: Mode;
   line: string;
   direction?: string;
   // key?: string;
@@ -81,7 +81,7 @@ const NodeTableRowsItems = ({
 };
 
 interface INodeTableRowsProps {
-  node: INode;
+  node: Node;
   key: string;
 }
 
@@ -121,7 +121,7 @@ const NodeTableRows = ({ node, key }: INodeTableRowsProps) => {
 };
 
 interface IRouteDetailsProps {
-  RouteNodes: INode[];
+  RouteNodes: Node[];
 }
 class RouteDetails extends React.Component<IRouteDetailsProps> {
   render() {
@@ -148,7 +148,7 @@ class RouteDetails extends React.Component<IRouteDetailsProps> {
   }
 }
 
-function NodeItem(props: { mode?: IMode; line: string }) {
+function NodeItem(props: { mode?: Mode; line: string }) {
   let modeImage: JSX.Element;
   const { mode, line } = props;
   if (mode && mode!.iconUrl) {
@@ -173,7 +173,7 @@ function NodeItem(props: { mode?: IMode; line: string }) {
   );
 }
 
-function LineItems(props: { trip: ITrip; key?: string }) {
+function LineItems(props: { trip: Trip; key?: string }) {
   const { trip, key } = props;
   let lines = trip.nodes.map((node, index) => {
     if (
@@ -198,7 +198,7 @@ function LineItems(props: { trip: ITrip; key?: string }) {
 }
 
 const StopItem: FunctionComponent<{
-  stopLocation: IStopLocation | undefined;
+  stopLocation: StopLocation | undefined;
 }> = ({ stopLocation }) => {
   if (stopLocation) {
     return (

@@ -1,15 +1,15 @@
 
 import React, { useState } from "react";
-import { ITrip } from "dvbjs";
+import { Trip } from "dvbjs";
 
 import "./App.css";
 import RoutingComponent from "./RoutingComponent";
 import TarifrechnerComponent from "./TarifrechnerComponent";
 
 export default function App() {
-  const [selectedTrip, setSelectedTrip] = useState<ITrip | null>(null);
+  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
 
-  const handleChangedTrip = (trip: ITrip | null) => {
+  const handleChangedTrip = (trip: Trip | null) => {
     setSelectedTrip(trip);
   };
 

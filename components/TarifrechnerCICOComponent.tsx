@@ -1,4 +1,4 @@
-import { ITrip } from "dvbjs";
+import { Trip } from "dvbjs";
 
 import { ClipboardIcon } from "@phosphor-icons/react/dist/csr/Clipboard";
 import HighlightComponent from "./HighlightComponent";
@@ -20,7 +20,7 @@ import {
 import CicoTarifangaben from "./CicoTarifangaben";
 
 interface TarifrechnerComponentProps {
-  selectedTrip: ITrip;
+  selectedTrip: Trip;
   berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[];
   reisendenliste: IFAIRTIQ_REISENDER[];
   handleSaveCiCoRequest: (request: IFAIRTIQ_ANFRAGE_ANTWORT) => void;
