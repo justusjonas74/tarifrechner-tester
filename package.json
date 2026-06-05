@@ -9,7 +9,7 @@
     "lint": "eslint . && tsc --noEmit"
   },
   "dependencies": {
-    "@justusjonas74/pkm-tarifrechner": "^1.0.0",
+    "@justusjonas74/pkm-tarifrechner": "^1.1.0",
     "@phosphor-icons/react": "^2.1.10",
     "bootstrap": "^5.3.8",
     "dotenv": "^17.4.2",
@@ -29,7 +29,7 @@
     "@types/react": "^19.2.16",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "eslint": "^10.4.1",
+    "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.7",
     "prettier": "^3.8.3",
     "typescript": "^6.0.3"

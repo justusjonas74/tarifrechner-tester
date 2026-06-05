@@ -62,8 +62,10 @@ export function tarifrechnerFairtiqAnfrage(
   vergangeneAnfragen?: IFAIRTIQ_ANFRAGE_ANTWORT[],
   berechtigungsliste?: IFAIRTIQ_BERECHTIGUNG[],
 ) {
+  const anfragezeitpunkt = getLatestArrivalFromTrip(trip) || undefined;
   const config = getConfig();
   const options: FromITripOptions = {
+    anfragezeitpunkt,
     reisendenliste,
     berechtigungsliste,
     vergangeneAnfragen,
@@ -73,4 +75,9 @@ export function tarifrechnerFairtiqAnfrage(
     config,
     options,
   );
+}
+
+function getLatestArrivalFromTrip(trip: Trip): Date | null {
+  if (!trip.arrival || !trip.arrival.time) { return null; }
+  return new Date(trip.arrival.time);
 }
