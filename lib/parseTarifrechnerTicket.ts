@@ -164,11 +164,11 @@ export const parseTarifrechnerTicketFairtiq = (
   trTicket.reisendenbezug = ticket.reisendenbezug;
 
   const preisberuecksichtigungsfrist = ticket.erweiterungsliste?.find(
-    (e) => e.nr === "PREISBERUECKSICHTIGUNGSFRIST",
+    (e) => e.nr === "INOUTVVO_PREISBERUECKSICHTIGUNGSFRIST",
   )?.wert as string | undefined;
 
   const ticketdatenersetzungsfrist = ticket.erweiterungsliste?.find(
-    (e) => e.nr === "TICKETDATENERSETZUNGSFRIST",
+    (e) => e.nr === "INOUTVVO_TICKETDATENERSETZUNGSFRIST",
   )?.wert as string | undefined;
 
   if (preisberuecksichtigungsfrist) {
