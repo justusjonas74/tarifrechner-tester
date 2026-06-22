@@ -16,8 +16,10 @@ COPY ./.npmrc* .
 
 RUN --mount=type=secret,id=gh_token \
   export GITHUB_TOKEN=$(cat /run/secrets/gh_token) && \
+  if [ -f .npmrc ]; then sed -i '/_authToken/d' .npmrc; fi && \
+  echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" > /root/.npmrc && \
   pnpm i --frozen-lockfile && \
-  rm -f .npmrc
+  rm -f /root/.npmrc .npmrc
 
 # Rebuild the source code only when needed
 FROM base AS builder
