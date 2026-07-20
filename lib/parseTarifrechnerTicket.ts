@@ -9,8 +9,11 @@ import { ITICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrec
 export type TarifrechnerTicket = {
   anzeigetext: string;
   betraginEuro?: string;
+  netzkennung?: string;
   preisstufeKennung?: string;
   preisstufeText?: string;
+  produktnummer?: string;
+  raumText?: string;
   gueltigkeitsraumText?: string;
   dvbAnzeigetexte?: { befahreneZonen?: string };
 };
@@ -90,8 +93,11 @@ export const parseTarifrechnerTicketEfa = (
       "FPAVVO_PREISSTUFE_KENNUNG",
       "FPAVVO_PREISSTUFE_TEXT",
       "FPAVVO_RAUM_TEXT",
+      "FPAVVO_PRODUKTNUMMER",
+      "FPAVVO_GUELTIGKEITSRAUM_TEXT",
+      "FPAVVO_NETZKENNUNG"
     ];
-    const [preisstufeKennung, preisstufeText, gueltigkeitsraumText] =
+    const [preisstufeKennung, preisstufeText, raumText, produktnummer, gueltigkeitsraumText, netzkennung] =
       erweiterungenNummern.map((erweiterungNr) => {
         const erweiterung = erweiterungsliste.find(
           (e) => e.nr == erweiterungNr,
@@ -105,6 +111,9 @@ export const parseTarifrechnerTicketEfa = (
     trTicket.preisstufeKennung = preisstufeKennung;
     trTicket.preisstufeText = preisstufeText;
     trTicket.gueltigkeitsraumText = gueltigkeitsraumText;
+    trTicket.raumText = raumText;
+    trTicket.produktnummer = produktnummer;
+    trTicket.netzkennung = netzkennung;
   }
   return trTicket;
 };
