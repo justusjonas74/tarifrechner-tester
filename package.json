@@ -9,7 +9,7 @@
     "lint": "eslint . && tsc --noEmit"
   },
   "dependencies": {
-    "@justusjonas74/pkm-tarifrechner": "^1.1.1",
+    "@justusjonas74/pkm-tarifrechner": "^1.2.0",
     "@phosphor-icons/react": "^2.1.10",
     "bootstrap": "^5.3.8",
     "dotenv": "^17.4.2",
