@@ -5,6 +5,8 @@ const Datetime = dynamic(() => import('react-datetime'), { ssr: false })
 import { Point, Trip } from "dvbjs";
 import moment from "moment";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import { ArrowsLeftRightIcon } from "@phosphor-icons/react/dist/csr/ArrowsLeftRight";
 // import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 
@@ -57,6 +59,12 @@ export default function RoutingComponent(props: RoutingComponentProps) {
     setToStop(null);
   };
 
+  const handleSwapStops = () => {
+    if (!fromStop && !toStop) return;
+    setFromStop(toStop);
+    setToStop(fromStop);
+  };
+
   const handelNewDate = (value: string | moment.Moment) => {
     if (moment.isMoment(value)) {
       setTripDateTime(value.toDate());
@@ -66,8 +74,8 @@ export default function RoutingComponent(props: RoutingComponentProps) {
     <>
       {!props.selectedTrip && (
         <>
-          <div className="row">
-            <div className="col-sm-4">
+          <div className="row align-items-center">
+            <div className="col-md">
               <StopBox
                 handleNewSelectedStop={handleNewSelectedFromStop}
                 handleResetClick={handleResetClickForFromStop}
@@ -76,7 +84,19 @@ export default function RoutingComponent(props: RoutingComponentProps) {
                 stop={fromStop}
               />
             </div>
-            <div className="col-sm-4">
+            <div className="col-md-auto text-center mb-2 mb-md-0 px-md-1">
+              <Button
+                variant="outline-secondary"
+                className="btn-sm rounded-circle p-2 shadow-sm d-inline-flex align-items-center justify-content-center"
+                onClick={handleSwapStops}
+                disabled={!fromStop && !toStop}
+                title="Start und Ziel tauschen"
+                aria-label="Start und Ziel tauschen"
+              >
+                <ArrowsLeftRightIcon size={20} weight="regular" />
+              </Button>
+            </div>
+            <div className="col-md">
               <StopBox
                 handleNewSelectedStop={handleNewSelectedToStop}
                 handleResetClick={handleResetClickForToStop}
@@ -85,7 +105,7 @@ export default function RoutingComponent(props: RoutingComponentProps) {
                 stop={toStop}
               />
             </div>
-            <div className="col-sm-4">
+            <div className="col-md">
               <div className="card shadow-sm mb-2 bg-white rounded">
                 <div className="card-header">Abfahrt</div>
                 <div className="card-body">
@@ -129,3 +149,4 @@ export default function RoutingComponent(props: RoutingComponentProps) {
     </>
   );
 }
+
