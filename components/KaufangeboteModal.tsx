@@ -85,6 +85,7 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
                       // code={JSON.stringify(anfrageJSON, undefined, 2)}
                       code={anfrageJSON}
                       language="json"
+                      filename="kaufangebote-anfragedaten.json"
                     />
                   </CollapseComponent>
                   <CollapseComponent
@@ -95,6 +96,7 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
                     <HighlightComponent
                       code={JSON.stringify(antwortJSON, undefined, 2)}
                       language="json"
+                      filename="kaufangebote-antwortdaten.json"
                     />
                   </CollapseComponent>
                 </>

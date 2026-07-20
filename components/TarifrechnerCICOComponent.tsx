@@ -155,6 +155,7 @@ export default function TarifrechnerCiCoComponent(
                       <HighlightComponent
                         code={JSON.stringify(props.selectedTrip, undefined, 2)}
                         language="json"
+                        filename="cico-verbindungsdaten.json"
                       />
                     </CollapseComponent>
                   )}
@@ -167,6 +168,7 @@ export default function TarifrechnerCiCoComponent(
                       <HighlightComponent
                         code={fairtiqJsonRequestData}
                         language="json"
+                        filename="cico-fairtiq-request.json"
                       />
                     </CollapseComponent>
                   )}
@@ -178,6 +180,7 @@ export default function TarifrechnerCiCoComponent(
                     <HighlightComponent
                       code={JSON.stringify(fairtiqAntwort, undefined, 2)}
                       language="json"
+                      filename="cico-fairtiq-response.json"
                     />
                   </CollapseComponent>
                   <div className="d-grid">

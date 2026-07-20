@@ -129,6 +129,7 @@ export default function TarifrechnerComponent(
                       <HighlightComponent
                         code={JSON.stringify(props.selectedTrip, undefined, 2)}
                         language="json"
+                        filename="efa-verbindungsdaten.json"
                       />
                     </CollapseComponent>
                   )}
@@ -141,6 +142,7 @@ export default function TarifrechnerComponent(
                       <HighlightComponent
                         code={efaJsonRequestData}
                         language="json"
+                        filename="efa-tarifrechner-request.json"
                       />
                     </CollapseComponent>
                   )}
@@ -152,6 +154,7 @@ export default function TarifrechnerComponent(
                     <HighlightComponent
                       code={JSON.stringify(efaAntwort, undefined, 2)}
                       language="json"
+                      filename="efa-tarifrechner-response.json"
                     />
                   </CollapseComponent>
                   <div className="d-grid">
@@ -198,6 +201,7 @@ export default function TarifrechnerComponent(
                       <HighlightComponent
                         code={JSON.stringify(props.selectedTrip, undefined, 2)}
                         language="json"
+                        filename="dvb-verbindungsdaten.json"
                       />
                     </CollapseComponent>
                   )}
@@ -210,6 +214,7 @@ export default function TarifrechnerComponent(
                       <HighlightComponent
                         code={dvbAngebotsAnfrageJsonRequestData}
                         language="json"
+                        filename="dvb-tarifrechner-request.json"
                       />
                     </CollapseComponent>
                   )}
@@ -225,6 +230,7 @@ export default function TarifrechnerComponent(
                         2,
                       )}
                       language="json"
+                      filename="dvb-tarifrechner-response.json"
                     />
                   </CollapseComponent>
                   <div className="d-grid">
