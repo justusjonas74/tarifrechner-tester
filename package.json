@@ -15,7 +15,7 @@
     "dotenv": "^17.4.2",
     "dvbjs": "^7.0.0",
     "moment": "^2.30.1",
-    "next": "^16.2.10",
+    "next": "^16.2.11",
     "react": "^19.2.7",
     "react-bootstrap": "^2.10.10",
     "react-datetime": "^3.3.1",
