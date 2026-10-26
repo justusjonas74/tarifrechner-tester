@@ -5,14 +5,14 @@ registries:
     type: npm-registry
     url: https://npm.pkg.github.com
     token: ${{ secrets.DEPENDABOT_TOKEN }}
-    
+
 updates:
   - package-ecosystem: "npm"
-    directory: "/"                # adjust if needed
+    directory: "/" # adjust if needed
     schedule:
-      interval: "weekly"          # or "monthly"
+      interval: "weekly" # or "monthly"
     registries:
-    - github
+      - github
     # Ignore major updates
     ignore:
       - dependency-name: "*"

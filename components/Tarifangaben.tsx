@@ -1,4 +1,4 @@
-import { IEFA_ANTWORTLISTE } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
+import type { IEFA_ANTWORTLISTE } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 import { TicketDetailsEfa } from "./TicketDetailsEfa";
 
 interface TarifangabenProps {
@@ -24,7 +24,7 @@ export default function Tarifangaben(props: TarifangabenProps) {
             );
           })}
 
-        {(!ticketdatenliste || ticketdatenliste.length == 0) && (
+        {(!ticketdatenliste || ticketdatenliste.length === 0) && (
           <li className="list-group-item d-flex justify-content-between align-items-start">
             Die Anwort des Tarifrechners enthält keine Tarifangaben
           </li>

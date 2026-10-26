@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="de">
       <body>
         <NavbarComponent />
         {children} <ToastContainer />

@@ -1,13 +1,15 @@
-
-import { TrashIcon } from "@phosphor-icons/react/dist/csr/Trash"
-import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil"
-import { UserPlusIcon } from "@phosphor-icons/react/dist/csr/UserPlus"
-import { TicketIcon } from "@phosphor-icons/react/dist/csr/Ticket"
+import type {
+  IFAIRTIQ_BERECHTIGUNG,
+  IFAIRTIQ_REISENDER,
+} from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil";
+import { TicketIcon } from "@phosphor-icons/react/dist/csr/Ticket";
+import { TrashIcon } from "@phosphor-icons/react/dist/csr/Trash";
+import { UserPlusIcon } from "@phosphor-icons/react/dist/csr/UserPlus";
+import { useState } from "react";
 import Badge from "react-bootstrap/Badge";
-import { IFAIRTIQ_BERECHTIGUNG, IFAIRTIQ_REISENDER } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import Dropdown from "react-bootstrap/Dropdown";
 import ZeitkartenModal from "./ZeitkartenModal";
-import { useState } from "react";
 
 const REISENDE_ARRAY: IFAIRTIQ_REISENDER[] = [
   {
@@ -46,15 +48,19 @@ export interface ReisendenComponentProps {
   reisendenliste: IFAIRTIQ_REISENDER[];
   berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[];
   handleChangedReisendenliste: (reisendenliste: IFAIRTIQ_REISENDER[]) => void;
-  handleChangedBerechtigungsliste: (berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[]) => void;
+  handleChangedBerechtigungsliste: (
+    berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[],
+  ) => void;
 }
 
-function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFAIRTIQ_REISENDER) => void }) {
+function AddPassengerDropdownButton(props: {
+  handleAddReisender: (reisender: IFAIRTIQ_REISENDER) => void;
+}) {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
         <UserPlusIcon size="20" /> weitere Reisende hinzufügen
-      </Dropdown.Toggle >
+      </Dropdown.Toggle>
 
       <Dropdown.Menu>
         {REISENDE_ARRAY.map((reisender, index) => (
@@ -68,13 +74,14 @@ function AddPassengerDropdownButton(props: { handleAddReisender: (reisender: IFA
         <Dropdown.Divider />
         <Dropdown.ItemText className="text-body-secondary">
           <small>
-            <span className="fw-bold">Info:</span> In Phase 1 kann nur mit einem Reisenden angefragt werden.
+            <span className="fw-bold">Info:</span> In Phase 1 kann nur mit einem
+            Reisenden angefragt werden.
           </small>
         </Dropdown.ItemText>
       </Dropdown.Menu>
-    </Dropdown >
+    </Dropdown>
   );
-};
+}
 
 export default function ReisendenComponent(props: ReisendenComponentProps) {
   const { reisendenliste, handleChangedReisendenliste } = props;
@@ -89,7 +96,9 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
     setShowZeitkartenModal(true);
   }
 
-  function handleChangedBerechtigungsliste(berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[]) {
+  function handleChangedBerechtigungsliste(
+    berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[],
+  ) {
     setShowZeitkartenModal(false);
     props.handleChangedBerechtigungsliste(berechtigungsliste);
   }
@@ -108,7 +117,7 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
   }
   function getIndexOfHauptreisender() {
     return reisendenliste.findIndex(
-      (r) => r.erweiterungsliste?.[0]?.wert === "T"
+      (r) => r.erweiterungsliste?.[0]?.wert === "T",
     );
   }
 
@@ -141,7 +150,10 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
               reisender.erweiterungsliste?.[0]?.wert === "T";
             const istVollzahler =
               reisender.typ?.nr === "1" || reisender.typ?.nr === "25";
-            const hatBerechtigungen = props.berechtigungsliste.filter(berechtigung => berechtigung.reisendenbezug.includes(index + 1)).length > 0;
+            const hatBerechtigungen =
+              props.berechtigungsliste.filter((berechtigung) =>
+                berechtigung.reisendenbezug.includes(index + 1),
+              ).length > 0;
 
             return (
               <li className="list-group-item" key={"reisender_li_" + index}>
@@ -168,8 +180,8 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                       onClick={(_e) => handleSetMainReisender(index)}
                     >
                       {" "}
-                      <PencilIcon size="20" className="mr-1" /> Als
-                      Hauptnutzer festlegen
+                      <PencilIcon size="20" className="mr-1" /> Als Hauptnutzer
+                      festlegen
                     </button>
                   )}
                   {/* Aktuell kann nur der Haupnutzer eine Zeitkarte hinterlegen. */}
@@ -180,7 +192,10 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
                       onClick={(_e) => handleAddZeitkarte(index)}
                     >
                       {" "}
-                      <TicketIcon size="20" /> {props.berechtigungsliste.length !== 0 ? "Zeitkarte ändern" : "Zeitkarte hinterlegen"}
+                      <TicketIcon size="20" />{" "}
+                      {props.berechtigungsliste.length !== 0
+                        ? "Zeitkarte ändern"
+                        : "Zeitkarte hinterlegen"}
                     </button>
                   )}
                   <button
@@ -196,7 +211,9 @@ export default function ReisendenComponent(props: ReisendenComponentProps) {
             );
           })}
           <li className="list-group-item" id="reisender_add_button">
-            <AddPassengerDropdownButton handleAddReisender={handleAddReisender} />
+            <AddPassengerDropdownButton
+              handleAddReisender={handleAddReisender}
+            />
           </li>
         </ul>
       </div>

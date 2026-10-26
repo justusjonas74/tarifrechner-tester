@@ -1,16 +1,17 @@
-import { IFAIRTIQ_BERECHTIGUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
-import { Button, Modal } from "react-bootstrap";
-import MultiSelect, { TARIFZONEN } from "./MultiSelect";
+import type { IFAIRTIQ_BERECHTIGUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
-
+import MultiSelect, { type TARIFZONEN } from "./MultiSelect";
 
 interface ZeitkartenModalProps {
-  showModal: boolean,
-  berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[],
-  reisenderIndex: number,
-  handleCloseModal: () => void,
-  handleUpdateBerechtigungsliste: (berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[]) => void,
+  showModal: boolean;
+  berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[];
+  reisenderIndex: number;
+  handleCloseModal: () => void;
+  handleUpdateBerechtigungsliste: (
+    berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[],
+  ) => void;
 }
 
 export default function ZeitkartenModal(props: ZeitkartenModalProps) {
@@ -43,22 +44,29 @@ export default function ZeitkartenModal(props: ZeitkartenModalProps) {
     { nr: "94", name: "Mühlberg" },
     { nr: "96", name: "Döbeln" },
     { nr: "97", name: "Hetzdorf" },
-    { nr: "98", name: "Bienenmühle" }
+    { nr: "98", name: "Bienenmühle" },
   ];
 
-
   function hinterlegteTarifzonen(): TARIFZONEN[] {
-    const berechtigung = props.berechtigungsliste.find(berechtigung => berechtigung.reisendenbezug.includes(props.reisenderIndex + 1));
-    const gueltigkeitsraum = berechtigung?.eingabedaten?.gueltigkeitsraum
-    if (!berechtigung || !gueltigkeitsraum || gueltigkeitsraum.length !== 0) { return [] }
-    return gueltigkeitsraum.map(element => items.find(item => item.nr === element.nr)).filter(item => item !== undefined)
+    const berechtigung = props.berechtigungsliste.find((berechtigung) =>
+      berechtigung.reisendenbezug.includes(props.reisenderIndex + 1),
+    );
+    const gueltigkeitsraum = berechtigung?.eingabedaten?.gueltigkeitsraum;
+    if (!berechtigung || !gueltigkeitsraum || gueltigkeitsraum.length !== 0) {
+      return [];
+    }
+    return gueltigkeitsraum
+      .map((element) => items.find((item) => item.nr === element.nr))
+      .filter((item) => item !== undefined);
   }
 
-  const [selectedTarifzones, setSelectedTarifzones] = useState<TARIFZONEN[]>(hinterlegteTarifzonen());
+  const [selectedTarifzones, setSelectedTarifzones] = useState<TARIFZONEN[]>(
+    hinterlegteTarifzonen(),
+  );
 
   const handleChangedTarifzonen = (selectedZones: TARIFZONEN[]) => {
     setSelectedTarifzones(selectedZones);
-  }
+  };
 
   const { handleCloseModal, handleUpdateBerechtigungsliste } = props;
 
@@ -67,38 +75,43 @@ export default function ZeitkartenModal(props: ZeitkartenModalProps) {
       toast.info("Die Zeitkarte wurde entfernt.");
       handleUpdateBerechtigungsliste([]);
     } else {
-
       const neueBerechtigung: IFAIRTIQ_BERECHTIGUNG = {
         reisendenbezug: [props.reisenderIndex + 1],
         eingabedaten: {
           version: "INOUTVVO_PHASE_1",
           pv: {
             nr: "6060",
-            name: "VVO"
+            name: "VVO",
           },
           produktbezeichnung: {
             nr: "111111111111",
-            name: "Produktbezeichnung Phase 1"
+            name: "Produktbezeichnung Phase 1",
           },
           gebietsparameter: {
             nr: "2222222222",
-            name: "Gebietsparameter Phase 1"
+            name: "Gebietsparameter Phase 1",
           },
           gueltigkeitsraum: selectedTarifzones,
           gueltigkeitsende: "2080-07-31+02:00",
-        }
+        },
       };
       toast.success("Die Zeitkarte wurde gespeichert.");
       handleUpdateBerechtigungsliste([neueBerechtigung]);
     }
-  }
+  };
   return (
     <Modal show={props.showModal} onHide={handleCloseModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Zeitkarte hinterlegen für {props.reisenderIndex + 1}. Reisenden</Modal.Title>
+        <Modal.Title>
+          Zeitkarte hinterlegen für {props.reisenderIndex + 1}. Reisenden
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <MultiSelect items={items} selectedItems={selectedTarifzones} onChange={handleChangedTarifzonen} />
+        <MultiSelect
+          items={items}
+          selectedItems={selectedTarifzones}
+          onChange={handleChangedTarifzonen}
+        />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleCloseModal}>
@@ -109,5 +122,5 @@ export default function ZeitkartenModal(props: ZeitkartenModalProps) {
         </Button>
       </Modal.Footer>
     </Modal>
-  )
+  );
 }

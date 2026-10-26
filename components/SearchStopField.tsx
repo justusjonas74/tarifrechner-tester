@@ -1,5 +1,5 @@
+import { findStop, type Point } from "dvbjs";
 import React, { useId } from "react";
-import { findStop, Point } from "dvbjs";
 import AsyncSelect from "react-select/async";
 
 interface SearchStopFieldProps {
@@ -16,7 +16,9 @@ const formatOptionLabel = (option: Option) => (
   <div>
     {option.stop.name}
     <br />
-    <small style={{ fontSize: "0.8em", color: "#666" }}>{option.stop.city}</small>
+    <small style={{ fontSize: "0.8em", color: "#666" }}>
+      {option.stop.city}
+    </small>
   </div>
 );
 

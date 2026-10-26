@@ -1,8 +1,7 @@
-import React from "react";
-
-import { Point } from "dvbjs";
-
 import { PencilSimpleIcon } from "@phosphor-icons/react/dist/csr/PencilSimple";
+
+import type { Point } from "dvbjs";
+import type React from "react";
 import Button from "react-bootstrap/Button";
 
 // interface IState {}

@@ -1,23 +1,22 @@
-import { Trip } from "dvbjs";
-
-import HighlightComponent from "./HighlightComponent";
+import type { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
+import type { IEFA_ANTWORTLISTE } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 
 import { ClipboardIcon } from "@phosphor-icons/react/dist/csr/Clipboard";
-import { Button } from "react-bootstrap";
+import type { Trip } from "dvbjs";
 
 import { useEffect, useState } from "react";
-import Tarifangaben from "./Tarifangaben";
+import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import copyTextToClipboard from "@/lib/copyToClipboard";
+import { optimizeJSONForPostman } from "@/lib/postman";
 import {
-  tarifrechnerEfaAnfrage,
   tarifrechnerDvbAngebotsinfoAnfrage,
+  tarifrechnerEfaAnfrage,
 } from "@/lib/tarifrechnerAnfrage";
 import CollapseComponent from "./CollapseComponent";
-import { toast } from "react-toastify";
-import { optimizeJSONForPostman } from "@/lib/postman";
-import copyTextToClipboard from "@/lib/copyToClipboard";
+import HighlightComponent from "./HighlightComponent";
+import Tarifangaben from "./Tarifangaben";
 import TarifangabenDVBMOB from "./TarifangabenDVBMOB";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
-import { IEFA_ANTWORTLISTE } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 
 interface TarifrechnerComponentProps {
   selectedTrip: Trip;
@@ -61,9 +60,7 @@ export default function TarifrechnerComponent(
         }
         setIsLoading(false);
       } catch (error) {
-        let message;
-        if (error instanceof Error) message = error.message;
-        else message = String(error);
+        const message = error instanceof Error ? error.message : String(error);
         toast.error(message);
       }
     };

@@ -1,9 +1,9 @@
-import { TicketDetailsDvb } from "./TicketDetailsDvb";
-import { toast } from "react-toastify";
+import type { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
+import type { IEINGABEDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import KaufangeboteModal from "./KaufangeboteModal";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
-import { IEINGABEDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { TicketDetailsDvb } from "./TicketDetailsDvb";
 
 interface TarifangabenProps {
   tarifrechnerResponse: IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG;
@@ -58,7 +58,7 @@ export default function TarifangabenDVBMOB(props: TarifangabenProps) {
             // </li>
           })}
 
-        {(!ticketdatenliste || ticketdatenliste.length == 0) && (
+        {(!ticketdatenliste || ticketdatenliste.length === 0) && (
           // <li className="list-group-item d-flex justify-content-between align-items-start">
           <a
             className="list-group-item d-flex justify-content-between align-items-start list-group-item-action disabled"
