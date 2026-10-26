@@ -1,11 +1,11 @@
-import React from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneLight } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { ClipboardIcon } from "@phosphor-icons/react/dist/csr/Clipboard";
 import { FloppyDiskIcon } from "@phosphor-icons/react/dist/csr/FloppyDisk";
-import copyTextToClipboard from "@/lib/copyToClipboard";
-import { toast } from "react-toastify";
+import React from "react";
 import { Button } from "react-bootstrap";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneLight } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { toast } from "react-toastify";
+import copyTextToClipboard from "@/lib/copyToClipboard";
 
 export type JsonString = string;
 

@@ -1,4 +1,4 @@
-import { IFAIRTIQ_ANFRAGE_ANTWORT } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import type { IFAIRTIQ_ANFRAGE_ANTWORT } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import { Button } from "react-bootstrap";
 
 export interface PreviousRequestComponentProps {
@@ -25,7 +25,7 @@ export default function PreviousRequestComponent(
             <Button
               variant="secondary"
               onClick={handleResetPreviousCiCoRequests}
-              disabled={previousRequests.length == 0}
+              disabled={previousRequests.length === 0}
             >
               {" "}
               Alle Fahrten zurücksetzen

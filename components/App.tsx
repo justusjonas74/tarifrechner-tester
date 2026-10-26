@@ -1,6 +1,5 @@
-
+import type { Trip } from "dvbjs";
 import React, { useState } from "react";
-import { Trip } from "dvbjs";
 
 import "./App.css";
 import RoutingComponent from "./RoutingComponent";
@@ -17,7 +16,7 @@ export default function App() {
     <div className="container">
       <h1 className="my-4">
         Testfallgenerator
-        <small className="text-muted">{" "}EFA/MOBI-App-Tests</small>{" "}
+        <small className="text-muted"> EFA/MOBI-App-Tests</small>{" "}
       </h1>
       <h2 className="my-4">
         {selectedTrip ? "Ausgewählte Verbindung" : "Verbindungsauswahl"}

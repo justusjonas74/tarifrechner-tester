@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
-
-import { SpinnerIcon } from "@phosphor-icons/react/dist/csr/Spinner"
-import Modal from "react-bootstrap/Modal";
+import type { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
+import type { IEINGABEDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import { SpinnerIcon } from "@phosphor-icons/react/dist/csr/Spinner";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-
-import CollapseComponent from "./CollapseComponent";
-import HighlightComponent from "./HighlightComponent";
+import Modal from "react-bootstrap/Modal";
 
 import { tarifrechnerDvbKaufangeboteNachEingabedaten } from "@/lib/tarifrechnerAnfrage";
+import CollapseComponent from "./CollapseComponent";
+import HighlightComponent from "./HighlightComponent";
 import VdvEinheitslayout from "./VdvEinheitslayout";
-import { IEINGABEDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
 
 interface IKaufangeboteModalProps {
   handleCloseFn: () => void;
@@ -69,10 +67,10 @@ function KaufangeboteModal(props: IKaufangeboteModalProps) {
           <div className="row">
             {antwortJSON?.antwortliste?.[0]?.ticketdatenliste?.[0]?.ausgabedaten
               ?.vdveinheitslayout && (
-                <div className="col-md-3 ">
-                  <VdvEinheitslayout daten={antwortJSON} />
-                </div>
-              )}
+              <div className="col-md-3 ">
+                <VdvEinheitslayout daten={antwortJSON} />
+              </div>
+            )}
             <div className="col-md-9">
               {!isLoading && anfrageJSON && (
                 <>

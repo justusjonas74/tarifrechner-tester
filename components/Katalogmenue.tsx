@@ -1,8 +1,7 @@
+import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import * as json from "../json/MENU_DVBMOB_G230801_0000_F2_1_Katalogmenue.json";
-import { useState, useEffect, useCallback } from "react";
-
-import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil"
 
 export default function Katalogmenue() {
   const { tarifprodukte, zonenwahl } = json;
@@ -58,11 +57,10 @@ export default function Katalogmenue() {
           return accumulator;
         }, intialPvTarifproduktGebiete);
     },
-    [tarifprodukte],
+    [],
   );
   useEffect(() => {
     if (!selectedPv) {
-      // eslint-disable-next-line 
       setSelectedProduct(undefined);
       setSelectedGebiet(undefined);
       setSelectedZonen(undefined);
@@ -75,20 +73,14 @@ export default function Katalogmenue() {
       selectedProduct &&
       selectedPv &&
       !selectedGebiet &&
-      pvTarifproduktGebiete(selectedPv, selectedProduct).length == 1
+      pvTarifproduktGebiete(selectedPv, selectedProduct).length === 1
     ) {
       setSelectedGebiet(pvTarifproduktGebiete(selectedPv, selectedProduct)[0]);
     }
     if (!selectedGebiet) {
       setSelectedZonen(undefined);
     }
-  }, [
-    selectedPv,
-    selectedProduct,
-    selectedGebiet,
-    selectedZonen,
-    pvTarifproduktGebiete,
-  ]);
+  }, [selectedPv, selectedProduct, selectedGebiet, pvTarifproduktGebiete]);
 
   const initialPvValue: { PVNr: number; PVText: string }[] = [];
   const pv = tarifprodukte

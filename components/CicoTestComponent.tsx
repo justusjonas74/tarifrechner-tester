@@ -1,15 +1,15 @@
-import { Trip } from "dvbjs";
-import { useState } from "react";
-import RoutingComponent from "./RoutingComponent";
-import TarifrechnerCiCoComponent from "./TarifrechnerCICOComponent";
-import {
+import type {
   IFAIRTIQ_ANFRAGE_ANTWORT,
   IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
 } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
-import ReisendenComponent from "./ReisendenComponent";
-import PreviousRequestComponent from "./PreviousRequestComponent";
+import type { Trip } from "dvbjs";
+import { useState } from "react";
 import { toast } from "react-toastify";
+import PreviousRequestComponent from "./PreviousRequestComponent";
+import ReisendenComponent from "./ReisendenComponent";
+import RoutingComponent from "./RoutingComponent";
+import TarifrechnerCiCoComponent from "./TarifrechnerCICOComponent";
 
 export default function CicoTestComponent() {
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
@@ -29,7 +29,9 @@ export default function CicoTestComponent() {
     defaultReisender,
   ]);
 
-  const [berechtigungsliste, setBerechtigungsliste] = useState<IFAIRTIQ_BERECHTIGUNG[]>([]);
+  const [berechtigungsliste, setBerechtigungsliste] = useState<
+    IFAIRTIQ_BERECHTIGUNG[]
+  >([]);
 
   const handleChangedReisendenliste = (
     reisendenliste: IFAIRTIQ_REISENDER[],
@@ -46,7 +48,7 @@ export default function CicoTestComponent() {
     const exists = previousCiCoRequests.some(
       (prevRequest) =>
         JSON.stringify(prevRequest.anfrage) ===
-        JSON.stringify(request.anfrage) &&
+          JSON.stringify(request.anfrage) &&
         JSON.stringify(prevRequest.antwort) === JSON.stringify(request.antwort),
     );
     if (exists) {
@@ -57,7 +59,9 @@ export default function CicoTestComponent() {
     setPreviousCiCoRequests((prevRequests) => [...prevRequests, request]);
     toast.success("FAIRTIQ-Antwort gespeichert.");
   };
-  const handleChangedBerechtigungsliste = (berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[]) => {
+  const handleChangedBerechtigungsliste = (
+    berechtigungsliste: IFAIRTIQ_BERECHTIGUNG[],
+  ) => {
     setBerechtigungsliste(berechtigungsliste);
   };
 
@@ -65,7 +69,7 @@ export default function CicoTestComponent() {
     <div className="container">
       <h1 className="my-4">
         Testfallgenerator
-        <small className="text-muted">{" "}Check-In/Check-Out-Tests</small>{" "}
+        <small className="text-muted"> Check-In/Check-Out-Tests</small>{" "}
       </h1>
 
       <div className="row">

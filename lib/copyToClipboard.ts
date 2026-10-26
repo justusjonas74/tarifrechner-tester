@@ -3,7 +3,7 @@ function fallbackCopyTextToClipboard(
   onError?: (err: any) => void,
   onSuccess?: (text: string) => void,
 ) {
-  var textArea = document.createElement("textarea");
+  const textArea = document.createElement("textarea");
   textArea.value = text;
 
   // Avoid scrolling to bottom
@@ -16,8 +16,8 @@ function fallbackCopyTextToClipboard(
   textArea.select();
 
   try {
-    var successful = document.execCommand("copy");
-    var msg = successful ? "successful" : "unsuccessful";
+    const successful = document.execCommand("copy");
+    const msg = successful ? "successful" : "unsuccessful";
     if (onSuccess) {
       onSuccess("Fallback: Copying text command was " + msg);
     } else {
@@ -43,14 +43,14 @@ export default function copyTextToClipboard(
     return;
   }
   navigator.clipboard.writeText(text).then(
-    function () {
+    () => {
       if (onSuccess) {
         onSuccess("Async: Copying to clipboard was successful!");
       } else {
         console.log("Async: Copying to clipboard was successful!");
       }
     },
-    function (err) {
+    (err) => {
       if (onError) {
         onError(err);
       } else {

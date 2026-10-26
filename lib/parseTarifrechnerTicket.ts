@@ -1,10 +1,10 @@
-import moment from "moment";
-import {
+import type {
   IEFA_ANTWORTLISTE,
   IEFA_TICKETDATEN,
 } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
-import { IFAIRTIQ_TICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
-import { ITICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import type { IFAIRTIQ_TICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+import type { ITICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import moment from "moment";
 
 export type TarifrechnerTicket = {
   anzeigetext: string;
@@ -29,7 +29,7 @@ export const getTariffOverviewFromEfaAntwort = (
   if (
     !efa_antwort ||
     !efa_antwort.antwortliste ||
-    efa_antwort.antwortliste.length == 0
+    efa_antwort.antwortliste.length === 0
   ) {
     return undefined;
   }
@@ -39,7 +39,7 @@ export const getTariffOverviewFromEfaAntwort = (
   if (
     !antwort ||
     !antwort.ticketdatenliste ||
-    antwort.ticketdatenliste.length == 0
+    antwort.ticketdatenliste.length === 0
   ) {
     return undefined;
   }
@@ -47,13 +47,13 @@ export const getTariffOverviewFromEfaAntwort = (
   if (
     !antwort ||
     !antwort.ticketdatenliste ||
-    antwort.ticketdatenliste.length == 0
+    antwort.ticketdatenliste.length === 0
   ) {
     return undefined;
   }
 
   const ticketRaw = antwort.ticketdatenliste.find(
-    (t) => t.anzeigetext == "VVO Einzelfahrt",
+    (t) => t.anzeigetext === "VVO Einzelfahrt",
   );
   if (!ticketRaw) return undefined;
   const ticket = parseTarifrechnerTicketEfa(ticketRaw);
@@ -75,7 +75,7 @@ export const getTariffOverviewFromEfaAntwort = (
 export const parseTarifrechnerTicketEfa = (
   ticket: IEFA_TICKETDATEN,
 ): TarifrechnerTicket => {
-  let trTicket: TarifrechnerTicket = {
+  const trTicket: TarifrechnerTicket = {
     anzeigetext: ticket.anzeigetext,
   };
 
@@ -95,19 +95,23 @@ export const parseTarifrechnerTicketEfa = (
       "FPAVVO_RAUM_TEXT",
       "FPAVVO_PRODUKTNUMMER",
       "FPAVVO_GUELTIGKEITSRAUM_TEXT",
-      "FPAVVO_NETZKENNUNG"
+      "FPAVVO_NETZKENNUNG",
     ];
-    const [preisstufeKennung, preisstufeText, raumText, produktnummer, gueltigkeitsraumText, netzkennung] =
-      erweiterungenNummern.map((erweiterungNr) => {
-        const erweiterung = erweiterungsliste.find(
-          (e) => e.nr == erweiterungNr,
-        );
-        if (erweiterung && erweiterung.wert) {
-          return erweiterung.wert.slice(1);
-        } else {
-          return undefined;
-        }
-      });
+    const [
+      preisstufeKennung,
+      preisstufeText,
+      raumText,
+      produktnummer,
+      gueltigkeitsraumText,
+      netzkennung,
+    ] = erweiterungenNummern.map((erweiterungNr) => {
+      const erweiterung = erweiterungsliste.find((e) => e.nr === erweiterungNr);
+      if (erweiterung && erweiterung.wert) {
+        return erweiterung.wert.slice(1);
+      } else {
+        return undefined;
+      }
+    });
     trTicket.preisstufeKennung = preisstufeKennung;
     trTicket.preisstufeText = preisstufeText;
     trTicket.gueltigkeitsraumText = gueltigkeitsraumText;
@@ -121,7 +125,7 @@ export const parseTarifrechnerTicketEfa = (
 export const parseTarifrechnerTicketDvb = (
   ticket: ITICKETDATEN,
 ): TarifrechnerTicket => {
-  let trTicket: TarifrechnerTicket = {
+  const trTicket: TarifrechnerTicket = {
     anzeigetext: ticket.anzeigetext,
   };
 
@@ -157,7 +161,7 @@ type FairtiqTarifrechnerTicket = TarifrechnerTicket & {
 export const parseTarifrechnerTicketFairtiq = (
   ticket: IFAIRTIQ_TICKETDATEN,
 ): FairtiqTarifrechnerTicket => {
-  let trTicket: FairtiqTarifrechnerTicket = {
+  const trTicket: FairtiqTarifrechnerTicket = {
     anzeigetext: ticket.anzeigetext,
     reisendenbezug: [],
   };

@@ -1,15 +1,19 @@
-import { IELEMENT } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import type { IELEMENT } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 
-export interface TARIFZONEN extends IELEMENT { }
+export interface TARIFZONEN extends IELEMENT {}
 
 interface MultiSelectProps {
   items: TARIFZONEN[];
   selectedItems: TARIFZONEN[];
   onChange: (selected: TARIFZONEN[]) => void;
 }
-export default function MultiSelect({ items, onChange, selectedItems }: MultiSelectProps) {
+export default function MultiSelect({
+  items,
+  onChange,
+  selectedItems,
+}: MultiSelectProps) {
   // const [selected, setSelected] = useState<string[]>(selectedItems?.map((i) => i.nr) || []);
   // useEffect(() => {
   //   const selectedItems = items.filter((i) => selected.includes(i.nr));
@@ -23,7 +27,9 @@ export default function MultiSelect({ items, onChange, selectedItems }: MultiSel
   // };
 
   const toggleSelect = (tarifzone: TARIFZONEN) => {
-    const newState = !!selectedItems.find(i => i.nr === tarifzone.nr) ? selectedItems.filter((id) => id.nr !== tarifzone.nr) : [...selectedItems, tarifzone]
+    const newState = selectedItems.find((i) => i.nr === tarifzone.nr)
+      ? selectedItems.filter((id) => id.nr !== tarifzone.nr)
+      : [...selectedItems, tarifzone];
     onChange(newState);
   };
   // const selectAll = () => setSelected(items.map((i) => i.nr));
@@ -42,7 +48,7 @@ export default function MultiSelect({ items, onChange, selectedItems }: MultiSel
         }}
       >
         {items.map((item) => {
-          const isSelected = !!selectedItems.find(i => i.nr == item.nr);
+          const isSelected = !!selectedItems.find((i) => i.nr === item.nr);
           return (
             <Button
               key={item.nr}
@@ -74,4 +80,4 @@ export default function MultiSelect({ items, onChange, selectedItems }: MultiSel
       </div>
     </div>
   );
-};
+}

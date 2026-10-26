@@ -1,23 +1,22 @@
-import { Trip } from "dvbjs";
-
-import { ClipboardIcon } from "@phosphor-icons/react/dist/csr/Clipboard";
-import HighlightComponent from "./HighlightComponent";
-import { Button } from "react-bootstrap";
-
-import { useEffect, useState } from "react";
-import { tarifrechnerFairtiqAnfrage } from "@/lib/tarifrechnerAnfrage";
-import CollapseComponent from "./CollapseComponent";
-import { toast } from "react-toastify";
-import { optimizeJSONForPostman } from "@/lib/postman";
-import copyTextToClipboard from "@/lib/copyToClipboard";
-import {
+import type {
   IFAIRTIQ_ANFRAGE_ANTWORT,
   IFAIRTIQ_ANFRAGELISTE,
   IFAIRTIQ_ANTWORTLISTE,
   IFAIRTIQ_BERECHTIGUNG,
   IFAIRTIQ_REISENDER,
 } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
+
+import { ClipboardIcon } from "@phosphor-icons/react/dist/csr/Clipboard";
+import type { Trip } from "dvbjs";
+import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import copyTextToClipboard from "@/lib/copyToClipboard";
+import { optimizeJSONForPostman } from "@/lib/postman";
+import { tarifrechnerFairtiqAnfrage } from "@/lib/tarifrechnerAnfrage";
 import CicoTarifangaben from "./CicoTarifangaben";
+import CollapseComponent from "./CollapseComponent";
+import HighlightComponent from "./HighlightComponent";
 
 interface TarifrechnerComponentProps {
   selectedTrip: Trip;
@@ -56,7 +55,7 @@ export default function TarifrechnerCiCoComponent(
           trip,
           reisendenliste,
           previousCiCoRequests,
-          berechtigungsliste
+          berechtigungsliste,
         );
         // toast.info(`${previousCiCoRequests.length} Verbindungen übergeben.`);
         // toast.info(`${fairtiqAnfrage.data.anfrageliste[0].verbindungsliste.length} Verbindungen in Anfrage.`);
@@ -69,9 +68,7 @@ export default function TarifrechnerCiCoComponent(
 
         setIsLoading(false);
       } catch (error) {
-        let message;
-        if (error instanceof Error) message = error.message;
-        else message = String(error);
+        const message = error instanceof Error ? error.message : String(error);
         toast.error(message);
         setIsLoading(false);
       }

@@ -1,5 +1,5 @@
+import { type Point, type Route, route, type Trip } from "dvbjs";
 import React from "react";
-import { Point, Route, route, Trip } from "dvbjs";
 import RouteView from "./RouteView";
 // import moment from "moment";
 
@@ -48,7 +48,14 @@ class Routes extends React.Component<IProps, IState> {
 
         // const route = await api<IRoute>("api/route?" + searchParams);
 
-        const routes: Route = await route(from.id, to.id, date, false, undefined, via);
+        const routes: Route = await route(
+          from.id,
+          to.id,
+          date,
+          false,
+          undefined,
+          via,
+        );
         this.setState({ fetchedRoutes: routes, isLoading: false });
       } catch (err) {
         console.log(err);
@@ -75,13 +82,13 @@ class Routes extends React.Component<IProps, IState> {
   render() {
     const fetchedRoutes = this.state.fetchedRoutes;
 
-    let content;
+    let content: React.ReactNode;
     if (this.props.selectedTrip) {
       const trip = this.props.selectedTrip;
       content = (
         <RouteView
           trip={trip}
-          handleSelectedTrip={(e) => { }}
+          handleSelectedTrip={(e) => {}}
           selectable={false}
           handleEditTrip={this.props.handleEditTrip}
         />
@@ -92,17 +99,18 @@ class Routes extends React.Component<IProps, IState> {
           const spinner = (
             <div className="LoadingSpinner text-center">
               <span className="align-middle">
-                <SpinnerIcon ><animateTransform
-                  attributeName="transform"
-                  attributeType="XML"
-                  type="rotate"
-                  dur="1s"
-                  from="0 0 0"
-                  to="360 0 0"
-                  repeatCount="indefinite"
-                ></animateTransform></SpinnerIcon>
+                <SpinnerIcon>
+                  <animateTransform
+                    attributeName="transform"
+                    attributeType="XML"
+                    type="rotate"
+                    dur="1s"
+                    from="0 0 0"
+                    to="360 0 0"
+                    repeatCount="indefinite"
+                  ></animateTransform>
+                </SpinnerIcon>
               </span>
-
             </div>
           );
           content = spinner;
@@ -113,7 +121,7 @@ class Routes extends React.Component<IProps, IState> {
               trip={trip}
               key={index}
               handleSelectedTrip={this.props.handleSelectedTrip}
-              handleEditTrip={() => { }}
+              handleEditTrip={() => {}}
             />
           ));
           content = routeItems;

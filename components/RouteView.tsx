@@ -1,12 +1,12 @@
-import React, { FunctionComponent, type JSX } from "react";
-import Image from 'next/image'
-import { Trip, StopLocation, Node, Stop, Mode } from "dvbjs";
+import type { Mode, Node, Stop, StopLocation, Trip } from "dvbjs";
 import moment from "moment";
+import Image from "next/image";
+import React, { type FunctionComponent, type JSX } from "react";
 import "./RouteView.css";
-import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil";
 import { CaretDownIcon } from "@phosphor-icons/react/dist/csr/CaretDown";
 import { CaretUpIcon } from "@phosphor-icons/react/dist/csr/CaretUp";
 import { CheckSquareIcon } from "@phosphor-icons/react/dist/csr/CheckSquare";
+import { PencilIcon } from "@phosphor-icons/react/dist/csr/Pencil";
 
 // import Tarifangaben from './Tarifangaben';
 import TarifAbAnzeige from "./TarifAbAnzeige";
@@ -175,7 +175,7 @@ function NodeItem(props: { mode?: Mode; line: string }) {
 
 function LineItems(props: { trip: Trip; key?: string }) {
   const { trip, key } = props;
-  let lines = trip.nodes.map((node, index) => {
+  const lines = trip.nodes.map((node, index) => {
     if (
       node.mode !== undefined &&
       node.mode!.name !== "Footpath" &&
@@ -193,6 +193,7 @@ function LineItems(props: { trip: Trip; key?: string }) {
       //     lines.push(<span> &#10095; </span>)
       // }
     }
+    return null;
   });
   return lines;
 }
@@ -334,8 +335,8 @@ class RouteView extends React.Component<IProps, IState> {
                       className="m-1 btn btn-sm btn-secondary"
                       onClick={this.toggleShowDetails}
                     >
-                      {showDetails ? <CaretUpIcon /> : <CaretDownIcon />}
-                      {" "}Zwischenhalte
+                      {showDetails ? <CaretUpIcon /> : <CaretDownIcon />}{" "}
+                      Zwischenhalte
                     </button>
                   </td>
                 </tr>

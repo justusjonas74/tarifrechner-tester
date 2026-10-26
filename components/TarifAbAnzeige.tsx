@@ -1,12 +1,11 @@
-import {
-  TariffOverview,
-  getTariffOverviewFromEfaAntwort,
-} from "@/lib/parseTarifrechnerTicket";
-import { tarifrechnerEfaAnfrage } from "@/lib/tarifrechnerAnfrage";
-import { Trip } from "dvbjs";
-
+import type { Trip } from "dvbjs";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import {
+  getTariffOverviewFromEfaAntwort,
+  type TariffOverview,
+} from "@/lib/parseTarifrechnerTicket";
+import { tarifrechnerEfaAnfrage } from "@/lib/tarifrechnerAnfrage";
 
 interface TarifAbAnzeigeProps {
   trip: Trip;
@@ -31,9 +30,7 @@ export default function TarifAbAnzeige(props: TarifAbAnzeigeProps) {
         }
         setIsLoading(false);
       } catch (error) {
-        let message;
-        if (error instanceof Error) message = error.message;
-        else message = String(error);
+        const message = error instanceof Error ? error.message : String(error);
         toast.error(message);
       }
     };

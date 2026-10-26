@@ -1,7 +1,7 @@
-import React from "react";
+import type { Point } from "dvbjs";
+import type React from "react";
 import SearchStopField from "./SearchStopField";
 import StopField from "./StopField";
-import { Point } from "dvbjs";
 
 interface IStopBoxProps {
   title: string;

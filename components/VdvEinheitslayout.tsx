@@ -1,8 +1,8 @@
-import CollapseComponent from "./CollapseComponent";
+import type { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
 
 import Image from "next/image";
-import { IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/dvb-mobi/interfaces";
 import { useState } from "react";
+import CollapseComponent from "./CollapseComponent";
 
 export default function VdvEinheitslayout(props: {
   daten?: IANTWORTLISTE_DVBMOB_ANGEBOTSINFO_NACH_VERBINDUNG;

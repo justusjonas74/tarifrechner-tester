@@ -1,18 +1,18 @@
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
-const Datetime = dynamic(() => import('react-datetime'), { ssr: false })
+const Datetime = dynamic(() => import("react-datetime"), { ssr: false });
 
-import { Point, Trip } from "dvbjs";
+import { ArrowsLeftRightIcon } from "@phosphor-icons/react/dist/csr/ArrowsLeftRight";
+import type { Point, Trip } from "dvbjs";
 import moment from "moment";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { ArrowsLeftRightIcon } from "@phosphor-icons/react/dist/csr/ArrowsLeftRight";
 // import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 
 import CollapseComponent from "./CollapseComponent";
-import StopBox from "./StopBox";
 import Routes from "./Routes";
+import StopBox from "./StopBox";
 
 interface RoutingComponentProps {
   handleChangedTrip: (trip: Trip | null) => void;
@@ -149,4 +149,3 @@ export default function RoutingComponent(props: RoutingComponentProps) {
     </>
   );
 }
-
