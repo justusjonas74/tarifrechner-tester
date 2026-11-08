@@ -52,7 +52,7 @@ importers:
         version: 11.2.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
     devDependencies:
       '@biomejs/biome':
-        specifier: 2.6.4
+        specifier: ^2.6.4
         version: 2.6.4
       '@types/node':
         specifier: ^25.9.9

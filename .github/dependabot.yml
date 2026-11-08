@@ -7,10 +7,13 @@ registries:
     token: ${{ secrets.DEPENDABOT_TOKEN }}
 
 updates:
-  - package-ecosystem: "npm"
-    directory: "/" # adjust if needed
+  - package-ecosystem: "pnpm"
+    directory: "/"
     schedule:
-      interval: "weekly" # or "monthly"
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Berlin"
     registries:
       - github
     # Ignore major updates
@@ -22,8 +25,29 @@ updates:
     # Group all minor & patch updates into one PR
     groups:
       all-minor-and-patch:
+        applies-to: version-updates
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
+      security-minor-and-patch:
+        applies-to: security-updates
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Berlin"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
