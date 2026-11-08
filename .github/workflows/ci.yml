@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22.x
-          cache: 'pnpm'
+          cache: "pnpm"
         env:
           GITHUB_TOKEN: ${{ secrets.DEPENDABOT_TOKEN || secrets.GITHUB_TOKEN }}
 
