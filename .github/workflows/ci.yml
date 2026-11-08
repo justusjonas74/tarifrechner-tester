@@ -43,6 +43,8 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        env:
+          NEXT_PUBLIC_URL: "http://localhost:3000"
 
   automerge:
     needs: build
