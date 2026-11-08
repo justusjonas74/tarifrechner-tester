@@ -30,7 +30,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.DEPENDABOT_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          sed -i '/_authToken/d' .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> ~/.npmrc
+          pnpm install --frozen-lockfile
+          git checkout -- .npmrc
         env:
           GITHUB_TOKEN: ${{ secrets.DEPENDABOT_TOKEN || secrets.GITHUB_TOKEN }}
 
