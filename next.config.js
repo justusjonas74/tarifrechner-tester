@@ -5,7 +5,10 @@ const { join } = require("path");
 
 const nextConfig = {
   output: "standalone",
-  allowedDevOrigins: [process.env.NEXT_PUBLIC_URL, "efm.lan.vvo"],
+  allowedDevOrigins: [
+    ...(process.env.NEXT_PUBLIC_URL ? [process.env.NEXT_PUBLIC_URL] : []),
+    "efm.lan.vvo",
+  ],
   outputFileTracingRoot: join(__dirname, "../"),
   experimental: {
     optimizePackageImports: ["@phosphor-icons/react"],
@@ -16,7 +19,7 @@ const nextConfig = {
         source: "/tarifrechner",
         // source: "/tarifrechner/:path*",
         // destination: process.env.NEXT_PUBLIC_URL + ":path*",
-        destination: process.env.NEXT_PUBLIC_URL,
+        destination: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
       },
     ];
   },
