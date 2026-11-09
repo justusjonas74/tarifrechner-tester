@@ -23,7 +23,7 @@ const getConfig = () => {
     ? { "X-Ios-Bundle-Identifier": bundleId }
     : {};
   const config: TarifrechnerRequestConfig = {
-    url: "tarifrechner/",
+    url: "/tarifrechner",
     axiosConfig: {
       headers: {
         "Content-Type": "application/json",
