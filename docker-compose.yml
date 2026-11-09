@@ -1,14 +1,9 @@
 services:
   tarifrechner:
     container_name: tarifrechner-tester-prod
-    build:
-      context: .
-      secrets:
-        - gh_token
+    image: ghcr.io/justusjonas74/tarifrechner-tester:latest
     ports:
       - "3000:3000"
     restart: always
-
-secrets:
-  gh_token:
-    environment: GITHUB_TOKEN
+    env_file:
+      - .env

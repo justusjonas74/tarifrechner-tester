@@ -23,6 +23,10 @@ Dockerfile
 .dockerignore
 docker-compose.yml
 
+# Environment
+.env
+.env*.local
+
 # Dokumentation & Tests
 README.md
 LICENSE
