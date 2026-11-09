@@ -4,9 +4,13 @@ import { findStop, POI_TYPE, type Point } from "dvbjs";
 import { describe, expect, it, vi } from "vitest";
 import SearchStopField from "./SearchStopField";
 
-vi.mock("dvbjs", () => ({
-  findStop: vi.fn(),
-}));
+vi.mock("dvbjs", async () => {
+  const actual = await vi.importActual<any>("dvbjs");
+  return {
+    ...actual,
+    findStop: vi.fn(),
+  };
+});
 
 describe("SearchStopField", () => {
   it("should trigger findStop when 3 or more chars are typed", async () => {

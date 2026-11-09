@@ -4,6 +4,7 @@ import type {
 } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/efa/interfaces";
 import type { IFAIRTIQ_TICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/fairtiq/interfaces";
 import type { ITICKETDATEN } from "@justusjonas74/pkm-tarifrechner/build/src/tarifrechner/generic/interfaces";
+import moment from "moment";
 import { describe, expect, it } from "vitest";
 import {
   getTariffOverviewFromEfaAntwort,
@@ -141,12 +142,19 @@ describe("parseTarifrechnerTicket", () => {
         ],
       } as unknown as IFAIRTIQ_TICKETDATEN;
 
+      const expectedFrist = moment("2026-11-09T14:30:00+01:00").format(
+        "DD.MM.YYYY HH:mm:ss",
+      );
+      const expectedErsetzungsfrist = moment(
+        "2026-11-09T15:30:00+01:00",
+      ).format("DD.MM.YYYY HH:mm:ss");
+
       const result = parseTarifrechnerTicketFairtiq(ticket);
       expect(result.anzeigetext).toBe("Fairtiq Fahrt");
       expect(result.betraginEuro).toMatch(/2,50\s?€/);
       expect(result.reisendenbezug).toEqual([1]);
-      expect(result.preisberuecksichtigungsfrist).toBe("09.11.2026 14:30:00");
-      expect(result.ticketdatenersetzungsfrist).toBe("09.11.2026 15:30:00");
+      expect(result.preisberuecksichtigungsfrist).toBe(expectedFrist);
+      expect(result.ticketdatenersetzungsfrist).toBe(expectedErsetzungsfrist);
     });
   });
 });
