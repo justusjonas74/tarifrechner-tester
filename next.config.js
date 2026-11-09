@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-require("dotenv").config();
 const { join } = require("path");
 
 const nextConfig = {
@@ -12,16 +11,6 @@ const nextConfig = {
   outputFileTracingRoot: join(__dirname, "../"),
   experimental: {
     optimizePackageImports: ["@phosphor-icons/react"],
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/tarifrechner",
-        // source: "/tarifrechner/:path*",
-        // destination: process.env.NEXT_PUBLIC_URL + ":path*",
-        destination: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
-      },
-    ];
   },
 };
 
