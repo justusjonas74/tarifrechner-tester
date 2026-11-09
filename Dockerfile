@@ -1,14 +1,13 @@
-FROM node:lts-slim AS base
+FROM node:22-alpine AS base
 ENV TZ="Europe/Berlin"
-RUN corepack enable pnpm
+RUN apk add --no-cache libc6-compat tzdata
+RUN npm install -g pnpm@10
 
 # Install dependencies only when needed
 FROM base AS deps
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-
-# WORKDIR /app
 COPY ./package.json .
 COPY ./pnpm-lock.yaml .
 COPY ./pnpm-workspace.yaml .
@@ -24,9 +23,7 @@ RUN --mount=type=secret,id=gh_token \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
-# RUN mkdir /tarifrechner-sst
 COPY --from=deps /app/node_modules ./node_modules
-# COPY --from=deps /tarifrechner-sst /tarifrechner-sst
 COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
@@ -48,7 +45,7 @@ ENV NODE_ENV=production
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN adduser --system --uid 1001 -G nodejs nextjs
 
 COPY --from=builder /app/public ./public
 # Set the correct permission for prerender cache
