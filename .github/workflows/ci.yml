@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TZ: "Europe/Berlin"
     permissions:
       contents: read
       packages: read
@@ -40,6 +42,9 @@ jobs:
 
       - name: Lint
         run: pnpm run lint
+
+      - name: Test
+        run: pnpm run test
 
       - name: Build
         run: pnpm run build
